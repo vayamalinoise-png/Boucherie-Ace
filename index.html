@@ -1237,13 +1237,31 @@ $('#yr').textContent = new Date().getFullYear();
   html.classList.remove('intro');
   setTimeout(() => el.remove(), 950);
  };
- /* si un fichier intro.mp4 est présent, il remplace l'animation */
+ /* Vidéo d'intro (remplace l'animation du logo). Son adresse vient :
+    – du cache local (INTRO_VID) dès la 2e visite ;
+    – de la base : init() la transmet via window.__introVideo dès que les réglages sont lus,
+      ce qui permet à la vidéo de jouer aussi à la TOUTE PREMIÈRE visite d'un client. */
  const v = $('#ivid');
- v.addEventListener('loadeddata', () => { el.classList.add('vid'); clearTimeout(t); v.play().catch(()=>{}); });
+ let t = 0, tried = '', vidOn = false;
+ const arm = ms => { clearTimeout(t); t = setTimeout(end, ms) };
+ const left = () => Math.max(600, 4300 - performance.now());
+ const showVid = () => {
+  if(done || vidOn) return; vidOn = true;
+  el.classList.add('vid');
+  const d = isFinite(v.duration) && v.duration > 0 ? Math.min(v.duration, 30) : 30;
+  arm(d*1000 + 2500);                                  /* filet de sécurité si « ended » n'arrive jamais */
+  v.play().catch(() => { vidOn = false; el.classList.remove('vid'); arm(left()) });
+ };
+ v.addEventListener('loadeddata', showVid);
+ v.addEventListener('canplay', showVid);
  v.addEventListener('ended', end);
- v.addEventListener('error', () => v.remove());
- if(typeof INTRO_VID === 'string' && INTRO_VID) v.src = INTRO_VID; else v.remove();
- const t = setTimeout(end, 4300);
+ v.addEventListener('error', () => { vidOn = false; el.classList.remove('vid'); v.removeAttribute('src'); if(!done) arm(left()) });
+ window.__introVideo = u => {
+  if(done || vidOn || typeof u !== 'string' || !u || u === tried) return;
+  tried = u; v.src = u; v.load(); arm(5000);           /* temps laissé au chargement de la vidéo */
+ };
+ arm(4300);
+ window.__introVideo(INTRO_VID);
  $('#iskip').onclick = e => { e.stopPropagation(); clearTimeout(t); end(); };
  el.addEventListener('click', () => { clearTimeout(t); end(); });
  window.__replayIntro = () => {
@@ -1305,6 +1323,8 @@ async function init(){
  S.set.closed_dates  = S.set.closed_dates  || [];
  if(S.set.accepting_orders == null) S.set.accepting_orders = true;
  S.cart = S.cart.filter(l => P(l.id));
+ /* vidéo d'intro : transmise tout de suite à l'intro en cours (1re visite comprise) */
+ try{ if(window.__introVideo && S.set.intro_video_url) window.__introVideo(S.set.intro_video_url) }catch(e){}
  /* logo officiel et vidéo d'intro définis dans l'espace admin */
  try{
   if(S.set.logo_url && S.set.logo_url !== LOGO){ LOGO = S.set.logo_url; applyLogo(); localStorage.setItem('acem_logo', LOGO) }
@@ -2610,6 +2630,48 @@ async function tabPt(){
  });
 }
 
+/* ---------- 14.5 bis ALLÈGEMENT DE LA VIDÉO D'INTRO ----------
+   Relit la vidéo dans le navigateur et la réenregistre en 720p / 30 i/s, sans le son
+   (l'intro est muette), à un débit calculé pour rester autour de 3 Mo. Durée : celle de la vidéo. */
+async function lightenVideo(f, onP){
+ if(!window.MediaRecorder || !HTMLCanvasElement.prototype.captureStream) throw new Error('compression indisponible sur ce navigateur');
+ const mime = ['video/mp4;codecs=avc1.640028','video/mp4;codecs=avc1','video/mp4','video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm']
+  .find(t => MediaRecorder.isTypeSupported(t));
+ if(!mime) throw new Error('compression indisponible sur ce navigateur');
+ const url = URL.createObjectURL(f);
+ const v = document.createElement('video');
+ v.muted = true; v.playsInline = true; v.preload = 'auto'; v.src = url;
+ let tick = 0;
+ try{
+  await new Promise((ok, ko) => { v.onloadedmetadata = ok; v.onerror = () => ko(new Error('vidéo illisible par ce navigateur')); });
+  const dur = v.duration;
+  if(!isFinite(dur) || dur <= 0) throw new Error('durée de la vidéo inconnue');
+  if(dur > 30) throw new Error('vidéo trop longue pour une intro (30 s maximum)');
+  const k = Math.min(1, 1280/Math.max(v.videoWidth, v.videoHeight));
+  const w = Math.max(2, Math.round(v.videoWidth*k/2)*2), h = Math.max(2, Math.round(v.videoHeight*k/2)*2);
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  const ctx = c.getContext('2d');
+  const rec = new MediaRecorder(c.captureStream(30), { mimeType:mime, videoBitsPerSecond:Math.round(Math.min(2.5e6, 3.5e6*8/dur)) });
+  const parts = [];
+  rec.ondataavailable = e => { if(e.data && e.data.size) parts.push(e.data); };
+  const stopped = new Promise(r => { rec.onstop = r; });
+  const draw = () => { ctx.drawImage(v, 0, 0, w, h); if(onP) onP(Math.min(1, v.currentTime/dur)); };
+  const ended = new Promise((ok, ko) => { v.onended = ok; v.onerror = () => ko(new Error('lecture interrompue')); });
+  draw(); rec.start(250);
+  await v.play();
+  tick = setInterval(draw, 1000/30);
+  await ended;
+  clearInterval(tick); tick = 0; draw();
+  rec.stop(); await stopped;
+  const out = new Blob(parts, { type:mime.split(';')[0] });
+  if(!out.size) throw new Error('aucune image enregistrée');
+  return out;
+ } finally {
+  if(tick) clearInterval(tick);
+  v.removeAttribute('src'); v.load(); URL.revokeObjectURL(url);
+ }
+}
+
 /* ---------- 14.6 RÉGLAGES ---------- */
 async function tabS(){
  const { data:s, error } = await sb.from('store_settings').select('*').eq('id',1).maybeSingle();
@@ -2626,11 +2688,13 @@ async function tabS(){
   '</div>'+
  '</div>'+
  '<div class="pnl"><h3>Vidéo d’intro</h3>'+
-  '<p class="mu" style="margin-bottom:14px">Vidéo affichée en plein écran à l’ouverture du site, une fois par visite. Sans vidéo, c’est l’animation du logo qui est jouée. Format MP4, horizontal, 3 à 6 secondes, 25 Mo maximum.</p>'+
+  '<p class="mu" style="margin-bottom:14px">Vidéo affichée en plein écran à l’ouverture du site, une fois par visite. Sans vidéo, c’est l’animation du logo qui est jouée. Format MP4, horizontal, 3 à 6 secondes. Une vidéo lourde (jusqu’à 300 Mo) est allégée automatiquement avant l’envoi : gardez cette page ouverte pendant l’optimisation.</p>'+
+  (('intro_video_url' in s) ? '' : '<p class="er" style="margin-bottom:14px">⚠ La colonne <code>intro_video_url</code> n’existe pas dans Supabase : la vidéo ne peut pas être enregistrée. Dans Supabase → SQL Editor, exécutez : <code>alter table public.store_settings add column if not exists intro_video_url text;</code></p>')+
   '<div class="th" style="margin-bottom:12px">'+
    (s.intro_video_url ? '<video src="'+esc(s.intro_video_url)+'" class="thi" muted playsinline controls></video>' : '<span class="mu">Aucune vidéo — animation du logo</span>')+
    '<label class="btn">Choisir une vidéo<input id="ivF" type="file" accept="video/*" hidden></label>'+
    (s.intro_video_url ? '<button class="btn o" id="ivX">Retirer la vidéo</button>' : '')+
+   '<span class="mu" id="ivS" role="status"></span>'+
   '</div>'+
  '</div>'+
  '<div class="pnl"><h3>Commandes en ligne</h3>'+
@@ -2693,23 +2757,53 @@ async function tabS(){
  };
 
  /* --- vidéo d'intro --- */
+ let ivBusy = false;
  $('#ivF').onchange = async e => {
   const f = e.target.files[0]; e.target.value = '';
-  if(!f) return;
-  if(!/^video\//.test(f.type)) return toast('Choisissez un fichier vidéo', true);
-  if(f.size > 25e6) return toast('Vidéo trop lourde (25 Mo maximum)', true);
-  toast('Envoi de la vidéo, patientez…');
+  if(!f || ivBusy) return;
+  const ext0 = (f.name.split('.').pop() || '').toLowerCase();
+  const ft = f.type || ({ mp4:'video/mp4', m4v:'video/mp4', webm:'video/webm', mov:'video/quicktime' })[ext0] || '';
+  if(!/^video\//.test(ft)) return toast('Choisissez un fichier vidéo', true);
+  if(f.size > 300e6) return toast('Vidéo trop lourde (300 Mo maximum)', true);
+  const LIMIT = 25e6;                                    /* limite du stockage Supabase */
+  const st = $('#ivS'), say = t => { if(st) st.textContent = t; };
+  ivBusy = true;
   try{
-   const ext = (f.name.split('.').pop() || 'mp4').toLowerCase().slice(0,4);
-   const path = 'branding/intro-' + Date.now() + '.' + ext;
-   const up = await BK().upload(path, f, { contentType:f.type, cacheControl:'3600' });
+   let blob = f, type = ft;
+   /* trop lourde (> 4 Mo) ou format que le stockage refuse (.mov…) : on l'allège d'abord */
+   if(f.size > 4e6 || !/^video\/(mp4|webm)$/.test(ft)){
+    toast('Optimisation de la vidéo… gardez cette page ouverte');
+    try{
+     const o = await lightenVideo(f, p => say('Optimisation de la vidéo… '+Math.round(p*100)+' %'));
+     if(o.size < f.size || !/^video\/(mp4|webm)$/.test(ft)){ blob = o; type = o.type; }
+    }catch(err){
+     if(blob.size > LIMIT || !/^video\/(mp4|webm)$/.test(ft))
+      throw new Error('Impossible d’alléger cette vidéo ('+(err.message||err)+'). Utilisez un MP4 de moins de 25 Mo.');
+    }
+   }
+   if(blob.size > LIMIT) throw new Error('Vidéo encore trop lourde après optimisation ('+(blob.size/1e6).toFixed(1).replace('.',',')+' Mo, 25 Mo maximum).');
+   say('Envoi de la vidéo ('+(blob.size/1e6).toFixed(1).replace('.',',')+' Mo)…');
+   toast('Envoi de la vidéo, patientez…');
+   const path = 'branding/intro-' + Date.now() + '.' + (type === 'video/webm' ? 'webm' : 'mp4');
+   const up = await BK().upload(path, blob, { contentType:type, cacheControl:'3600' });
    if(up.error) throw up.error;
    const url = BK().getPublicUrl(path).data.publicUrl;
    const r = await safeUpdate('store_settings', { intro_video_url:url }, 1);
    if(!r.ok) throw r.error;
+   if(r.dropped.indexOf('intro_video_url') >= 0)
+    throw new Error('la colonne intro_video_url n’existe pas dans Supabase : exécutez le SQL fourni, puis renvoyez la vidéo');
+   /* contrôle : la base a-t-elle vraiment gardé l'adresse ? (droits d'écriture refusés = aucune erreur mais rien d'enregistré) */
+   const chk = await sb.from('store_settings').select('intro_video_url').eq('id',1).maybeSingle();
+   if(chk.error || !chk.data || chk.data.intro_video_url !== url)
+    throw new Error('la base n’a pas conservé la vidéo (colonne absente ou droits d’écriture refusés)');
    try{ localStorage.setItem('acem_intro_video', url) }catch(_){}
    toast('Vidéo d’intro enregistrée'); tabS();
-  }catch(err){ toast('Erreur : '+(err.message||err)+sqlHint(err), true) }
+  }catch(err){
+   let m = err.message || String(err);
+   if(/exceeded the maximum allowed size|payload too large|413/i.test(m)) m = 'vidéo trop lourde pour le stockage (25 Mo maximum)';
+   else if(/mime type|invalid_mime|not supported/i.test(m)) m = 'format de vidéo refusé par le stockage — utilisez un MP4';
+   say('⚠ '+m+sqlHint(err)); toast('Erreur : '+m+sqlHint(err), true);
+  }finally{ ivBusy = false; }
  };
  if($('#ivX')) $('#ivX').onclick = async () => {
   const r = await safeUpdate('store_settings', { intro_video_url:null }, 1);
