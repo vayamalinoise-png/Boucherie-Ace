@@ -493,9 +493,231 @@ footer .fc a:hover{color:var(--r2)}
  .lgt span{display:none}
  .kp{grid-template-columns:1fr 1fr}
 }
+
+/* ==========================================================================
+   22. RÉGLAGES FINS — ÉCHELLE, RYTHME, LISIBILITÉ (PC + MOBILE)
+   ========================================================================== */
+:root{--sp:clamp(60px,7.5vw,128px);--gut:clamp(18px,3.4vw,40px)}
+.w{max-width:1240px;padding:0 var(--gut)}
+h2{font-size:clamp(2rem,1.25rem + 2.4vw,3.5rem);letter-spacing:-.015em}
+h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
+.lead{font-size:clamp(.98rem,.93rem + .22vw,1.14rem);line-height:1.72}
+.hd{max-width:68ch}
+.hd h2{margin:14px 0 14px}
+.eyebrow{font-size:clamp(.66rem,.62rem + .12vw,.74rem)}
+.mu{font-size:clamp(.88rem,.85rem + .12vw,.95rem)}
+.sec+.sec{padding-top:0}
+
+/* filet lumineux de séparation entre les grandes sections */
+.sec.ln::before{content:'';position:absolute;top:0;left:var(--gut);right:var(--gut);height:1px;
+ background:linear-gradient(90deg,transparent,var(--line2) 18%,var(--line2) 82%,transparent);
+ transform:scaleX(.2);opacity:0;transition:transform 1.3s var(--ease),opacity .8s}
+.sec.ln.in::before{transform:scaleX(1);opacity:1}
+
+/* 1 — HERO */
+.hero h1{font-size:clamp(2.9rem,1.6rem + 6.4vw,6.4rem);line-height:.96}
+.hero .lead{margin:clamp(16px,2vw,24px) 0 clamp(22px,3vw,30px)}
+.hw{gap:clamp(24px,4vw,70px)}
+.hst div b{font-size:clamp(1.55rem,1.1rem + 1.4vw,2.4rem)}
+.hst div span{display:block;max-width:15ch;line-height:1.35;margin-top:6px}
+
+/* 2 — ENGAGEMENTS */
+.eng>div{padding:clamp(24px,2.6vw,34px) clamp(20px,2.2vw,30px)}
+.eng h3{font-size:clamp(1.22rem,1.1rem + .4vw,1.42rem)}
+.eng p{font-size:clamp(.86rem,.84rem + .1vw,.92rem)}
+.eng svg{width:28px;height:28px}
+
+/* 3 — CATALOGUE */
+.bar{margin-bottom:14px}
+.cb{padding:clamp(14px,1.4vw,20px)}
+.cb h3{font-size:clamp(1.15rem,1rem + .55vw,1.5rem)}
+.cnt{margin:0 0 18px}
+
+/* 4 — SPÉCIALITÉS */
+.spr{padding:clamp(24px,3.4vw,46px) clamp(4px,2vw,26px)}
+.spc h3{font-size:clamp(1.45rem,1.1rem + 1.5vw,2.25rem)}
+.spc p{font-size:clamp(.9rem,.87rem + .16vw,1rem)}
+
+/* 5 — COLIS */
+.pk{padding:clamp(24px,2.6vw,34px) clamp(20px,2.2vw,30px)}
+.pk h3{font-size:clamp(1.4rem,1.15rem + .8vw,1.75rem)}
+
+/* 6 — ÉTAPES */
+.stp h3{font-size:clamp(1.2rem,1.05rem + .5vw,1.42rem)}
+
+/* 7 — FAQ */
+.faq{max-width:900px}
+.fq button{font-size:clamp(1rem,.95rem + .25vw,1.14rem);padding:clamp(18px,2vw,24px) 14px clamp(18px,2vw,24px) 0}
+.fqa p{font-size:clamp(.88rem,.86rem + .12vw,.95rem)}
+
+/* 8 — INFOS */
+.info h3{font-size:clamp(1.35rem,1.15rem + .7vw,1.65rem)}
+.ibox{padding:clamp(22px,2.4vw,30px)}
+.hr{padding:9px 0}
+
+/* 9 — PIED DE PAGE */
+.fg{gap:clamp(26px,3vw,44px)}
+
+/* ==========================================================================
+   23. MOTION DESIGN — DESKTOP
+   ========================================================================== */
+/* titres mot à mot */
+.wsp{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em}
+.wsp>i{display:inline-block;font-style:inherit;transform:translateY(105%);opacity:0}
+.rv.in .wsp>i,.wsp.go>i{animation:wup .95s var(--ease) forwards;animation-delay:calc(var(--i,0)*55ms)}
+@keyframes wup{to{transform:translateY(0);opacity:1}}
+
+/* survol lumineux global */
+#spot{position:fixed;top:0;left:0;width:620px;height:620px;margin:-310px 0 0 -310px;border-radius:50%;
+ background:radial-gradient(circle,#E1060026,#E1060008 42%,transparent 68%);
+ pointer-events:none;z-index:4;opacity:0;transition:opacity .6s;will-change:transform}
+#spot.on{opacity:1}
+
+/* index de sections */
+#dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:46;display:none;flex-direction:column;gap:14px}
+#dots a{position:relative;width:9px;height:9px;border-radius:50%;background:#FFFFFF2E;transition:all .35s var(--ease)}
+#dots a::after{content:attr(data-l);position:absolute;right:20px;top:50%;transform:translate(8px,-50%);
+ white-space:nowrap;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);
+ opacity:0;pointer-events:none;transition:all .35s var(--ease)}
+#dots a:hover::after{opacity:1;transform:translate(0,-50%)}
+#dots a:hover{background:var(--i)}
+#dots a.on{background:var(--r);box-shadow:0 0 0 4px #E1060026;height:26px;border-radius:9px}
+
+/* bouton retour haut + anneau de progression */
+#up{position:fixed;right:20px;bottom:24px;z-index:47;width:52px;height:52px;border-radius:50%;
+ background:#121214E6;border:1px solid var(--line2);backdrop-filter:blur(10px);cursor:pointer;
+ display:grid;place-items:center;opacity:0;transform:translateY(16px) scale(.85);pointer-events:none;
+ transition:opacity .4s,transform .4s var(--ease),border-color .3s}
+#up.on{opacity:1;transform:none;pointer-events:auto}
+#up:hover{border-color:var(--r)}
+#up svg.ar{width:18px;height:18px;transform:rotate(-90deg);color:var(--i);stroke-width:2.2}
+#up svg.rg{position:absolute;inset:-1px;width:54px;height:54px;transform:rotate(-90deg);stroke-width:2;fill:none}
+#up .bg2{stroke:#FFFFFF14}
+#up .fg2{stroke:var(--r);stroke-dasharray:157;stroke-dashoffset:157;transition:stroke-dashoffset .1s linear}
+
+/* parallaxe douce des photos dans les cartes */
+.im img{transform:scale(1.06) translate3d(0,var(--py,0px),0)}
+.card:hover .im img{transform:scale(1.12) translate3d(0,var(--py,0px),0)}
+
+/* hero : recul au défilement */
+.hw{will-change:transform,opacity}
+.hglow{position:absolute;inset:0;pointer-events:none;z-index:1;
+ background:radial-gradient(560px circle at var(--hx,72%) var(--hy,22%),#E1060029,transparent 62%);
+ opacity:0;transition:opacity .7s}
+.hglow.on{opacity:1}
+
+/* faisceaux lumineux du hero */
+.beam{position:absolute;top:-30%;width:1px;height:160%;pointer-events:none;
+ background:linear-gradient(transparent,#E1060059,transparent);opacity:.45;
+ animation:bm 9s ease-in-out infinite}
+.beam.b-1{left:18%;animation-delay:-1s}
+.beam.b-2{left:46%;height:120%;animation-delay:-4s;opacity:.3}
+.beam.b-3{left:72%;animation-delay:-6.5s}
+@keyframes bm{0%,100%{transform:translateY(-8%) scaleY(.8);opacity:.12}50%{transform:translateY(8%) scaleY(1.1);opacity:.5}}
+
+/* ouverture de la fiche produit depuis la carte cliquée */
+.pb{transform-origin:var(--ox,50%) var(--oy,50%)}
+#pm.on .pb{animation:zin .55s var(--ease)}
+@keyframes zin{from{opacity:0;transform:scale(.88) translateY(18px)}}
+
+/* mise en avant au survol d'une ligne de spécialité */
+.spr{position:relative;isolation:isolate}
+.spr::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:linear-gradient(90deg,#E1060014,transparent 55%);opacity:0;transition:opacity .5s}
+.spr:hover::before{opacity:1}
+
+/* boutons magnétiques */
+.mag{will-change:transform}
+
+/* bandeau défilant piloté en JS */
+.mq.js .mt{animation:none}
+
+@media(min-width:1200px){ #dots{display:flex} }
+@media(hover:none),(prefers-reduced-motion:reduce){
+ #spot,.beam{display:none}
+ .im img,.card:hover .im img{transform:scale(1.04)}
+}
+
+/* ==========================================================================
+   23 bis. SECTION VIDÉOS INSTAGRAM
+   ========================================================================== */
+.igh{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.ighandle{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line2);border-radius:999px;
+ padding:9px 18px;font-size:.88rem;transition:all .3s var(--ease)}
+.ighandle:hover{border-color:var(--r);background:#E1060012}
+.ighandle svg{color:var(--r2);width:18px;height:18px}
+.igg{display:grid;grid-template-columns:repeat(auto-fit,minmax(296px,1fr));gap:clamp(14px,1.6vw,22px);margin-top:clamp(24px,3vw,38px)}
+.igc{position:relative;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#0F0F11;
+ transition:border-color .35s,transform .4s var(--ease),box-shadow .4s}
+.igc:hover{border-color:#E1060066;transform:translateY(-5px);box-shadow:0 24px 54px #00000073}
+.igc .instagram-media{margin:0!important;width:100%!important;min-width:0!important;max-width:100%!important;
+ border:0!important;border-radius:0!important;box-shadow:none!important}
+.igload{display:grid;place-items:center;gap:12px;min-height:420px;color:var(--mu);font-size:.86rem;text-align:center;padding:24px}
+.igload svg{width:28px;height:28px;color:var(--r2);animation:pls 1.8s ease-in-out infinite}
+/* vignettes de secours tant qu'aucune publication n'est renseignée */
+.igf{position:relative;display:grid;place-items:center;gap:14px;min-height:clamp(300px,34vw,400px);padding:28px;text-align:center;
+ background:linear-gradient(150deg,#2A0F0E,#121214 70%);overflow:hidden}
+.igf::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,#E1060033,transparent 62%);pointer-events:none}
+.igf .ply{position:relative;width:64px;height:64px;border-radius:50%;border:1px solid #FFFFFF3D;display:grid;place-items:center;
+ background:#0B0B0C99;backdrop-filter:blur(6px);transition:all .35s var(--ease)}
+.igc:hover .ply{background:var(--r);border-color:var(--r);transform:scale(1.1)}
+.igf .ply svg{width:22px;height:22px;color:#fff;fill:currentColor;stroke:none;margin-left:3px}
+.igf b{position:relative;font:600 1.15rem var(--serif)}
+.igf span{position:relative;font-size:.8rem;color:var(--mu);max-width:26ch}
+@media(max-width:560px){.igg{grid-template-columns:1fr}.igload{min-height:340px}}
+
+/* ==========================================================================
+   24. AJUSTEMENTS MOBILE / TABLETTE
+   ========================================================================== */
+@media(max-width:1100px){
+ .hero h1{font-size:clamp(2.9rem,7.4vw,4.8rem)}
+ .hst{gap:22px}
+}
+@media(max-width:860px){
+ :root{--sp:clamp(52px,9vw,78px)}
+ .hero{padding:26px 0 46px}
+ .hero .lead{max-width:none}
+ .hst{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+ .hst div span{font-size:.7rem;max-width:none}
+ .pill span{font-size:.76rem;padding:6px 12px}
+ .mq{padding:11px 0}
+ .eng{border-radius:16px}
+ .cta h2{font-size:clamp(1.9rem,6.6vw,2.6rem)}
+ .note{padding:16px 18px;gap:12px}
+ .ibox{border-radius:16px}
+ .fq button{gap:14px}
+ .drh h2{font-size:1.35rem}
+ #up{right:14px;bottom:88px;width:46px;height:46px}
+ #up svg.rg{width:48px;height:48px}
+}
+@media(max-width:480px){
+ .hcta{flex-direction:column;align-items:stretch}
+ .hcta .btn{width:100%}
+ .hst{grid-template-columns:1fr 1fr}
+ .hst div:last-child{display:none}
+ .hero h1{font-size:clamp(2.6rem,12.5vw,3.4rem)}
+ .eyebrow::before{width:18px}
+ .bar{gap:9px}
+ .bar select{width:100%}
+ .tk b{font-size:1.7rem}
+ .pk{padding:22px 18px}
+ .mb2,.pb{border-radius:18px;padding:20px 16px}
+ .ln{grid-template-columns:52px 1fr auto;gap:10px}
+ .ln .lim{width:52px;height:52px}
+ footer{padding:40px 0 22px}
+ .fbt{flex-direction:column;gap:8px}
+}
+@media(max-width:380px){
+ :root{--gut:15px}
+ .cb{padding:12px}
+ .cb h3{font-size:1.08rem}
+ .add{width:40px;height:40px}
+ .hst div b{font-size:1.45rem}
+}
+
 @media(prefers-reduced-motion:reduce){
  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
- .rv{opacity:1!important}
+ .rv,.wsp>i{opacity:1!important;transform:none!important}
  html{scroll-behavior:auto}
 }
 </style>
@@ -532,10 +754,11 @@ footer .fc a:hover{color:var(--r2)}
   <nav id="nv">
    <a href="#catalogue">Catalogue</a>
    <a href="#specialites">Spécialités</a>
+   <a href="#videos">Vidéos</a>
    <a href="#colis">Colis</a>
    <a href="#commander">Commander</a>
-   <a href="#infos">Infos</a>
    <a href="#faq">FAQ</a>
+   <a href="#infos">Infos</a>
   </nav>
   <div class="hact">
    <span class="sta" id="sta" title="Horaires d’ouverture"><i></i><span>…</span></span>
@@ -601,7 +824,7 @@ footer .fc a:hover{color:var(--r2)}
 </section>
 
 <!-- ---------- CATALOGUE ---------- -->
-<section class="sec" id="catalogue" style="padding-top:0">
+<section class="sec ln" id="catalogue">
  <div class="w">
   <div class="hd rv">
    <span class="eyebrow">Notre catalogue</span>
@@ -646,6 +869,28 @@ footer .fc a:hover{color:var(--r2)}
    <div class="spn">03</div>
    <div class="spc"><h3>Préparations maison</h3><p>Merguez, brochettes marinées, chich taouk, viande hachée minute, cecina : préparées à l’atelier, sans sous-traitance. Les marinades sont faites la veille pour que les épices prennent vraiment.</p><div class="spt"><b>Merguez</b><b>Brochettes</b><b>Chich taouk</b><b>Haché minute</b><b>Cecina</b></div></div>
    <div class="spa"><svg class="ic"><use href="#i-arrow"/></svg></div>
+  </div>
+ </div>
+</section>
+
+<!-- ---------- VIDÉOS INSTAGRAM ---------- -->
+<section class="sec ln" id="videos">
+ <div class="w">
+  <div class="igh rv">
+   <div class="hd" style="margin-bottom:0">
+    <span class="eyebrow">En vidéo</span>
+    <h2>La boucherie en coulisses</h2>
+    <p class="lead">Les arrivages du matin, la découpe au billot, les préparations qui sortent de l’atelier : tout passe d’abord sur notre Instagram.</p>
+   </div>
+   <a class="ighandle" id="igHandle" href="https://www.instagram.com/boucherie.acem/" target="_blank" rel="noopener">
+    <svg class="ic"><use href="#i-ig"/></svg><b>@boucherie.acem</b>
+   </a>
+  </div>
+  <div class="igg rv" id="igg"></div>
+  <div style="margin-top:clamp(22px,3vw,34px)" class="rv">
+   <a class="btn o mag" id="igAll" href="https://www.instagram.com/boucherie.acem/" target="_blank" rel="noopener">
+    <svg class="ic"><use href="#i-ig"/></svg>Voir toutes les vidéos sur Instagram
+   </a>
   </div>
  </div>
 </section>
@@ -784,7 +1029,7 @@ footer .fc a:hover{color:var(--r2)}
      <a href="https://www.facebook.com/p/Boucherie-Acem-61583428986283/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ic"><use href="#i-fb"/></svg></a>
     </div>
    </div>
-   <div class="fc"><h4>La boutique</h4><a href="#catalogue">Catalogue</a><a href="#specialites">Spécialités</a><a href="#colis">Colis & formules</a><a href="#commander">Commander en ligne</a></div>
+   <div class="fc"><h4>La boutique</h4><a href="#catalogue">Catalogue</a><a href="#specialites">Spécialités</a><a href="#videos">Vidéos</a><a href="#colis">Colis & formules</a><a href="#commander">Commander en ligne</a></div>
    <div class="fc"><h4>Informations</h4><a href="#infos">Horaires</a><a href="#faq">Questions fréquentes</a><a href="#infos">Nous trouver</a><a href="tel:+33981541936">09 81 54 19 36</a></div>
    <div class="fc"><h4>Adresse</h4><p>51 Avenue Général Leclerc</p><p>38950 Saint-Martin-le-Vinoux</p><a id="mapLnk2" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=51+Avenue+General+Leclerc+38950+Saint-Martin-le-Vinoux">Voir sur la carte</a></div>
   </div>
@@ -844,6 +1089,7 @@ footer .fc a:hover{color:var(--r2)}
 <g id="i-box"><path d="m21 8-9-5-9 5v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></g>
 <g id="i-ig"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></g>
 <g id="i-fb"><path d="M15 3h-2.5A4.5 4.5 0 0 0 8 7.5V10H5.5v4H8v7h4v-7h3l.5-4H12V8a1 1 0 0 1 1-1h2V3Z"/></g>
+<g id="i-play"><path d="M7 4.5v15l13-7.5z"/></g>
 <g id="i-user"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></g>
 <g id="i-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></g>
 </defs>
@@ -990,7 +1236,7 @@ async function init(){
   else localStorage.removeItem('acem_intro_video');
  }catch(e){}
  S.ready = true;
- chips(); grid(); hours(); openBadge(); banner(); contact(); cart();
+ chips(); grid(); hours(); openBadge(); banner(); contact(); igRender(); cart();
  deepLink();
 }
 
@@ -1038,6 +1284,7 @@ function grid(){
  };
  l.sort(by[S.sort] || by.feat);
  $('#cnt').textContent = l.length ? l.length + (l.length > 1 ? ' produits disponibles' : ' produit disponible') : '';
+ if(window.__mx) setTimeout(window.__mx.refresh, 0);
  $('#grid').innerHTML = l.length
   ? l.map(card).join('')
   : '<div class="empty"><svg class="ic"><use href="#i-search"/></svg><h3>Aucun produit ne correspond</h3><p class="mu">Essayez un autre mot ou revenez à l’ensemble du catalogue.</p><button class="btn o" data-cat="all">Tout afficher</button></div>';
@@ -1083,6 +1330,51 @@ function banner(){
  } else b.hidden = true;
 }
 
+/* ---------- 7 bis. VIDÉOS INSTAGRAM ---------- */
+let igDone = false;
+const igTile = (href, title, sub) =>
+ '<a class="igc" href="'+esc(href)+'" target="_blank" rel="noopener">'+
+  '<span class="igf"><span class="ply"><svg class="ic"><use href="#i-play"/></svg></span>'+
+  '<b>'+esc(title)+'</b><span>'+esc(sub)+'</span></span></a>';
+
+function igFallback(urls, profile){
+ const box = $('#igg');
+ box.innerHTML = urls && urls.length
+  ? urls.map((u,i) => igTile(u, 'Publication '+(i+1), 'Ouvrir la vidéo sur Instagram')).join('')
+  : [
+     ['Les arrivages du matin','Ce qui entre en vitrine, filmé au comptoir'],
+     ['La découpe au billot','Côtes, pavés, brochettes : le geste en direct'],
+     ['Les préparations maison','Merguez, marinades et chich taouk de l’atelier']
+    ].map(t => igTile(profile, t[0], t[1])).join('');
+}
+
+function igRender(){
+ const box = $('#igg'); if(!box) return;
+ const profile = S.set.instagram_url || 'https://www.instagram.com/boucherie.acem/';
+ const urls = (S.set.instagram_posts || []).map(u => String(u).trim()).filter(Boolean).slice(0, 6);
+ if(!urls.length) return igFallback(null, profile);
+ box.innerHTML = urls.map(u =>
+  '<div class="igc"><blockquote class="instagram-media" data-instgrm-permalink="'+esc(u)+'" data-instgrm-version="14" style="margin:0">'+
+  '<div class="igload"><svg class="ic"><use href="#i-ig"/></svg>Chargement de la publication…</div></blockquote></div>').join('');
+ /* le script Instagram n'est chargé qu'à l'approche de la section */
+ const sec = $('#videos'), io2 = new IntersectionObserver(es => {
+  if(!es.some(e => e.isIntersecting)) return;
+  io2.disconnect();
+  if(window.instgrm){ window.instgrm.Embeds.process(); }
+  else if(!igDone){
+   igDone = true;
+   const sc = document.createElement('script');
+   sc.async = true; sc.src = 'https://www.instagram.com/embed.js';
+   sc.onload = () => { try{ window.instgrm.Embeds.process() }catch(e){} };
+   sc.onerror = () => igFallback(urls, profile);
+   document.body.append(sc);
+  }
+  /* si l'affichage est bloqué (bloqueur de contenu), on bascule sur les vignettes */
+  setTimeout(() => { if(!box.querySelector('iframe')) igFallback(urls, profile) }, 9000);
+ }, { rootMargin:'400px' });
+ io2.observe(sec);
+}
+
 function contact(){
  const tel = S.set.phone || '+33981541936';
  const clean = tel.replace(/[^+0-9]/g,'');
@@ -1098,7 +1390,12 @@ function contact(){
  if(S.set.address) $('#addr').textContent = S.set.address;
  const maps = S.set.maps_url || ('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(S.set.address || '51 Avenue General Leclerc 38950 Saint-Martin-le-Vinoux'));
  $('#mapLnk').href = maps; $('#mapLnk2').href = maps;
- if(S.set.instagram_url) $$('a[aria-label="Instagram"]').forEach(a => a.href = S.set.instagram_url);
+ if(S.set.instagram_url){
+  $$('a[aria-label="Instagram"]').forEach(a => a.href = S.set.instagram_url);
+  ['#igHandle','#igAll'].forEach(id => { const e = $(id); if(e) e.href = S.set.instagram_url });
+  const h = (S.set.instagram_url.replace(/\/+$/,'').split('/').pop() || '').trim();
+  if(h && $('#igHandle')) $('#igHandle').querySelector('b').textContent = '@' + h;
+ }
  if(S.set.facebook_url)  $$('a[aria-label="Facebook"]').forEach(a => a.href = S.set.facebook_url);
 }
 
@@ -1311,7 +1608,14 @@ function view(id, push){
   (sim.length ? '<h3 class="sm2">Dans la même catégorie</h3><div class="simg">'+sim.map(x =>
     '<div class="sim" data-view="'+x.id+'"><span class="si">'+pimg(x)+'</span><b>'+esc(x.name)+'</b><span class="pr">'+priceTxt(x)+'</span></div>').join('')+'</div>' : '');
  $('#mqv').oninput = msub; msub();
+ const pb = $('#pbody');
+ pb.style.removeProperty('--ox'); pb.style.removeProperty('--oy');
  $('#pm').classList.add('on'); $('#pm').scrollTop = 0;
+ if(window.__pt){
+  const r = pb.getBoundingClientRect();
+  pb.style.setProperty('--ox', (((window.__pt[0]-r.left)/Math.max(1,r.width))*100).toFixed(1)+'%');
+  pb.style.setProperty('--oy', (((window.__pt[1]-r.top)/Math.max(1,r.height))*100).toFixed(1)+'%');
+ }
  document.body.style.overflow = 'hidden';
  document.title = p.name + ' — Boucherie Acem';
  if(push !== false) history.replaceState(null, '', '#p-' + p.slug);
@@ -1496,6 +1800,160 @@ reveal();
 route();
 setTimeout(counters, document.documentElement.classList.contains('intro') ? 4500 : 900);
 setInterval(openBadge, 60000);
+
+
+/* ==================================================================
+   13 bis. MOTION DESIGN — immersion sur grand écran
+   Tout est désactivé au doigt et si la réduction d'animations est active.
+   ================================================================== */
+(function motion(){
+ const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+ const PC = fine && innerWidth >= 1000 && !reduced();
+
+ /* --- titres révélés mot à mot --- */
+ function split(h){
+  if(h.dataset.sp) return; h.dataset.sp = '1';
+  const out = [];
+  [...h.childNodes].forEach(n => {
+   if(n.nodeType === 3){
+    n.nodeValue.split(/(\s+)/).forEach(w => {
+     if(!w.trim()) return out.push(document.createTextNode(w));
+     const sp = document.createElement('span'); sp.className = 'wsp';
+     const i = document.createElement('i'); i.textContent = w;
+     sp.append(i); out.push(sp);
+    });
+   } else out.push(n.cloneNode(true));
+  });
+  h.textContent = ''; out.forEach(n => h.append(n));
+  [...h.querySelectorAll('.wsp')].forEach((sp,k) => sp.style.setProperty('--i', k));
+ }
+ if(!reduced()) $$('.hd h2, .cta h2').forEach(split);
+
+ /* --- filet lumineux en tête de section --- */
+ const secs = $$('#pub section.sec');
+ secs.forEach(x => x.classList.add('ln'));
+ const ioS = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('in'); ioS.unobserve(e.target) }
+ }), { threshold:.02 });
+ secs.forEach(x => ioS.observe(x));
+
+ /* --- bouton retour en haut avec anneau de progression --- */
+ const up = document.createElement('button');
+ up.id = 'up'; up.type = 'button'; up.setAttribute('aria-label', 'Revenir en haut de la page');
+ up.innerHTML = '<svg class="rg" viewBox="0 0 54 54" aria-hidden="true">'+
+  '<circle class="bg2" cx="27" cy="27" r="25"/><circle class="fg2" cx="27" cy="27" r="25"/></svg>'+
+  '<svg class="ic ar" aria-hidden="true"><use href="#i-arrow"/></svg>';
+ up.onclick = () => scrollTo({ top:0, behavior: reduced() ? 'auto' : 'smooth' });
+ $('#pub').append(up);
+ const ring = up.querySelector('.fg2');
+
+ /* --- index de sections --- */
+ let dots = null, dotA = [];
+ if(fine){
+  const SECT = [['top','Accueil'],['catalogue','Catalogue'],['specialites','Spécialités'],
+                ['videos','Vidéos'],['colis','Colis'],['commander','Commander'],['faq','FAQ'],['infos','Infos']];
+  dots = document.createElement('nav');
+  dots.id = 'dots'; dots.setAttribute('aria-label', 'Navigation par section');
+  dots.innerHTML = SECT.map(([id,l]) => '<a href="#'+id+'" data-l="'+l+'" aria-label="'+l+'"></a>').join('');
+  $('#pub').append(dots);
+  dotA = [...dots.children];
+  const ioD = new IntersectionObserver(es => es.forEach(e => {
+   if(!e.isIntersecting) return;
+   const a = dots.querySelector('a[href="#'+e.target.id+'"]');
+   if(a){ dotA.forEach(x => x.classList.toggle('on', x === a)) }
+  }), { rootMargin:'-45% 0px -50% 0px' });
+  SECT.forEach(([id]) => { const el = document.getElementById(id); if(el) ioD.observe(el) });
+ }
+
+ if(!PC){ lightLoop(); return }
+
+ /* ====== à partir d'ici : grand écran, souris, animations autorisées ====== */
+ const hero = $('.hero'), hw = $('.hw'), lg = $('.lg'), mt = $('.mt');
+ const glow = document.createElement('div'); glow.className = 'hglow';
+ if(hero) hero.append(glow);
+ const spot = document.createElement('div'); spot.id = 'spot';
+ document.body.append(spot);
+
+ let mx = innerWidth/2, my = innerHeight/2, sx = mx, sy = my, hx = 0, hy = 0;
+ addEventListener('pointermove', e => {
+  mx = e.clientX; my = e.clientY;
+  spot.classList.add('on');
+  if(hero){
+   const r = hero.getBoundingClientRect();
+   if(e.clientY < r.bottom){
+    glow.classList.add('on');
+    glow.style.setProperty('--hx', (e.clientX/innerWidth*100)+'%');
+    glow.style.setProperty('--hy', ((e.clientY-r.top)/Math.max(1,r.height)*100)+'%');
+    hx = (e.clientX/innerWidth - .5) * 22;
+    hy = ((e.clientY-r.top)/Math.max(1,r.height) - .5) * 16;
+   }
+  }
+ }, { passive:true });
+ document.addEventListener('pointerleave', () => spot.classList.remove('on'));
+ addEventListener('pointerdown', e => { window.__pt = [e.clientX, e.clientY] }, { passive:true });
+
+ /* --- boutons magnétiques --- */
+ $$('.hcta .btn, .cta .btn, .mag').forEach(b => {
+  b.addEventListener('pointermove', e => {
+   const r = b.getBoundingClientRect();
+   b.style.transform = 'translate('+((e.clientX-r.left-r.width/2)*.16)+'px,'+((e.clientY-r.top-r.height/2)*.28)+'px)';
+  });
+  b.addEventListener('pointerleave', () => { b.style.transform = '' });
+ });
+
+ /* --- bandeau défilant piloté image par image --- */
+ let mqx = 0, half = 0;
+ if(mt){ $('.mq').classList.add('js'); half = mt.scrollWidth/2 || 1; addEventListener('resize', () => { half = mt.scrollWidth/2 || 1 }) }
+
+ let cards = [], last = scrollY, vel = 0;
+ const refresh = () => { cards = $$('#catalogue .card') };
+ refresh();
+ window.__mx = { refresh };
+
+ (function frame(){
+  const y = scrollY;
+  vel = vel*.82 + (y-last)*.18; last = y;
+
+  sx += (mx-sx)*.13; sy += (my-sy)*.13;
+  spot.style.transform = 'translate3d('+sx+'px,'+sy+'px,0)';
+
+  if(hw && y < innerHeight*1.2){
+   const p = Math.min(1, y/(innerHeight*.85));
+   hw.style.transform = 'translate3d(0,'+(p*64)+'px,0)';
+   hw.style.opacity = String(1 - p*.85);
+  }
+  if(lg) lg.style.transform = 'translate3d('+hx+'px,'+(hy + y*-.05)+'px,0) rotate('+(y*.009)+'deg)';
+
+  if(mt){ mqx -= .55 + Math.min(3.2, Math.abs(vel)*.055); if(-mqx >= half) mqx += half;
+          mt.style.transform = 'translate3d('+mqx+'px,0,0)' }
+
+  const h = document.documentElement.scrollHeight - innerHeight || 1;
+  ring.style.strokeDashoffset = String(157 * (1 - Math.min(1, y/h)));
+  up.classList.toggle('on', y > 700);
+
+  const vc = innerHeight/2;
+  for(const c of cards){
+   const r = c.getBoundingClientRect();
+   if(r.bottom < -120 || r.top > innerHeight+120) continue;
+   c.style.setProperty('--py', (((r.top+r.height/2) - vc)/innerHeight * -16).toFixed(1)+'px');
+  }
+  requestAnimationFrame(frame);
+ })();
+
+ /* version allégée (mobile / animations réduites) : juste l'anneau et le bouton */
+ function lightLoop(){
+  let t = 0;
+  addEventListener('scroll', () => {
+   if(t) return;
+   t = setTimeout(() => {
+    t = 0;
+    const y = scrollY, h = document.documentElement.scrollHeight - innerHeight || 1;
+    ring.style.strokeDashoffset = String(157 * (1 - Math.min(1, y/h)));
+    up.classList.toggle('on', y > 700);
+   }, 90);
+  }, { passive:true });
+ }
+})();
 
 /* ==================================================================
    14. ESPACE ADMIN  (#admin)
@@ -1955,6 +2413,12 @@ async function tabS(){
   '<div class="r2"><label>Délai minimum avant retrait (heures)<input id="sh" type="number" min="0" max="72" value="'+(s.min_lead_hours ?? 0)+'"></label>'+
   '<label>Commandes max. par créneau (vide = illimité)<input id="sc" type="number" min="1" value="'+(s.slot_capacity ?? '')+'"></label></div>'+
  '</div></div>'+
+ '<div class="pnl"><h3>Vidéos Instagram affichées sur le site</h3>'+
+  '<p class="mu" style="margin-bottom:12px">Collez l’adresse de vos publications ou reels, <b>une par ligne</b> (6 maximum). '+
+  'Sur Instagram : ouvrez la vidéo → « … » → <b>Copier le lien</b>. Laissez vide pour afficher des vignettes qui renvoient vers votre compte.</p>'+
+  '<div class="fm" style="margin:0"><label>Liens des publications'+
+  '<textarea id="sigp" rows="6" placeholder="https://www.instagram.com/reel/XXXXXXXXXXX/&#10;https://www.instagram.com/p/YYYYYYYYYYY/">'+esc((s.instagram_posts||[]).join('\n'))+'</textarea></label></div>'+
+ '</div>'+
  '<div class="pnl"><h3>Coordonnées affichées sur le site</h3><div class="fm" style="margin:0">'+
   '<div class="r2"><label>Téléphone<input id="sp" value="'+esc(s.phone||'+33981541936')+'"></label>'+
   '<label>Adresse<input id="sad" value="'+esc(s.address||'51 Avenue Général Leclerc')+'"></label></div>'+
@@ -2029,8 +2493,11 @@ async function tabS(){
   if(sl.some(x => !/^\d\d:\d\d-\d\d:\d\d$/.test(x))) bad = 'Créneau invalide (format 10:00-12:00)';
   if(cd.some(x => !/^\d{4}-\d\d-\d\d$/.test(x))) bad = 'Date de fermeture invalide (format 2026-05-01)';
   if(bad) return toast(bad, true);
+  const igp = $('#sigp').value.split('\n').map(x => x.trim()).filter(Boolean).slice(0, 6);
+  if(igp.some(x => !/instagram\.com\//i.test(x))) return toast('Lien Instagram invalide : chaque ligne doit être une adresse instagram.com', true);
   const cap = $('#sc').value;
   const payload = {
+   instagram_posts:igp,
    accepting_orders:$('#sa').checked, opening_hours:hrs, pickup_slots:sl, closed_dates:cd,
    slot_capacity:cap === '' ? null : +cap,
    announcement:$('#sanm').value.trim() || null, announcement_active:$('#sann').checked,
