@@ -83,7 +83,8 @@ html.nointro #intro{display:none}
 html.intro,html.intro body{overflow:hidden}
 #intro{position:fixed;inset:0;z-index:400;background:#070708;display:grid;place-items:center;overflow:hidden}
 #intro.vid{background:#000}
-#intro .ivid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+#intro .ivid{position:absolute;top:50%;left:50%;width:100%;height:100%;transform:translate(-50%,-50%);object-fit:cover;object-position:50% 50%;background:#000;opacity:0;transition:opacity .5s;image-rendering:auto;backface-visibility:hidden}
+#intro.fit .ivid{object-fit:contain}
 #intro.vid .ivid{opacity:1}#intro.vid .istage{opacity:0;pointer-events:none}
 #intro.out{animation:iout .9s var(--ease) forwards}
 @keyframes iout{to{clip-path:inset(0 0 100% 0);opacity:0}}
@@ -799,6 +800,31 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
 .credit a{display:inline-flex;align-items:center;gap:8px;color:inherit;transition:opacity .2s}
 .credit a:hover{opacity:1;color:var(--i)}
 @media(max-width:480px){.credit{padding-bottom:70px}}
+
+/* ===== Pastille du panier : plus rognée par le bouton ===== */
+#cb{overflow:visible}
+#cb .rp{display:none}
+#cn{top:-7px;right:-5px;min-width:22px;height:22px;padding:0 5px;box-sizing:border-box;line-height:1;font-size:.72rem;border:2px solid #0B0B0C;box-shadow:0 2px 8px #00000066;z-index:2}
+#cn.pop{transform:scale(1.35)}
+/* ===== Menu déroulant animé (mobile) ===== */
+@media(max-width:860px){
+ nav#nv{display:flex;visibility:hidden;opacity:0;transform:translateY(-14px);clip-path:inset(0 0 100% 0);pointer-events:none;
+  transition:opacity .3s var(--ease),transform .45s var(--ease),clip-path .5s var(--ease),visibility 0s linear .5s}
+ nav#nv.on{visibility:visible;opacity:1;transform:none;clip-path:inset(0 0 0 0);pointer-events:auto;
+  transition:opacity .3s var(--ease),transform .45s var(--ease),clip-path .5s var(--ease),visibility 0s}
+ nav#nv a{opacity:0;transform:translateY(-10px);transition:opacity .3s var(--ease),transform .4s var(--ease),color .2s}
+ nav#nv.on a{opacity:1;transform:none}
+ nav#nv.on a:nth-child(1){transition-delay:.08s}
+ nav#nv.on a:nth-child(2){transition-delay:.13s}
+ nav#nv.on a:nth-child(3){transition-delay:.18s}
+ nav#nv.on a:nth-child(4){transition-delay:.23s}
+ nav#nv.on a:nth-child(5){transition-delay:.28s}
+ nav#nv.on a:nth-child(6){transition-delay:.33s}
+ nav#nv.on a:nth-child(7){transition-delay:.38s}
+ nav#nv.on a:nth-child(n+8){transition-delay:.43s}
+ #bg svg{transition:transform .4s var(--ease)}
+ #bg[aria-expanded="true"] svg{transform:rotate(90deg)}
+}
 </style>
 </head>
 <body>
@@ -806,7 +832,7 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
 <!-- =============== INTRO (logo animé ; déposez intro.mp4 à côté du fichier pour une vraie vidéo) =============== -->
 <div id="intro" aria-hidden="true">
  <div class="veil"></div>
- <video class="ivid" id="ivid" muted playsinline preload="auto"></video>
+ <video class="ivid" id="ivid" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload noremoteplayback"></video>
  <div class="slice"></div>
  <div class="istage">
   <div class="imark"><div class="iring"></div><img data-logo alt=""></div>
@@ -1262,7 +1288,8 @@ $('#yr').textContent = new Date().getFullYear();
     – de la base : init() la transmet via window.__introVideo dès que les réglages sont lus,
       ce qui permet à la vidéo de jouer aussi à la TOUTE PREMIÈRE visite d'un client. */
  const v = $('#ivid');
- let t = 0, tried = '', vidOn = false;
+ let t = 0, tried = '', vidOn = false, fb = '';
+ const mob = matchMedia('(max-width:860px) and (orientation:portrait)').matches;
  const arm = ms => { clearTimeout(t); t = setTimeout(end, ms) };
  const left = () => Math.max(600, 4300 - performance.now());
  const showVid = () => {
@@ -1272,13 +1299,26 @@ $('#yr').textContent = new Date().getFullYear();
   arm(d*1000 + 2500);                                  /* filet de sécurité si « ended » n'arrive jamais */
   v.play().catch(() => { vidOn = false; el.classList.remove('vid'); arm(left()) });
  };
+ /* Cadrage : format proche de l'écran -> on remplit (cover) ; sinon la vidéo est affichée
+    en entier et centrée (contain), sans coupe ni agrandissement excessif. */
+ const fit = () => {
+  if(!v.videoWidth || !v.videoHeight) return;
+  const va = v.videoWidth / v.videoHeight, sa = innerWidth / innerHeight;
+  el.classList.toggle('fit', Math.max(va, sa) / Math.min(va, sa) > 1.18);
+ };
+ v.addEventListener('loadedmetadata', fit);
+ addEventListener('resize', fit);
+ addEventListener('orientationchange', fit);
  v.addEventListener('loadeddata', showVid);
  v.addEventListener('canplay', showVid);
  v.addEventListener('ended', end);
- v.addEventListener('error', () => { vidOn = false; el.classList.remove('vid'); v.removeAttribute('src'); if(!done) arm(left()) });
+ v.addEventListener('error', () => { if(fb){ const f = fb; fb = ''; v.src = f; v.load(); return } vidOn = false; el.classList.remove('vid'); v.removeAttribute('src'); if(!done) arm(left()) });
  window.__introVideo = u => {
   if(done || vidOn || typeof u !== 'string' || !u || u === tried) return;
-  tried = u; v.src = u; v.load(); arm(5000);           /* temps laissé au chargement de la vidéo */
+  tried = u; let src = u;
+  /* téléphone en portrait : intro-mobile.mp4 (vertical) s'il existe, sinon intro.mp4 */
+  if(mob && /(^|\/)intro\.mp4$/.test(u)){ fb = u; src = u.replace(/intro\.mp4$/, 'intro-mobile.mp4') }
+  v.src = src; v.load(); arm(5000);           /* temps laissé au chargement de la vidéo */
  };
  arm(4300);
  window.__introVideo(INTRO_VID);
@@ -1852,8 +1892,8 @@ document.addEventListener('click', e => {
  if(t.closest('[data-closepm]')){ closePm(); return }
  if(t.closest('#cb')){ open(true); return }
  if(t.closest('#go') && S.cart.length){ open(false); checkout(); return }
- if(t.closest('#bg')){ const n = $('#nv'), on = n.classList.toggle('on'); $('#bg').setAttribute('aria-expanded', on); return }
- if(t.closest('#nv')) $('#nv').classList.remove('on');
+ if(t.closest('#bg')){ const n = $('#nv'), on = n.classList.toggle('on'); $('#bg').setAttribute('aria-expanded', on); $('#bg use').setAttribute('href', on ? '#i-close' : '#i-menu'); return }
+ if(t.closest('#nv')){ $('#nv').classList.remove('on'); $('#bg').setAttribute('aria-expanded', false); $('#bg use').setAttribute('href', '#i-menu') }
 });
 
 document.addEventListener('input', e => {
