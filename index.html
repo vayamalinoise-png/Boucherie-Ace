@@ -1,1 +1,2049 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Boucherie Acem — Boucherie halal premium à Saint-Martin-le-Vinoux</title>
+<meta name="description" content="Boucherie halal à Saint-Martin-le-Vinoux près de Grenoble : viandes fraîches, Black Angus, Wagyu, préparations maison. Commandez en ligne, retirez et payez en boutique.">
+<meta name="keywords" content="boucherie halal Grenoble, boucherie Saint-Martin-le-Vinoux, Black Angus, Wagyu, merguez maison, viande halal">
+<meta property="og:title" content="Boucherie Acem — Boucherie halal premium">
+<meta property="og:description" content="Commandez en ligne, retirez en boutique. Paiement directement sur place.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta name="theme-color" content="#0B0B0C">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Butcher","name":"Boucherie Acem","description":"Boucherie halal premium : viandes fraîches, Black Angus, Wagyu, préparations maison.","telephone":"+33981541936","priceRange":"€€","currenciesAccepted":"EUR","paymentAccepted":"Espèces, Carte bancaire en boutique","address":{"@type":"PostalAddress","streetAddress":"51 Avenue Général Leclerc","postalCode":"38950","addressLocality":"Saint-Martin-le-Vinoux","addressRegion":"Auvergne-Rhône-Alpes","addressCountry":"FR"},"areaServed":["Saint-Martin-le-Vinoux","Grenoble","Saint-Égrève","La Tronche","Fontaine"],"sameAs":["https://www.instagram.com/boucherie.acem/","https://www.facebook.com/p/Boucherie-Acem-61583428986283/"]}</script>
+<script src="logo.js"></script>
+<script>
+/* Logo de secours si logo.js est absent, puis gestion de l'intro */
+if(typeof LOGO==='undefined')var LOGO='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="100" cy="100" r="95" fill="%230B0B0C" stroke="%23E10600" stroke-width="4"/><text x="100" y="126" text-anchor="middle" font-family="Georgia,serif" font-size="84" font-weight="700" fill="%23F5F2EE">A</text></svg>';
+/* Logo officiel et vidéo d'intro enregistrés depuis l'espace admin :
+   mis en cache ici pour s'afficher immédiatement, avant toute requête réseau. */
+var INTRO_VID='intro.mp4';
+try{var _l=localStorage.getItem('acem_logo');if(_l)LOGO=_l;
+    var _v=localStorage.getItem('acem_intro_video');if(_v)INTRO_VID=_v;}catch(e){}
+(function(){var h=location.hash,r=false;
+ try{r=matchMedia('(prefers-reduced-motion:reduce)').matches}catch(e){}
+ var seen=false;try{seen=!!sessionStorage.getItem('acem_intro')}catch(e){}
+ if(seen||r||h==='#admin'||h.indexOf('#p-')===0){document.documentElement.className='nointro'}
+ else{try{sessionStorage.setItem('acem_intro','1')}catch(e){}}
+})();
+</script>
+<style>
+/* ====================== 1. DESIGN TOKENS ====================== */
+:root{
+ --k:#0B0B0C;--k2:#121214;--k3:#17171A;--k4:#1F1F23;
+ --i:#F5F2EE;--mu:#A5A09A;--line:#FFFFFF1A;--line2:#FFFFFF2E;
+ --r:#E10600;--r2:#FF4A3F;--rd:#8E0400;--gold:#C9A227;--ok:#5EE08A;
+ --cream:#F7F3EE;--ink:#121214;
+ --serif:'Cormorant Garamond',Georgia,serif;--sans:Inter,system-ui,-apple-system,sans-serif;
+ --ease:cubic-bezier(.2,.8,.2,1);--sd:0s;
+ --sp:clamp(56px,8vw,110px);
+}
+html.intro{--sd:3.1s}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--k);color:var(--i);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;z-index:9;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+h1,h2,h3,h4,.sr{font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:-.01em}
+h2{font-size:clamp(2.1rem,5vw,3.4rem)}h3{font-size:clamp(1.35rem,2.4vw,1.75rem)}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+[hidden]{display:none!important}
+img{max-width:100%}
+:focus-visible{outline:2px solid var(--r2);outline-offset:3px;border-radius:4px}
+::selection{background:var(--r);color:#fff}
+.w{max-width:1200px;margin:auto;padding:0 clamp(18px,4vw,34px)}
+.sec{padding:var(--sp) 0;position:relative}
+.mu{color:var(--mu);font-size:.95rem}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font:600 .72rem var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--r2)}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--r)}
+.lead{font-size:clamp(1rem,1.5vw,1.12rem);color:#D9D4CE;max-width:56ch}
+svg.ic{width:1.1em;height:1.1em;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+/* ====================== 2. BOUTONS ====================== */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--r);color:#fff;border:0;border-radius:999px;padding:13px 26px;font-weight:600;font-size:.95rem;cursor:pointer;min-height:48px;transition:transform .25s var(--ease),box-shadow .3s,background .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px #E1060055;background:#F50700}
+.btn:active{transform:translateY(0)}
+.btn:disabled{opacity:.42;cursor:not-allowed;transform:none;box-shadow:none}
+.btn.o{background:transparent;color:var(--i);border:1px solid var(--line2)}
+.btn.o:hover{background:#FFFFFF0D;border-color:var(--i);box-shadow:none}
+.btn.gh{background:transparent;color:var(--r2);border:1px solid #E1060066}
+.btn.gh:hover{background:#E1060014;box-shadow:none}
+.btn.sm{padding:9px 18px;min-height:40px;font-size:.86rem}
+.lnk{color:var(--r2);border-bottom:1px solid #E1060055;padding-bottom:1px;transition:border-color .2s}
+.lnk:hover{border-color:var(--r2)}
+.rp{position:absolute;border-radius:50%;width:10px;height:10px;margin:-5px;background:#FFFFFF4D;transform:scale(0);animation:rpl .65s ease-out forwards;pointer-events:none}
+@keyframes rpl{to{transform:scale(32);opacity:0}}
+/* ====================== 3. INTRO ====================== */
+html.nointro #intro{display:none}
+html.intro,html.intro body{overflow:hidden}
+#intro{position:fixed;inset:0;z-index:400;background:#070708;display:grid;place-items:center;overflow:hidden}
+#intro.vid{background:#000}
+#intro .ivid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+#intro.vid .ivid{opacity:1}#intro.vid .istage{opacity:0;pointer-events:none}
+#intro.out{animation:iout .9s var(--ease) forwards}
+@keyframes iout{to{clip-path:inset(0 0 100% 0);opacity:0}}
+#intro .veil{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,#2B0806 0%,#070708 62%)}
+.slice{position:absolute;left:50%;top:0;width:2px;height:100%;margin-left:-1px;background:linear-gradient(transparent,var(--r2),transparent);box-shadow:0 0 26px var(--r);animation:sl1 .75s .1s var(--ease) forwards,sl2 .7s .8s var(--ease) forwards;transform:scaleY(0)}
+@keyframes sl1{to{transform:scaleY(1)}}
+@keyframes sl2{to{transform:scaleY(1) scaleX(420);opacity:0}}
+.istage{position:relative;display:grid;justify-items:center;gap:26px;text-align:center;padding:20px;transition:opacity .4s}
+.imark{position:relative;width:min(44vw,208px);aspect-ratio:1;display:grid;place-items:center;animation:imk 1.25s .55s cubic-bezier(.2,.9,.25,1.1) backwards}
+@keyframes imk{from{opacity:0;transform:scale(.55) rotate(-11deg);filter:blur(16px)}}
+.imark::before{content:'';position:absolute;inset:-18%;background:radial-gradient(#E1060055,transparent 64%);animation:pls 2.4s ease-in-out infinite}
+.iring{position:absolute;inset:-5%;border-radius:50%;background:conic-gradient(var(--r),transparent 32%,#FFFFFF66 52%,transparent 74%,var(--r));animation:spin 2.6s linear infinite;-webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 3px),#000 calc(100% - 2px));mask:radial-gradient(farthest-side,#0000 calc(100% - 3px),#000 calc(100% - 2px))}
+.imark img{position:relative;width:100%;filter:drop-shadow(0 0 30px #E1060099)}
+.iword{font:600 clamp(1.9rem,7vw,3.2rem) var(--serif);letter-spacing:.02em;display:flex;gap:.3em;justify-content:center;flex-wrap:wrap}
+.iword b{font-weight:600;display:inline-block;animation:iw .8s var(--ease) backwards;animation-delay:calc(1.25s + var(--n)*.1s)}
+.iword b.em{color:var(--r2);font-style:italic}
+@keyframes iw{from{opacity:0;transform:translateY(34px) rotateX(-55deg)}}
+.itag{font:600 .66rem var(--sans);letter-spacing:.34em;text-transform:uppercase;color:#9A948D;animation:ifade .9s 1.9s backwards}
+.irule{width:0;height:1px;background:linear-gradient(90deg,transparent,var(--r),transparent);animation:irl 1s 1.7s var(--ease) forwards}
+@keyframes irl{to{width:min(70vw,340px)}}
+.ibar{width:min(56vw,210px);height:2px;background:#FFFFFF14;border-radius:9px;overflow:hidden;animation:ifade .6s 1.1s backwards}
+.ibar i{display:block;height:100%;background:linear-gradient(90deg,var(--rd),var(--r2));width:0;animation:ild 2.5s .5s cubic-bezier(.55,0,.2,1) forwards}
+@keyframes ild{to{width:100%}}
+@keyframes ifade{from{opacity:0;transform:translateY(12px)}}
+#iskip{position:absolute;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));background:#FFFFFF10;border:1px solid var(--line2);color:#CFCAC4;border-radius:999px;padding:9px 18px;font-size:.8rem;cursor:pointer;animation:ifade .6s 1.4s backwards;min-height:40px}
+#iskip:hover{background:#FFFFFF1F;color:#fff}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pls{50%{transform:scale(1.12);opacity:.65}}
+/* ====================== 4. HEADER ====================== */
+#pg{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--rd),var(--r2));z-index:99;transition:width .1s linear}
+header{position:sticky;top:0;z-index:50;padding-top:env(safe-area-inset-top);background:#0B0B0CE6;backdrop-filter:blur(16px);border-bottom:1px solid var(--line);transition:background .3s}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:14px;transition:height .3s var(--ease)}
+header.sm .nav{height:60px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{height:46px;width:46px;object-fit:contain;transition:transform .5s var(--ease),height .3s,width .3s}
+.logo:hover img{transform:rotate(-9deg) scale(1.09)}
+header.sm .logo img{height:38px;width:38px}
+.lgt{display:grid;line-height:1}
+.lgt b{font:600 1.18rem var(--serif);letter-spacing:.06em}
+.lgt span{font:600 .56rem var(--sans);letter-spacing:.28em;color:var(--r2);text-transform:uppercase;margin-top:3px}
+nav#nv{display:flex;align-items:center}
+nav#nv a{margin-left:26px;font-size:.9rem;color:#CFCAC4;position:relative;padding:4px 0}
+nav#nv a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--r);transition:width .3s var(--ease)}
+nav#nv a:hover{color:var(--i)}nav#nv a:hover::after{width:100%}
+.hact{display:flex;gap:9px;align-items:center}
+.sta{display:inline-flex;align-items:center;gap:7px;font-size:.78rem;color:var(--mu);border:1px solid var(--line);border-radius:999px;padding:7px 14px;white-space:nowrap}
+.sta i{width:7px;height:7px;border-radius:50%;background:var(--mu);flex:none}
+.sta.on i{background:var(--ok);box-shadow:0 0 0 0 #5EE08A99;animation:bp 2.2s infinite}
+.sta.on{color:#CFEBD6}
+@keyframes bp{70%{box-shadow:0 0 0 7px #5EE08A00}100%{box-shadow:0 0 0 0 #5EE08A00}}
+#cb{position:relative}
+#cn{position:absolute;top:-5px;right:-5px;background:var(--i);color:var(--r);font-weight:700;border-radius:99px;font-size:.7rem;min-width:20px;height:20px;display:grid;place-items:center;transition:transform .3s var(--ease)}
+#cn.pop{transform:scale(1.55)}
+#bg{display:none;background:none;border:0;cursor:pointer;min-height:44px;min-width:44px;align-items:center;justify-content:center}
+#bg svg{width:24px;height:24px}
+#ban{background:linear-gradient(90deg,var(--rd),var(--r));text-align:center;padding:10px 16px;font-size:.88rem;font-weight:500}
+/* ====================== 5. HERO ====================== */
+.hero{position:relative;overflow:hidden;min-height:min(92vh,900px);display:flex;align-items:center;padding:52px 0;background:radial-gradient(ellipse 70% 60% at 78% 18%,#E1060038,transparent 62%),radial-gradient(ellipse 60% 50% at 6% 92%,#E1060024,transparent 58%),var(--k)}
+.hero::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,#FFFFFF08 0 1px,transparent 1px 84px);pointer-events:none;mask:linear-gradient(#000,transparent 70%)}
+.hw{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(26px,5vw,60px);align-items:center}
+.hero h1{font-size:clamp(3rem,9vw,6.2rem);margin:16px 0 0;letter-spacing:-.02em}
+.hero h1 em{color:var(--r2);font-style:italic}
+.wd{display:inline-block;animation:wd 1s var(--ease) backwards;animation-delay:calc(var(--n)*.12s + .15s + var(--sd))}
+@keyframes wd{from{opacity:0;transform:translateY(50px) rotateX(-48deg)}}
+.bl{animation:fade 1s var(--ease) backwards;animation-delay:calc(.5s + var(--sd))}
+.b2{animation-delay:calc(.64s + var(--sd))}.b3{animation-delay:calc(.78s + var(--sd))}.b4{animation-delay:calc(.92s + var(--sd))}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}}
+.hero .lead{margin:22px 0 28px}
+.hcta{display:flex;gap:12px;flex-wrap:wrap}
+.pill{display:flex;gap:9px;flex-wrap:wrap;margin-top:26px}
+.pill span{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line2);border-radius:999px;padding:7px 15px;font-size:.8rem;color:#CFCAC4;transition:border-color .25s,color .25s}
+.pill span:hover{border-color:var(--r);color:var(--i)}
+.pill svg{color:var(--r2)}
+.hst{display:flex;gap:clamp(20px,4vw,42px);margin-top:36px;padding-top:26px;border-top:1px solid var(--line)}
+.hst div b{display:block;font:600 clamp(1.7rem,3.4vw,2.3rem) var(--serif);color:var(--i);line-height:1}
+.hst div span{font-size:.76rem;color:var(--mu);letter-spacing:.06em}
+.lg{position:relative;display:grid;place-items:center;aspect-ratio:1;max-width:440px;width:100%;margin:auto;animation:pop 1.3s var(--ease) backwards;animation-delay:calc(.3s + var(--sd))}
+@keyframes pop{from{opacity:0;transform:scale(.62) rotate(-9deg)}}
+.lg::before{content:'';position:absolute;inset:-10%;background:radial-gradient(#E1060042,transparent 64%);animation:pls 5s ease-in-out infinite}
+.ring{position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--r),transparent 30%,#FFFFFF4D 50%,transparent 70%,var(--r));animation:spin 11s linear infinite;-webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 3px),#000 calc(100% - 2px));mask:radial-gradient(farthest-side,#0000 calc(100% - 3px),#000 calc(100% - 2px))}
+.ring.r2{inset:9%;animation-duration:17s;animation-direction:reverse;opacity:.4}
+.badge{position:relative;width:84%;aspect-ratio:1;display:grid;place-items:center;filter:drop-shadow(0 22px 48px #E1060066);animation:bob 7s ease-in-out infinite}
+.badge img{width:100%;height:100%;object-fit:contain}
+@keyframes bob{50%{transform:translateY(-14px) rotate(1.4deg)}}
+.flt{position:absolute;background:#121214E6;border:1px solid var(--line2);border-radius:14px;padding:11px 16px;display:grid;gap:2px;backdrop-filter:blur(8px);animation:fade 1s backwards;animation-delay:calc(1.2s + var(--sd))}
+.flt b{font:600 1rem var(--serif)}.flt span{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--r2)}
+.f1{top:6%;left:-4%;animation-name:fade,bob;animation-duration:1s,8s;animation-iteration-count:1,infinite}
+.f2{bottom:9%;right:-3%;animation-name:fade,bob;animation-duration:1s,9s;animation-delay:calc(1.4s + var(--sd)),1s;animation-iteration-count:1,infinite}
+.scr{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:grid;justify-items:center;gap:7px;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);z-index:2;animation:fade 1s 2s backwards}
+.scr i{width:1px;height:38px;background:linear-gradient(var(--r),transparent);animation:sdn 2s ease-in-out infinite}
+@keyframes sdn{50%{transform:scaleY(.45);transform-origin:top}}
+/* ====================== 6. MARQUEE ====================== */
+.mq{overflow:hidden;background:var(--r);color:#fff;font:600 1.1rem var(--serif);letter-spacing:.2em;text-transform:uppercase;padding:13px 0;transform:rotate(-.7deg);margin:-8px -14px 0;position:relative;z-index:3;box-shadow:0 10px 40px #E1060033}
+.mt{display:flex;width:max-content;animation:mqa 34s linear infinite}
+.mt span{white-space:nowrap;padding-right:38px}
+.mt span::after{content:'✦';padding-left:38px;opacity:.7}
+@keyframes mqa{to{transform:translateX(-50%)}}
+.mq:hover .mt{animation-play-state:paused}
+/* ====================== 7. REVEAL / TITRES ====================== */
+.rv{opacity:0}
+.rv.in{opacity:1;animation:rev .9s var(--d,0ms) var(--ease) backwards}
+@keyframes rev{from{opacity:0;transform:translateY(34px)}}
+.hd{max-width:760px;margin-bottom:clamp(30px,5vw,48px)}
+.hd h2{margin:14px 0 12px}
+.hd h2::after{content:'';display:block;width:0;height:2px;background:linear-gradient(90deg,var(--r),transparent);margin-top:18px;transition:width 1s .35s var(--ease)}
+.hd.in h2::after{width:96px}
+.hd.c{margin-left:auto;margin-right:auto;text-align:center}
+.hd.c h2::after{margin-left:auto;margin-right:auto;background:linear-gradient(90deg,transparent,var(--r),transparent)}
+/* ====================== 8. ENGAGEMENTS ====================== */
+.eng{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.eng>div{background:var(--k);padding:30px 26px;display:grid;gap:11px;align-content:start;transition:background .35s}
+.eng>div:hover{background:var(--k3)}
+.eng svg{width:26px;height:26px;color:var(--r2);stroke-width:1.4}
+.eng h3{font-size:1.3rem}
+.eng p{font-size:.9rem;color:var(--mu);line-height:1.6}
+/* ====================== 9. CATALOGUE ====================== */
+.bar{display:flex;gap:11px;flex-wrap:wrap;align-items:center;margin:0 0 18px}
+.srch{position:relative;flex:1;min-width:210px}
+.srch svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--mu);width:17px;height:17px}
+.srch input{width:100%;padding-left:42px}
+input,select,textarea{background:#FFFFFF0D;border:1px solid var(--line2);border-radius:12px;padding:12px 15px;min-height:48px;transition:border-color .25s,background .25s;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--r);background:#FFFFFF14;outline:none}
+input::placeholder,textarea::placeholder{color:#7E7973}
+select{cursor:pointer;width:auto;min-width:160px}
+select option{color:#121214;background:#fff}
+.chips{display:flex;gap:9px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;background:none;border:1px solid var(--line2);color:#CFCAC4;border-radius:999px;padding:9px 19px;cursor:pointer;min-height:42px;font-size:.88rem;transition:all .25s var(--ease)}
+.chip:hover{border-color:var(--i);color:var(--i)}
+.chip.on{background:var(--r);color:#fff;border-color:var(--r);box-shadow:0 6px 20px #E1060040}
+.cnt{font-size:.82rem;color:var(--mu);margin:2px 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:clamp(14px,2vw,24px);perspective:1200px}
+.card{position:relative;background:linear-gradient(165deg,#FFFFFF10,#FFFFFF04);border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;transition:transform .18s ease-out,border-color .3s,box-shadow .35s;transform-style:preserve-3d;display:flex;flex-direction:column}
+.card:hover{border-color:#E1060080;box-shadow:0 22px 50px #00000066,0 0 0 1px #E1060033}
+.im{position:relative;aspect-ratio:4/3;background:linear-gradient(142deg,#2A0F0E,#141416);overflow:hidden}
+.im img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.card:hover .im img{transform:scale(1.09)}
+.im::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 45%,#0B0B0CCC);pointer-events:none}
+.ph{position:absolute;inset:0;display:grid;place-items:center;opacity:.14}
+.ph svg{width:46%;height:46%;stroke-width:.9}
+.gl{position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),#FFFFFF33,transparent 44%);opacity:0;transition:opacity .35s;pointer-events:none;z-index:2}
+.card:hover .gl{opacity:1}
+.bdg{position:absolute;top:12px;left:12px;z-index:3;display:flex;gap:6px;flex-wrap:wrap}
+.bdg b{font:600 .64rem var(--sans);letter-spacing:.14em;text-transform:uppercase;background:var(--r);color:#fff;border-radius:999px;padding:5px 11px}
+.bdg b.go{background:var(--gold);color:#1A1405}
+.bdg b.gr{background:#FFFFFF1F;color:#F5F2EE;backdrop-filter:blur(6px)}
+.cb{padding:18px 19px 19px;display:grid;gap:9px;align-content:start;flex:1}
+.tag{display:inline-block;justify-self:start;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--r2);border:1px solid #E1060059;border-radius:999px;padding:3px 11px}
+.cb h3{font-size:1.4rem}
+.cl2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:.88rem;color:var(--mu);line-height:1.55}
+.pr{color:var(--r2);font-weight:600;font-size:1.05rem;font-family:var(--sans)}
+.pr small{color:var(--mu);font-weight:400;font-size:.8rem}
+.cbtm{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:4px}
+.add{width:44px;height:44px;border-radius:50%;background:var(--r);border:0;display:grid;place-items:center;cursor:pointer;flex:none;transition:transform .25s var(--ease),box-shadow .3s;overflow:hidden;position:relative}
+.add:hover{transform:scale(1.12) rotate(90deg);box-shadow:0 8px 22px #E1060066}
+.add svg{width:20px;height:20px;color:#fff;stroke-width:2.2}
+.sk{height:330px;border-radius:20px;background:linear-gradient(100deg,#FFFFFF08 30%,#FFFFFF16 50%,#FFFFFF08 70%);background-size:220% 100%;animation:shm 1.5s infinite;border:1px solid var(--line)}
+@keyframes shm{to{background-position:-220% 0}}
+.empty{grid-column:1/-1;text-align:center;padding:60px 20px;display:grid;gap:14px;justify-items:center}
+.empty svg{width:42px;height:42px;color:var(--mu)}
+/* ====================== 10. SPÉCIALITÉS ====================== */
+.spz{display:grid;gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.spr{background:var(--k);display:grid;grid-template-columns:90px 1fr auto;gap:clamp(16px,3vw,40px);align-items:center;padding:clamp(26px,4vw,40px) clamp(4px,2vw,24px);transition:background .4s}
+.spr:hover{background:#121214}
+.spn{font:600 clamp(2rem,5vw,3.4rem) var(--serif);color:transparent;-webkit-text-stroke:1px #FFFFFF2E;line-height:1;transition:-webkit-text-stroke-color .4s}
+.spr:hover .spn{-webkit-text-stroke-color:var(--r)}
+.spc{display:grid;gap:9px;max-width:62ch}
+.spc h3{font-size:clamp(1.5rem,3vw,2.1rem)}
+.spc p{color:var(--mu);font-size:.95rem}
+.spt{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.spt b{font:500 .74rem var(--sans);letter-spacing:.06em;color:#CFCAC4;border:1px solid var(--line);border-radius:7px;padding:4px 10px}
+.spa{color:var(--r2);display:grid;place-items:center;width:52px;height:52px;border-radius:50%;border:1px solid #E1060059;transition:all .3s var(--ease)}
+.spr:hover .spa{background:var(--r);color:#fff;transform:translateX(5px) rotate(-45deg);border-color:var(--r)}
+/* ====================== 11. COLIS / FORMULES ====================== */
+.pks{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:clamp(14px,2vw,22px)}
+.pk{position:relative;background:linear-gradient(170deg,#1A1A1D,#101012);border:1px solid var(--line2);border-radius:22px;padding:30px 26px;display:grid;gap:15px;align-content:start;transition:transform .35s var(--ease),border-color .3s,box-shadow .35s;overflow:hidden}
+.pk:hover{transform:translateY(-7px);border-color:#E1060080;box-shadow:0 26px 60px #00000080}
+.pk.hi{border-color:#C9A22766;background:linear-gradient(170deg,#211B0E,#121014)}
+.pk.hi::before{content:'Le plus demandé';position:absolute;top:0;right:0;background:var(--gold);color:#1A1405;font:600 .64rem var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:0 22px 0 14px}
+.pk h3{font-size:1.65rem}
+.pk .pkp{font:600 1.5rem var(--sans);color:var(--r2)}
+.pk.hi .pkp{color:var(--gold)}
+.pk ul{list-style:none;padding:0;display:grid;gap:9px;margin:4px 0}
+.pk li{display:flex;gap:10px;font-size:.9rem;color:#CFCAC4;line-height:1.5}
+.pk li svg{width:15px;height:15px;color:var(--r2);margin-top:5px;flex:none;stroke-width:2.4}
+.pk.hi li svg{color:var(--gold)}
+/* ====================== 12. ÉTAPES ====================== */
+.stp{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:clamp(18px,3vw,32px);counter-reset:s}
+.stp>div{position:relative;padding-top:52px;counter-increment:s}
+.stp>div::before{content:'0' counter(s);position:absolute;top:0;left:0;font:600 2.6rem var(--serif);color:transparent;-webkit-text-stroke:1px var(--r);line-height:1}
+.stp>div::after{content:'';position:absolute;top:24px;left:72px;right:-16px;height:1px;background:linear-gradient(90deg,var(--line2),transparent)}
+.stp>div:last-child::after{display:none}
+.stp h3{font-size:1.35rem;margin-bottom:9px}
+.stp p{color:var(--mu);font-size:.92rem}
+.note{margin-top:28px;border:1px solid #E1060040;background:#E1060012;border-radius:16px;padding:18px 22px;display:flex;gap:14px;align-items:flex-start}
+.note svg{color:var(--r2);width:21px;height:21px;margin-top:2px;flex:none}
+.note b{color:var(--i)}
+/* ====================== 13. FAQ ====================== */
+.faq{display:grid;gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:860px}
+.fq{background:var(--k)}
+.fq button{width:100%;background:none;border:0;text-align:left;padding:22px 16px 22px 0;display:flex;align-items:center;justify-content:space-between;gap:18px;cursor:pointer;font:600 1.06rem var(--serif);transition:color .25s}
+.fq button:hover{color:var(--r2)}
+.fq svg{width:19px;height:19px;color:var(--r2);transition:transform .35s var(--ease);flex:none}
+.fq.on svg{transform:rotate(45deg)}
+.fqa{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.fqa p{padding:0 40px 24px 0;color:var(--mu);font-size:.93rem;line-height:1.7}
+/* ====================== 14. INFOS ====================== */
+.info{background:var(--cream);color:var(--ink)}
+.info .mu{color:#5E5A55}
+.info h2::after{background:linear-gradient(90deg,var(--r),transparent)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:clamp(26px,4vw,46px)}
+.info h3{color:var(--rd);margin-bottom:14px;font-size:1.55rem}
+.hr{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #12121414;font-size:.93rem}
+.hr.td{color:var(--rd);font-weight:600}
+.hr.td span:first-child::after{content:' · aujourd’hui';font-weight:400;font-size:.8rem;opacity:.7}
+.ibox{background:#FFFFFF;border:1px solid #1212140F;border-radius:18px;padding:26px;box-shadow:0 6px 22px #12121409}
+.ilnk{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px solid #1212140F;color:var(--ink);transition:color .25s}
+.ilnk:last-child{border:0}
+.ilnk:hover{color:var(--r)}
+.ilnk svg{color:var(--r);width:19px;height:19px}
+.info .btn.o{color:var(--ink);border-color:#12121433}
+.info .btn.o:hover{background:#12121409;border-color:var(--ink)}
+/* ====================== 15. CTA + FOOTER ====================== */
+.cta{text-align:center;background:radial-gradient(ellipse at 50% 120%,#E1060040,transparent 62%),var(--k);padding:clamp(60px,9vw,110px) 0}
+.cta h2{max-width:20ch;margin:16px auto 18px}
+.cta .hcta{justify-content:center;margin-top:28px}
+footer{padding:54px 0 28px;border-top:1px solid var(--line);background:var(--k2)}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px;margin-bottom:38px}
+footer h4{font:600 .72rem var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--mu);margin-bottom:15px}
+footer .fc a,footer .fc p{display:block;font-size:.9rem;color:#CFCAC4;padding:4px 0;transition:color .2s}
+footer .fc a:hover{color:var(--r2)}
+.fbt{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line);font-size:.82rem;color:var(--mu)}
+.fbt button{background:none;border:0;color:var(--mu);cursor:pointer;font-size:.82rem;text-decoration:underline;text-underline-offset:3px}
+.fbt button:hover{color:var(--r2)}
+.soc{display:flex;gap:10px;margin-top:14px}
+.soc a{width:42px;height:42px;border:1px solid var(--line2);border-radius:50%;display:grid;place-items:center;transition:all .3s var(--ease)}
+.soc a:hover{background:var(--r);border-color:var(--r);transform:translateY(-3px)}
+/* ====================== 16. BARRE MOBILE ====================== */
+#mb{position:fixed;left:0;right:0;bottom:0;z-index:48;display:none;background:#121214F2;backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:9px 12px calc(9px + env(safe-area-inset-bottom));gap:9px;transform:translateY(110%);transition:transform .4s var(--ease)}
+#mb.on{transform:none}
+#mb a,#mb button{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border-radius:12px;font-size:.88rem;font-weight:600;border:1px solid var(--line2);background:#FFFFFF0D;cursor:pointer}
+#mb .pm{background:var(--r);border-color:var(--r);color:#fff}
+/* ====================== 17. PANIER / MODALES ====================== */
+#ov{position:fixed;inset:0;background:#000000A6;backdrop-filter:blur(3px);z-index:60;opacity:0;pointer-events:none;transition:opacity .35s}
+#ov.on{opacity:1;pointer-events:auto}
+#dr{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--k2);z-index:70;transform:translateX(104%);transition:transform .45s var(--ease);display:flex;flex-direction:column;border-left:1px solid var(--line)}
+#dr.on{transform:none;box-shadow:-30px 0 70px #00000080}
+.drh{display:flex;justify-content:space-between;align-items:center;padding:20px;padding-top:calc(20px + env(safe-area-inset-top));border-bottom:1px solid var(--line)}
+.drh h2{font-size:1.6rem}
+#cl{flex:1;overflow-y:auto;padding:6px 20px}
+.ln{display:grid;grid-template-columns:62px 1fr auto;gap:12px;padding:16px 0;border-bottom:1px solid var(--line);align-items:center}
+.ln .lim{position:relative;width:62px;height:62px;border-radius:11px;overflow:hidden;background:#2A0F0E;display:grid;place-items:center}
+.ln .lim img{width:100%;height:100%;object-fit:cover}
+.ln b{font:600 1.05rem var(--serif);display:block}
+.ln .lmu{font-size:.78rem;color:var(--mu)}
+.qs{display:flex;align-items:center;gap:4px;margin-top:7px}
+.qs button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line2);background:none;cursor:pointer;display:grid;place-items:center;font-size:1rem;line-height:1;transition:all .2s}
+.qs button:hover{background:var(--r);border-color:var(--r)}
+.qs input{width:64px;text-align:center;padding:5px;min-height:30px;border-radius:8px;font-size:.9rem}
+.lr{display:grid;gap:8px;justify-items:end;align-content:space-between;height:100%}
+.lr .pr{font-size:.98rem}
+.x{background:none;border:0;color:var(--mu);cursor:pointer;min-height:34px;min-width:34px;display:grid;place-items:center;border-radius:8px;transition:all .2s}
+.x:hover{color:var(--r2);background:#FFFFFF0D}
+.x svg{width:17px;height:17px}
+.x:disabled{opacity:.25;cursor:default}
+#ct{padding:18px 20px;border-top:1px solid var(--line);display:grid;gap:9px;padding-bottom:calc(18px + env(safe-area-inset-bottom))}
+.tr{display:flex;justify-content:space-between;align-items:baseline}
+.tr b{font:600 1.5rem var(--sans);color:var(--r2)}
+#ck,#pm{position:fixed;inset:0;z-index:80;display:none;place-items:start center;padding:16px;background:#000000CC;backdrop-filter:blur(10px);overflow-y:auto}
+#ck.on,#pm.on{display:grid}
+.mb2{background:var(--k2);border:1px solid var(--line2);border-radius:24px;padding:clamp(22px,4vw,32px);width:min(560px,100%);margin:auto;animation:up .5s var(--ease)}
+.pb{position:relative;background:var(--k2);border:1px solid var(--line2);border-radius:24px;padding:clamp(20px,3vw,28px);width:min(960px,100%);margin:auto;animation:up .5s var(--ease)}
+@keyframes up{from{opacity:0;transform:translateY(26px) scale(.98)}}
+.pc{position:absolute;top:14px;right:14px;z-index:3;background:#0B0B0CCC;border:1px solid var(--line);border-radius:50%;width:38px;height:38px;backdrop-filter:blur(6px)}
+.pg2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,32px)}
+.pim{border-radius:18px;overflow:hidden;aspect-ratio:1;background:linear-gradient(142deg,#2A0F0E,#141416);position:relative}
+.pim img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.pim:hover img{transform:scale(1.1)}
+.pin{display:grid;gap:13px;align-content:start}
+.pin h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+.ok2{display:inline-flex;align-items:center;gap:7px;color:var(--ok);font-size:.86rem}
+.ok2 i{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.big{font-size:1.9rem}
+.meta{display:grid;gap:7px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;font-size:.86rem}
+.meta div{display:flex;justify-content:space-between;gap:12px}
+.meta span:first-child{color:var(--mu)}
+.sm2{margin:30px 0 14px;font-size:1.3rem}
+.simg{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:13px}
+.sim{cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:11px;display:grid;gap:5px;transition:all .3s var(--ease);background:#FFFFFF05}
+.sim:hover{border-color:var(--r);transform:translateY(-4px)}
+.sim .si{position:relative;width:100%;aspect-ratio:4/3;border-radius:9px;overflow:hidden;background:#2A0F0E;display:grid;place-items:center}
+.sim img{width:100%;height:100%;object-fit:cover}
+.sim b{font:600 .98rem var(--serif)}
+.sim .pr{font-size:.86rem}
+/* ====================== 18. FORMULAIRES / FEEDBACK ====================== */
+.fm{display:grid;gap:14px;margin-top:18px}
+.fm label{display:grid;gap:6px;font-size:.84rem;color:var(--mu)}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.er{color:#FF9D93;min-height:1.2em;font-size:.88rem}
+.ok{color:var(--ok)}
+.stepz{display:flex;gap:7px;margin:16px 0 4px}
+.stepz i{flex:1;height:3px;border-radius:9px;background:var(--line2)}
+.stepz i.on{background:var(--r)}
+#tt{position:fixed;left:50%;bottom:28px;transform:translate(-50%,120%);background:var(--k3);border:1px solid var(--line2);color:var(--i);padding:13px 22px;border-radius:999px;z-index:300;font-weight:500;font-size:.9rem;display:flex;gap:10px;align-items:center;box-shadow:0 14px 40px #000000A6;transition:transform .4s var(--ease);max-width:calc(100% - 32px)}
+#tt.on{transform:translate(-50%,0)}
+#tt svg{color:var(--ok);width:18px;height:18px;flex:none}
+#tt.bad svg{color:var(--r2)}
+.fl{position:fixed;width:16px;height:16px;border-radius:50%;background:var(--r);box-shadow:0 0 18px var(--r);z-index:200;pointer-events:none}
+.tk{background:#FFFFFF08;border:1px dashed var(--line2);border-radius:16px;padding:20px;text-align:center;margin:18px 0}
+.tk b{display:block;font:600 2.1rem var(--sans);letter-spacing:.06em;color:var(--r2)}
+.tk span{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu)}
+/* ====================== 19. ADMIN ====================== */
+#adm{padding:0 0 70px}
+.atop{position:sticky;top:0;z-index:40;background:#0B0B0CF2;backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 0;padding-top:calc(14px + env(safe-area-inset-top))}
+.atop .w{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.alg{display:flex;align-items:center;gap:12px}
+.alg img{height:40px;width:40px;object-fit:contain}
+.alg b{font:600 1.1rem var(--serif);display:block}
+.alg span{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--r2)}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:18px 0 4px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(142px,1fr));gap:12px;margin:14px 0 24px}
+.kp>div{border:1px solid var(--line);background:linear-gradient(165deg,#FFFFFF0A,transparent);border-radius:16px;padding:16px 18px;display:grid;gap:3px}
+.kp b{font:600 1.9rem var(--serif);color:var(--i);line-height:1.1}
+.kp span{font-size:.76rem;color:var(--mu)}
+.kp>div.al{border-color:#E1060066;background:#E1060012}
+.kp>div.al b{color:var(--r2)}
+.pnl{border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:20px}
+.pnl h3{font-size:1.25rem;margin-bottom:14px}
+.chart{display:flex;align-items:flex-end;gap:9px;height:140px;margin-top:10px}
+.chart>div{flex:1;display:grid;gap:7px;justify-items:center;align-content:end}
+.chart i{display:block;width:100%;max-width:46px;background:linear-gradient(var(--r2),var(--rd));border-radius:7px 7px 0 0;min-height:3px;transition:height .8s var(--ease)}
+.chart em{font-size:.66rem;color:var(--mu);font-style:normal}
+.chart b{font-size:.78rem}
+.oc{border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:13px;display:grid;gap:11px;background:#FFFFFF05;transition:border-color .3s}
+.oc:hover{border-color:var(--line2)}
+.oc.nw{border-color:#E1060080;background:#E1060010}
+.ocH{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.ocN{font:600 1.15rem var(--serif)}
+.st{font:600 .68rem var(--sans);letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:5px 12px;border:1px solid}
+.st.s0{color:var(--r2);border-color:#E1060066;background:#E1060014}
+.st.s1{color:#8FB8FF;border-color:#8FB8FF55;background:#8FB8FF12}
+.st.s2{color:var(--gold);border-color:#C9A22766;background:#C9A22712}
+.st.s3{color:var(--ok);border-color:#5EE08A55;background:#5EE08A12}
+.st.s4{color:var(--mu);border-color:var(--line2)}
+.st.s5{color:#FF9D93;border-color:#FF9D9344}
+.oc ul{list-style:none;padding:0;display:grid;gap:5px;font-size:.9rem}
+.oc li{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px dashed var(--line)}
+.oc .qty{color:var(--r2);font-weight:600}
+.ocA{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.ocA select{min-width:150px;min-height:42px;padding:8px 12px}
+.p2{border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:13px;display:grid;grid-template-columns:repeat(auto-fit,minmax(142px,1fr));gap:11px;align-items:center;background:#FFFFFF05}
+.p2 .pn,.p2 .pd,.p2 .fw{grid-column:1/-1}
+.p2 .pd{resize:vertical;min-height:62px}
+.th{grid-column:1/-1;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.th .thi{height:76px;width:112px;object-fit:cover;border-radius:10px;background:#2A0F0E}
+.p2 label{display:flex;align-items:center;gap:8px;font-size:.86rem;color:#CFCAC4;cursor:pointer;min-height:42px}
+.p2 label.btn{justify-content:center;color:var(--i)}
+.p2 input[type=checkbox]{width:18px;height:18px;min-height:0;accent-color:var(--r);cursor:pointer}
+.lgin{min-height:100vh;display:grid;place-items:center;padding:24px}
+.lgc{width:min(400px,100%);text-align:center;display:grid;gap:4px;justify-items:center}
+.lgc img{width:96px;margin-bottom:10px}
+.lgc .fm{width:100%;text-align:left}
+.lgc .fm label{color:var(--mu)}
+/* ====================== 20. IMPRESSION ====================== */
+#prt{display:none}
+@media print{
+ body{background:#fff;color:#000}
+ body::after,#pub,#adm,#dr,#ov,#ck,#pm,#tt,#mb,#pg,#intro{display:none!important}
+ #prt{display:block;font:13px/1.5 var(--sans);padding:10mm}
+ #prt h1{font-size:20pt;margin-bottom:4mm}
+ #prt table{width:100%;border-collapse:collapse;margin:4mm 0}
+ #prt th,#prt td{text-align:left;padding:2mm 0;border-bottom:1px solid #ddd}
+ #prt .tot{font-size:14pt;font-weight:700;margin-top:4mm}
+ #prt .ft{margin-top:8mm;font-size:9pt;color:#555;border-top:1px solid #ddd;padding-top:3mm}
+}
+/* ====================== 21. RESPONSIVE ====================== */
+@media(max-width:1000px){
+ .hw{grid-template-columns:1fr}
+ .lg{max-width:300px;order:-1}
+ .f1,.f2{display:none}
+ .fg{grid-template-columns:1fr 1fr}
+}
+@media(max-width:860px){
+ #bg{display:flex}
+ nav#nv{display:none;position:absolute;top:100%;left:0;right:0;background:#0B0B0CFA;backdrop-filter:blur(16px);flex-direction:column;align-items:stretch;padding:10px 20px 20px;border-bottom:1px solid var(--line)}
+ nav#nv.on{display:flex}
+ nav#nv a{margin:0;padding:15px 0;border-bottom:1px solid var(--line);font-size:1rem}
+ .sta{display:none}
+ .hact .btn.o{display:none}
+ #mb{display:flex}
+ body{padding-bottom:78px}
+ .hero{min-height:auto;padding:34px 0 54px}
+ .scr{display:none}
+ .r2{grid-template-columns:1fr}
+ .pg2{grid-template-columns:1fr}
+ .spr{grid-template-columns:62px 1fr;row-gap:12px}
+ .spa{display:none}
+ .stp>div::after{display:none}
+ .lgt b{font-size:1.05rem}
+ .mq{font-size:.95rem;letter-spacing:.16em}
+}
+@media(max-width:560px){
+ .fg{grid-template-columns:1fr;gap:26px}
+ .hst{gap:18px}
+ .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+ .cb{padding:14px}
+ .cb h3{font-size:1.15rem}
+ .cl2{display:none}
+ .lgt span{display:none}
+ .kp{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){
+ *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+ .rv{opacity:1!important}
+ html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
 
+<!-- =============== INTRO (logo animé ; déposez intro.mp4 à côté du fichier pour une vraie vidéo) =============== -->
+<div id="intro" aria-hidden="true">
+ <div class="veil"></div>
+ <video class="ivid" id="ivid" muted playsinline preload="auto"></video>
+ <div class="slice"></div>
+ <div class="istage">
+  <div class="imark"><div class="iring"></div><img data-logo alt=""></div>
+  <div class="iword"><b style="--n:0">Boucherie</b><b class="em" style="--n:1">Acem</b></div>
+  <div class="irule"></div>
+  <div class="itag">Halal · Premium · Saint-Martin-le-Vinoux</div>
+  <div class="ibar"><i></i></div>
+ </div>
+ <button id="iskip">Passer l’intro ›</button>
+</div>
+
+<div id="pg"></div>
+<div id="tt" role="status" aria-live="polite"></div>
+<div id="prt"></div>
+
+<!-- =============== SITE PUBLIC =============== -->
+<div id="pub">
+<header>
+ <div class="w nav">
+  <a class="logo" href="#top" aria-label="Boucherie Acem, accueil">
+   <img data-logo alt="Logo Boucherie Acem">
+   <span class="lgt"><b>Boucherie Acem</b><span>Halal premium</span></span>
+  </a>
+  <nav id="nv">
+   <a href="#catalogue">Catalogue</a>
+   <a href="#specialites">Spécialités</a>
+   <a href="#colis">Colis</a>
+   <a href="#commander">Commander</a>
+   <a href="#infos">Infos</a>
+   <a href="#faq">FAQ</a>
+  </nav>
+  <div class="hact">
+   <span class="sta" id="sta" title="Horaires d’ouverture"><i></i><span>…</span></span>
+   <a class="btn o sm" id="telBtn" href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg><span>09 81 54 19 36</span></a>
+   <button class="btn" id="cb" aria-label="Ouvrir le panier"><svg class="ic"><use href="#i-cart"/></svg><span id="cn">0</span></button>
+   <button id="bg" aria-label="Menu" aria-expanded="false"><svg class="ic"><use href="#i-menu"/></svg></button>
+  </div>
+ </div>
+</header>
+
+<div id="ban" hidden></div>
+
+<main id="top">
+<!-- ---------- HERO ---------- -->
+<section class="hero">
+ <div class="w hw">
+  <div>
+   <span class="eyebrow bl">Boucherie halal · Saint-Martin-le-Vinoux</span>
+   <h1><span class="wd" style="--n:0">Boucherie</span> <span class="wd" style="--n:1"><em>Acem</em></span></h1>
+   <p class="lead bl b2">Des viandes choisies une à une, découpées devant vous. Black Angus et Wagyu selon arrivages, préparations maison du jour. Vous commandez en ligne, nous préparons, vous retirez et réglez en boutique.</p>
+   <div class="hcta bl b3">
+    <a class="btn" href="#catalogue"><svg class="ic"><use href="#i-cart"/></svg>Découvrir le catalogue</a>
+    <a class="btn o" href="#commander">Comment commander</a>
+   </div>
+   <div class="pill bl b4">
+    <span><svg class="ic"><use href="#i-check"/></svg>100 % halal</span>
+    <span><svg class="ic"><use href="#i-knife"/></svg>Découpe à la demande</span>
+    <span><svg class="ic"><use href="#i-shop"/></svg>Paiement en boutique</span>
+   </div>
+   <div class="hst bl b4">
+    <div><b data-count="7">0</b><span>jours sur 7 d’arrivages</span></div>
+    <div><b>100 %</b><span>viandes halal certifiées</span></div>
+    <div><b data-count="30">0</b><span>minutes pour préparer</span></div>
+   </div>
+  </div>
+  <div class="lg">
+   <div class="ring"></div><div class="ring r2"></div>
+   <div class="badge"><img data-logo alt="Logo Boucherie Acem"></div>
+   <div class="flt f1"><span>Sélection</span><b>Black Angus</b></div>
+   <div class="flt f2"><span>Arrivage</span><b>Wagyu</b></div>
+  </div>
+ </div>
+ <div class="scr"><span>Défiler</span><i></i></div>
+</section>
+
+<div class="mq" aria-hidden="true"><div class="mt"></div></div>
+
+<!-- ---------- ENGAGEMENTS ---------- -->
+<section class="sec" id="engagements">
+ <div class="w">
+  <div class="hd rv">
+   <span class="eyebrow">Nos engagements</span>
+   <h2>Le travail d’un vrai boucher</h2>
+   <p class="lead">Pas de libre-service anonyme : un comptoir, un boucher, et des conseils qui changent la cuisson de votre plat.</p>
+  </div>
+  <div class="eng rv">
+   <div><svg class="ic"><use href="#i-check"/></svg><h3>100 % halal</h3><p>Toutes nos viandes sont halal, sans exception et sans mélange en atelier. Filières et certificats disponibles en boutique.</p></div>
+   <div><svg class="ic"><use href="#i-leaf"/></svg><h3>Fraîcheur du jour</h3><p>Réceptions régulières, vitrine renouvelée, rien ne dort en chambre froide. Ce que vous voyez est ce qui est arrivé.</p></div>
+   <div><svg class="ic"><use href="#i-knife"/></svg><h3>Découpe à la demande</h3><p>Épaisseur de côte, pièce à griller, viande hachée minute, colis à partager : on taille selon votre besoin réel.</p></div>
+   <div><svg class="ic"><use href="#i-chat"/></svg><h3>Conseils de cuisson</h3><p>Chaque pièce part avec le mode de cuisson qui lui va. Un doute sur un plat ? Demandez, c’est compris dans le prix.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- ---------- CATALOGUE ---------- -->
+<section class="sec" id="catalogue" style="padding-top:0">
+ <div class="w">
+  <div class="hd rv">
+   <span class="eyebrow">Notre catalogue</span>
+   <h2>Choisissez vos pièces</h2>
+   <p class="lead">Prix et disponibilités mis à jour par la boutique. Les produits au poids sont facturés au poids réel pesé lors du retrait.</p>
+  </div>
+  <div class="bar rv">
+   <span class="srch"><svg class="ic"><use href="#i-search"/></svg><input id="q" type="search" placeholder="Rechercher une pièce, une préparation…" aria-label="Rechercher un produit"></span>
+   <select id="so" aria-label="Trier les produits">
+    <option value="feat">Tri : notre sélection</option>
+    <option value="name">Nom A → Z</option>
+    <option value="price">Prix croissant</option>
+    <option value="pricedesc">Prix décroissant</option>
+   </select>
+  </div>
+  <div class="chips rv" id="chips" role="tablist" aria-label="Catégories"></div>
+  <p class="cnt" id="cnt"></p>
+  <div class="grid" id="grid"><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+ </div>
+</section>
+
+<!-- ---------- SPÉCIALITÉS ---------- -->
+<section class="sec" id="specialites">
+ <div class="w">
+  <div class="hd rv">
+   <span class="eyebrow">Les signatures</span>
+   <h2>Ce qu’on vient chercher ici</h2>
+  </div>
+ </div>
+ <div class="spz rv">
+  <div class="w spr" data-go="#catalogue">
+   <div class="spn">01</div>
+   <div class="spc"><h3>Black Angus</h3><p>Une race élevée pour le gras intramusculaire : la viande reste tendre même sur une cuisson franche. Côtes épaisses, entrecôtes, pavés — on taille devant vous selon le nombre de convives.</p><div class="spt"><b>Côte épaisse</b><b>Entrecôte</b><b>Pavé</b><b>Bavette</b></div></div>
+   <div class="spa"><svg class="ic"><use href="#i-arrow"/></svg></div>
+  </div>
+  <div class="w spr" data-go="#catalogue">
+   <div class="spn">02</div>
+   <div class="spc"><h3>Wagyu, selon arrivages</h3><p>Un persillé fin qui fond à la poêle et ne demande presque rien : une plancha brûlante, du sel, rien d’autre. Quantités très limitées — appelez-nous pour savoir ce qui est en vitrine aujourd’hui.</p><div class="spt"><b>Quantités limitées</b><b>Sur réservation</b></div></div>
+   <div class="spa"><svg class="ic"><use href="#i-arrow"/></svg></div>
+  </div>
+  <div class="w spr" data-go="#catalogue">
+   <div class="spn">03</div>
+   <div class="spc"><h3>Préparations maison</h3><p>Merguez, brochettes marinées, chich taouk, viande hachée minute, cecina : préparées à l’atelier, sans sous-traitance. Les marinades sont faites la veille pour que les épices prennent vraiment.</p><div class="spt"><b>Merguez</b><b>Brochettes</b><b>Chich taouk</b><b>Haché minute</b><b>Cecina</b></div></div>
+   <div class="spa"><svg class="ic"><use href="#i-arrow"/></svg></div>
+  </div>
+ </div>
+</section>
+
+<!-- ---------- COLIS / FORMULES ---------- -->
+<section class="sec" id="colis">
+ <div class="w">
+  <div class="hd rv">
+   <span class="eyebrow">Colis & formules</span>
+   <h2>Pour la famille, le barbecue, les grandes tablées</h2>
+   <p class="lead">Composés le matin même selon les arrivages. Réservez par téléphone : on adapte les pièces et les quantités à votre repas.</p>
+  </div>
+  <div class="pks">
+   <div class="pk rv" style="--d:0ms">
+    <h3>Colis Famille</h3><div class="pkp">Dès 59 €</div>
+    <ul>
+     <li><svg class="ic"><use href="#i-check"/></svg>Environ 5 kg de viandes variées</li>
+     <li><svg class="ic"><use href="#i-check"/></svg>Bœuf à griller, à mijoter, poulet</li>
+     <li><svg class="ic"><use href="#i-check"/></svg>Préparations maison incluses</li>
+     <li><svg class="ic"><use href="#i-check"/></svg>Découpe et portions à votre choix</li>
+    </ul>
+    <a class="btn o" href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg>Réserver ce colis</a>
+   </div>
+   <div class="pk hi rv" style="--d:110ms">
+    <h3>Box Barbecue</h3><div class="pkp">Dès 45 €</div>
+    <ul>
+     <li><svg class="ic"><use href="#i-check"/></svg>Merguez et brochettes maison</li>
+     <li><svg class="ic"><use href="#i-check"/></svg>Côtelettes et pièces à griller</li>
+     <li><svg class="ic"><use href="#i-check"/></svg>Marinades préparées la veille</li>
+     <li><svg class="ic"><use href="#i-check"/></svg>Prévu pour 6 à 8 personnes</li>
+    </ul>
+    <a class="btn" href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg>Réserver ce colis</a>
+   </div>
+   <div class="pk rv" style="--d:220ms">
+    <h3>Plateau Dégustation</h3><div class="pkp">Sur devis</div>
+    <ul>
+     <li><svg class="ic"><use href="#i-check"/></svg>Pièces d’exception du moment</li>
+     <li><svg class="ic"><use href="#i-check"/></svg>Black Angus, Wagyu si disponible</li>
+     <li><svg class="ic"><use href="#i-check"/></svg>Conseils de cuisson pièce par pièce</li>
+     <li><svg class="ic"><use href="#i-check"/></svg>À réserver 48 h à l’avance</li>
+    </ul>
+    <a class="btn o" href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg>Demander un devis</a>
+   </div>
+  </div>
+  <div class="note rv"><svg class="ic"><use href="#i-info"/></svg><p>Les tarifs des colis varient selon les arrivages et les pièces choisies. Le montant exact vous est confirmé en boutique avant préparation — <b>aucun prélèvement en ligne</b>.</p></div>
+ </div>
+</section>
+
+<!-- ---------- COMMANDER ---------- -->
+<section class="sec" id="commander">
+ <div class="w">
+  <div class="hd rv">
+   <span class="eyebrow">Commande en ligne</span>
+   <h2>Trois étapes, zéro file d’attente</h2>
+  </div>
+  <div class="stp rv">
+   <div><h3>Composez votre panier</h3><p>Ajoutez vos pièces, indiquez le poids ou le nombre souhaité. Une précision à ajouter ? Le champ commentaire est là pour ça.</p></div>
+   <div><h3>Choisissez votre créneau</h3><p>Sélectionnez la date et l’heure de retrait parmi les créneaux ouverts. Vous recevez un numéro de commande à conserver.</p></div>
+   <div><h3>Retirez et réglez</h3><p>La boutique confirme votre commande, la prépare, et vous réglez sur place au comptoir. Rien n’est débité avant.</p></div>
+  </div>
+  <div class="note rv">
+   <svg class="ic"><use href="#i-shield"/></svg>
+   <p><b>Aucun paiement en ligne.</b> Ce site ne collecte ni carte bancaire ni acompte : vous payez uniquement en boutique, au moment du retrait. Votre commande reste soumise à confirmation par la boutique.</p>
+  </div>
+ </div>
+</section>
+
+<!-- ---------- FAQ ---------- -->
+<section class="sec" id="faq">
+ <div class="w">
+  <div class="hd rv">
+   <span class="eyebrow">Questions fréquentes</span>
+   <h2>Bon à savoir</h2>
+  </div>
+  <div class="faq rv" id="faqL"></div>
+ </div>
+</section>
+
+<!-- ---------- INFOS ---------- -->
+<section class="sec info" id="infos">
+ <div class="w">
+  <div class="hd rv">
+   <span class="eyebrow">Nous trouver</span>
+   <h2>Horaires & contact</h2>
+  </div>
+  <div class="cols">
+   <div class="rv">
+    <h3>Horaires d’ouverture</h3>
+    <div id="hrs">…</div>
+    <p class="mu" style="margin-top:14px">Horaires susceptibles d’évoluer selon les arrivages et les jours fériés. En cas de doute, un appel suffit.</p>
+   </div>
+   <div class="rv" style="--d:110ms">
+    <div class="ibox">
+     <h3>La boutique</h3>
+     <p style="margin-bottom:14px"><b id="addr">51 Avenue Général Leclerc</b><br><span class="mu">38950 Saint-Martin-le-Vinoux</span></p>
+     <a class="ilnk" id="telLnk" href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg><b>09 81 54 19 36</b></a>
+     <a class="ilnk" id="mapLnk" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=51+Avenue+General+Leclerc+38950+Saint-Martin-le-Vinoux"><svg class="ic"><use href="#i-map"/></svg>Itinéraire et plan d’accès</a>
+     <a class="ilnk" href="#catalogue"><svg class="ic"><use href="#i-cart"/></svg>Commander et retirer en boutique</a>
+    </div>
+   </div>
+   <div class="rv" style="--d:220ms">
+    <h3>Suivez les arrivages</h3>
+    <p class="mu">Les pièces du jour, les nouveautés et les colis de saison sont annoncés sur nos réseaux.</p>
+    <div class="soc" style="margin-top:16px">
+     <a href="https://www.instagram.com/boucherie.acem/" target="_blank" rel="noopener" aria-label="Instagram" style="border-color:#12121426;color:#121214"><svg class="ic"><use href="#i-ig"/></svg></a>
+     <a href="https://www.facebook.com/p/Boucherie-Acem-61583428986283/" target="_blank" rel="noopener" aria-label="Facebook" style="border-color:#12121426;color:#121214"><svg class="ic"><use href="#i-fb"/></svg></a>
+    </div>
+    <p class="mu" style="margin-top:20px">Vous êtes un professionnel (restaurant, traiteur, collectivité) ? Contactez-nous pour les volumes et les tarifs dédiés.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ---------- CTA ---------- -->
+<section class="cta">
+ <div class="w rv">
+  <span class="eyebrow" style="justify-content:center">Une envie précise ?</span>
+  <h2>Dites-nous ce qu’il vous faut,<br>on le prépare</h2>
+  <p class="lead" style="margin:auto">Une pièce particulière, un poids exact, un repas de fête : appelez la boutique, on s’occupe du reste.</p>
+  <div class="hcta">
+   <a class="btn" href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg>09 81 54 19 36</a>
+   <a class="btn o" href="#catalogue">Parcourir le catalogue</a>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="w">
+  <div class="fg">
+   <div>
+    <a class="logo" href="#top"><img data-logo alt=""><span class="lgt"><b>Boucherie Acem</b><span>Halal premium</span></span></a>
+    <p class="mu" style="margin-top:16px;max-width:34ch">Boucherie halal à Saint-Martin-le-Vinoux, aux portes de Grenoble. Viandes fraîches, pièces d’exception et préparations maison.</p>
+    <div class="soc">
+     <a href="https://www.instagram.com/boucherie.acem/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ic"><use href="#i-ig"/></svg></a>
+     <a href="https://www.facebook.com/p/Boucherie-Acem-61583428986283/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ic"><use href="#i-fb"/></svg></a>
+    </div>
+   </div>
+   <div class="fc"><h4>La boutique</h4><a href="#catalogue">Catalogue</a><a href="#specialites">Spécialités</a><a href="#colis">Colis & formules</a><a href="#commander">Commander en ligne</a></div>
+   <div class="fc"><h4>Informations</h4><a href="#infos">Horaires</a><a href="#faq">Questions fréquentes</a><a href="#infos">Nous trouver</a><a href="tel:+33981541936">09 81 54 19 36</a></div>
+   <div class="fc"><h4>Adresse</h4><p>51 Avenue Général Leclerc</p><p>38950 Saint-Martin-le-Vinoux</p><a id="mapLnk2" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=51+Avenue+General+Leclerc+38950+Saint-Martin-le-Vinoux">Voir sur la carte</a></div>
+  </div>
+  <div class="fbt">
+   <span>© <span id="yr"></span> Boucherie Acem · Tous droits réservés</span>
+   <span>
+    <button id="replay">Revoir l’intro</button> ·
+    <a href="#admin" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Espace boutique</a>
+   </span>
+  </div>
+ </div>
+</footer>
+
+<div id="mb">
+ <a href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg>Appeler</a>
+ <a href="#catalogue"><svg class="ic"><use href="#i-search"/></svg>Catalogue</a>
+ <button class="pm" data-open="cart"><svg class="ic"><use href="#i-cart"/></svg>Panier <span id="cn2">0</span></button>
+</div>
+</div><!-- /#pub -->
+
+<!-- =============== PANIER =============== -->
+<div id="ov"></div>
+<aside id="dr" aria-label="Votre panier">
+ <div class="drh"><h2>Votre panier</h2><button class="x" data-close aria-label="Fermer le panier"><svg class="ic"><use href="#i-close"/></svg></button></div>
+ <div id="cl"></div>
+ <div id="ct"></div>
+</aside>
+
+<div id="ck" role="dialog" aria-modal="true" aria-label="Finaliser la commande"><div class="mb2" id="ckb"></div></div>
+<div id="pm" role="dialog" aria-modal="true" aria-label="Fiche produit"><div class="pb" id="pbody"></div></div>
+
+<!-- =============== ESPACE ADMIN =============== -->
+<div id="adm" hidden></div>
+
+<!-- =============== ICÔNES =============== -->
+<svg style="display:none" aria-hidden="true">
+<defs>
+<g id="i-cart"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h2.5l2.6 11.2a2 2 0 0 0 2 1.6h8.4a2 2 0 0 0 2-1.5L21 7H6"/></g>
+<g id="i-tel"><path d="M21 16.9v2.7a1.6 1.6 0 0 1-1.8 1.6 16 16 0 0 1-7-2.5 15.7 15.7 0 0 1-4.8-4.8 16 16 0 0 1-2.5-7A1.6 1.6 0 0 1 6.5 5h2.7a1.6 1.6 0 0 1 1.6 1.4c.1.9.3 1.7.6 2.5a1.6 1.6 0 0 1-.4 1.7l-1.1 1.1a13 13 0 0 0 4.9 4.9l1.1-1.1a1.6 1.6 0 0 1 1.7-.4c.8.3 1.6.5 2.5.6a1.6 1.6 0 0 1 1.4 1.7z"/></g>
+<g id="i-menu"><path d="M3 6h18M3 12h18M3 18h18"/></g>
+<g id="i-close"><path d="M18 6 6 18M6 6l12 12"/></g>
+<g id="i-search"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></g>
+<g id="i-check"><path d="M20 6 9 17l-5-5"/></g>
+<g id="i-plus"><path d="M12 5v14M5 12h14"/></g>
+<g id="i-knife"><path d="M3 21 21 3M14 10l-7 7M17 3h4v4"/><path d="M8 13 3 18v3h3l5-5"/></g>
+<g id="i-leaf"><path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 16-10 0 12-5 17-9 17Z"/><path d="M4 21c0-6 3-10 9-13"/></g>
+<g id="i-chat"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.8-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5Z"/></g>
+<g id="i-shop"><path d="M3 9V7l2-4h14l2 4v2M3 9h18M5 9v12h14V9M9 21v-6h6v6"/></g>
+<g id="i-map"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></g>
+<g id="i-clock"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></g>
+<g id="i-info"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></g>
+<g id="i-shield"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></g>
+<g id="i-arrow"><path d="M5 12h14M13 6l6 6-6 6"/></g>
+<g id="i-print"><path d="M6 9V3h12v6M6 18H4v-6h16v6h-2M8 14h8v7H8z"/></g>
+<g id="i-trash"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 13h12l1-13M9 7V4h6v3"/></g>
+<g id="i-copy"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></g>
+<g id="i-box"><path d="m21 8-9-5-9 5v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></g>
+<g id="i-ig"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></g>
+<g id="i-fb"><path d="M15 3h-2.5A4.5 4.5 0 0 0 8 7.5V10H5.5v4H8v7h4v-7h3l.5-4H12V8a1 1 0 0 1 1-1h2V3Z"/></g>
+<g id="i-user"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></g>
+<g id="i-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></g>
+</defs>
+</svg>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+/* ==================================================================
+   BOUCHERIE ACEM — application
+   ------------------------------------------------------------------
+   Site public  : #top
+   Espace admin : #admin   (compte Supabase : morgancoulet5@icloud.com)
+   Aucun paiement en ligne : règlement en boutique au retrait.
+   ================================================================== */
+
+/* ---------- 1. CONNEXION SUPABASE ---------- */
+const SB_URL = 'https://rchwpmntxgxsnxhntsdy.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJjaHdwbW50eGd4c254aG50c2R5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUyOTc1ODcsImV4cCI6MjExMDg3MzU4N30.92SMW_GPa5HVAdh_YaDVR7BVN9m_ta9Ta0mHL6t1mCE';
+const sb = supabase.createClient(SB_URL, SB_KEY);
+
+/* ---------- 2. OUTILS ---------- */
+const $  = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const eur = n => (Number(n)||0).toLocaleString('fr-FR',{style:'currency',currency:'EUR'});
+const iso = d => new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+const hh  = t => String(t||'').replace(':','h');
+const slot2 = s => String(s||'').replace(/:/g,'h').replace('-',' – ');
+const clamp = (v,a,b) => Math.max(a,Math.min(b,v));
+const DAYS = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+const DFR  = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+const ORDER_DAYS = [1,2,3,4,5,6,0];
+const UL = {'pièce':'/ pièce','kg':'/ kg','100g':'/ 100 g','lot':'/ lot'};
+const UN = Object.keys(UL);
+const UNOTE = {
+ 'kg':'Vendu au kilo. Indiquez le poids souhaité : le montant exact est ajusté à la pesée en boutique.',
+ '100g':'Vendu aux 100 g. Le montant exact est ajusté à la pesée en boutique.',
+ 'pièce':'Vendu à la pièce.','lot':'Vendu en lot.'
+};
+const step = u => u === 'kg' ? .25 : 1;
+const ranges = h => String(h||'').split(',').map(x => x.trim().split('-')).filter(r => r.length === 2);
+const fmtH = h => (!h || h === 'closed') ? 'Fermé' : ranges(h).map(([a,b]) => hh(a)+' – '+hh(b)).join(' · ');
+const reduced = () => matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+function toast(msg, bad){
+ const t = $('#tt');
+ t.innerHTML = '<svg class="ic"><use href="#'+(bad?'i-info':'i-check')+'"/></svg><span>'+esc(msg)+'</span>';
+ t.classList.toggle('bad', !!bad); t.classList.add('on');
+ clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('on'), 3200);
+}
+
+/* logos + favicon */
+let favEl = null;
+function applyLogo(){
+ $$('[data-logo]').forEach(i => i.src = LOGO);
+ if(!favEl){ favEl = document.createElement('link'); favEl.rel = 'icon'; document.head.append(favEl) }
+ favEl.href = LOGO;
+}
+applyLogo();
+$('#yr').textContent = new Date().getFullYear();
+
+/* ---------- 3. INTRO ---------- */
+(function intro(){
+ const el = $('#intro'); if(!el) return;
+ const html = document.documentElement;
+ if(html.classList.contains('nointro')){ el.remove(); return; }
+ html.classList.add('intro');
+ let done = false;
+ const end = () => {
+  if(done) return; done = true;
+  el.classList.add('out');
+  html.classList.remove('intro');
+  setTimeout(() => el.remove(), 950);
+ };
+ /* si un fichier intro.mp4 est présent, il remplace l'animation */
+ const v = $('#ivid');
+ v.addEventListener('loadeddata', () => { el.classList.add('vid'); clearTimeout(t); v.play().catch(()=>{}); });
+ v.addEventListener('ended', end);
+ v.addEventListener('error', () => v.remove());
+ if(typeof INTRO_VID === 'string' && INTRO_VID) v.src = INTRO_VID; else v.remove();
+ const t = setTimeout(end, 4300);
+ $('#iskip').onclick = e => { e.stopPropagation(); clearTimeout(t); end(); };
+ el.addEventListener('click', () => { clearTimeout(t); end(); });
+ window.__replayIntro = () => {
+  try{ sessionStorage.removeItem('acem_intro'); }catch(e){}
+  location.hash = ''; location.reload();
+ };
+})();
+$('#replay').onclick = () => window.__replayIntro ? window.__replayIntro() : (sessionStorage.removeItem('acem_intro'), location.reload());
+
+/* ---------- 4. BANDEAU DÉFILANT ---------- */
+$('.mt').innerHTML = (w => w + w)(
+ ['Halal','Viandes fraîches','Black Angus','Wagyu','Préparations maison','Merguez','Brochettes','Cecina','Colis familiaux','Découpe à la demande']
+ .map(x => '<span>'+x+'</span>').join('')
+);
+
+/* ---------- 5. FAQ (modifiable ici) ---------- */
+const FAQ = [
+ ['Toutes vos viandes sont-elles halal ?','Oui, sans exception. L’intégralité de la boutique est halal, et aucun produit non halal ne transite par notre atelier. Les justificatifs de filière sont consultables sur simple demande au comptoir.'],
+ ['Le paiement se fait-il en ligne ?','Non. Ce site sert uniquement à préparer votre commande. Vous réglez sur place, au comptoir, lors du retrait — espèces ou carte bancaire. Aucune donnée bancaire n’est demandée ni enregistrée ici.'],
+ ['Comment sont calculés les produits vendus au poids ?','Le montant affiché est une estimation basée sur le poids que vous indiquez. La pièce est pesée devant vous au retrait et c’est ce poids réel qui est facturé. L’écart est généralement de quelques dizaines de grammes.'],
+ ['Combien de temps à l’avance faut-il commander ?','Pour les produits du catalogue, comptez environ 30 minutes de préparation : choisissez simplement un créneau disponible. Pour un colis, un plateau de dégustation ou une pièce exceptionnelle, prévoyez 24 à 48 h et appelez-nous.'],
+ ['Ma commande est-elle garantie ?','Elle est enregistrée puis confirmée par la boutique. En cas de rupture sur un arrivage, nous vous appelons pour proposer une pièce équivalente avant de préparer. C’est pour cette raison que le téléphone est obligatoire.'],
+ ['Comment conserver la viande après le retrait ?','Rentrez-la au frais rapidement : 2 à 3 jours au réfrigérateur pour les pièces entières, 24 h pour le haché et les préparations marinées. Tout se congèle très bien le jour du retrait, à plat et bien emballé.'],
+ ['Faites-vous des commandes spéciales ou pour les professionnels ?','Oui : pièces particulières, découpes précises, grandes quantités pour restaurants, traiteurs ou événements familiaux. Appelez la boutique, nous établissons un devis adapté.']
+];
+$('#faqL').innerHTML = FAQ.map((f,i) => '<div class="fq"><button aria-expanded="false" data-fq="'+i+'">'+esc(f[0])+'<svg class="ic"><use href="#i-plus"/></svg></button><div class="fqa"><p>'+esc(f[1])+'</p></div></div>').join('');
+
+/* ---------- 6. ÉTAT ---------- */
+const S = { cats:[], prods:[], set:{}, cat:'all', q:'', sort:'feat', cart:[], vp:null, ready:false };
+let busy = false;
+try{ S.cart = JSON.parse(localStorage.getItem('acem_cart') || '[]') }catch(e){}
+const saveCart = () => { try{ localStorage.setItem('acem_cart', JSON.stringify(S.cart)) }catch(e){} };
+const P = id => S.prods.find(p => p.id === id);
+const catName = p => (S.cats.find(c => c.id === p.category_id) || {}).name || 'Boucherie';
+const priceTxt = p => p.price == null
+ ? esc(p.price_label || 'Prix en boutique')
+ : eur(p.price) + ' <small>' + (UL[p.price_unit] || '') + '</small>';
+
+/* ---------- 7. CHARGEMENT ---------- */
+async function init(){
+ const [c,p,s] = await Promise.all([
+  sb.from('categories').select('*').order('sort_order'),
+  sb.from('products').select('*').order('sort_order'),
+  sb.from('store_settings').select('*').eq('id',1).maybeSingle()
+ ]);
+ if(p.error){
+  $('#grid').innerHTML = '<div class="empty"><svg class="ic"><use href="#i-info"/></svg><h3>Catalogue momentanément indisponible</h3><p class="mu">Un souci technique nous empêche d’afficher les produits. Appelez-nous, on vous renseigne tout de suite.</p><a class="btn" href="tel:+33981541936">09 81 54 19 36</a></div>';
+  return;
+ }
+ S.cats  = (c.data || []).filter(x => x.active !== false);
+ S.prods = (p.data || []).filter(x => x.available !== false);
+ S.set   = s.data || {};
+ S.set.opening_hours = S.set.opening_hours || {};
+ S.set.pickup_slots  = S.set.pickup_slots  || [];
+ S.set.closed_dates  = S.set.closed_dates  || [];
+ if(S.set.accepting_orders == null) S.set.accepting_orders = true;
+ S.cart = S.cart.filter(l => P(l.id));
+ /* logo officiel et vidéo d'intro définis dans l'espace admin */
+ try{
+  if(S.set.logo_url && S.set.logo_url !== LOGO){ LOGO = S.set.logo_url; applyLogo(); localStorage.setItem('acem_logo', LOGO) }
+  if(!S.set.logo_url) localStorage.removeItem('acem_logo');
+  if(S.set.intro_video_url) localStorage.setItem('acem_intro_video', S.set.intro_video_url);
+  else localStorage.removeItem('acem_intro_video');
+ }catch(e){}
+ S.ready = true;
+ chips(); grid(); hours(); openBadge(); banner(); contact(); cart();
+ deepLink();
+}
+
+function chips(){
+ const items = [{id:'all',name:'Tout le catalogue'}, ...S.cats];
+ $('#chips').innerHTML = items.map(x =>
+  '<button class="chip'+(x.id===S.cat?' on':'')+'" data-cat="'+esc(x.id)+'" role="tab" aria-selected="'+(x.id===S.cat)+'">'+esc(x.name)+'</button>'
+ ).join('');
+}
+
+const pimg = (p, cls) => p.image_url
+ ? '<img loading="lazy" src="'+esc(p.image_url)+'" alt="'+esc(p.name)+'" onerror="this.style.display=\'none\'">'
+ : '<span class="ph"><svg class="ic"><use href="#i-knife"/></svg></span>';
+
+function badges(p){
+ const b = [];
+ if(p.badge) b.push('<b>'+esc(p.badge)+'</b>');
+ if(p.featured) b.push('<b class="go">Sélection</b>');
+ if(p.price == null) b.push('<b class="gr">Prix boutique</b>');
+ return b.length ? '<div class="bdg">'+b.join('')+'</div>' : '';
+}
+
+const card = (p,i) =>
+ '<article class="card rv tilt" tabindex="0" role="button" aria-label="'+esc(p.name)+', voir la fiche" style="--d:'+((i%8)*60)+'ms" data-view="'+p.id+'">'+
+  '<div class="im">'+pimg(p)+badges(p)+'<span class="gl"></span></div>'+
+  '<div class="cb">'+
+   '<span class="tag">'+esc(catName(p))+'</span>'+
+   '<h3>'+esc(p.name)+'</h3>'+
+   '<p class="cl2">'+esc(p.description || '')+'</p>'+
+   '<div class="cbtm"><span class="pr">'+priceTxt(p)+'</span>'+
+   '<button class="add" data-add="'+p.id+'" aria-label="Ajouter '+esc(p.name)+' au panier"><svg class="ic"><use href="#i-plus"/></svg></button></div>'+
+  '</div></article>';
+
+function grid(){
+ const q = S.q.trim().toLowerCase();
+ let l = S.prods.filter(p =>
+  (S.cat === 'all' || p.category_id === S.cat) &&
+  (!q || (p.name+' '+(p.description||'')+' '+catName(p)).toLowerCase().includes(q))
+ );
+ const by = {
+  name: (a,b) => a.name.localeCompare(b.name,'fr'),
+  price: (a,b) => (a.price ?? 1e9) - (b.price ?? 1e9),
+  pricedesc: (a,b) => (b.price ?? -1) - (a.price ?? -1),
+  feat: (a,b) => (b.featured - a.featured) || ((a.sort_order||0) - (b.sort_order||0))
+ };
+ l.sort(by[S.sort] || by.feat);
+ $('#cnt').textContent = l.length ? l.length + (l.length > 1 ? ' produits disponibles' : ' produit disponible') : '';
+ $('#grid').innerHTML = l.length
+  ? l.map(card).join('')
+  : '<div class="empty"><svg class="ic"><use href="#i-search"/></svg><h3>Aucun produit ne correspond</h3><p class="mu">Essayez un autre mot ou revenez à l’ensemble du catalogue.</p><button class="btn o" data-cat="all">Tout afficher</button></div>';
+ reveal();
+}
+
+function hours(){
+ const today = DAYS[new Date().getDay()];
+ $('#hrs').innerHTML = ORDER_DAYS.map(i =>
+  '<div class="hr'+(DAYS[i]===today?' td':'')+'"><span>'+DFR[i]+'</span><span>'+esc(fmtH(S.set.opening_hours[DAYS[i]]))+'</span></div>'
+ ).join('');
+}
+
+function openState(){
+ const now = new Date(), key = DAYS[now.getDay()], t = now.toTimeString().slice(0,5);
+ if(S.set.closed_dates.includes(iso(now))) return { open:false, txt:'Fermé exceptionnellement' };
+ const r = ranges(S.set.opening_hours[key]);
+ for(const [a,b] of r) if(t >= a && t < b) return { open:true, txt:'Ouvert · jusqu’à '+hh(b) };
+ const next = r.find(([a]) => a > t);
+ if(next) return { open:false, txt:'Ouvre à '+hh(next[0]) };
+ for(let k=1;k<8;k++){
+  const d = new Date(now.getTime()+k*864e5);
+  if(S.set.closed_dates.includes(iso(d))) continue;
+  const rr = ranges(S.set.opening_hours[DAYS[d.getDay()]]);
+  if(rr.length) return { open:false, txt:'Ouvre '+(k===1?'demain':DFR[d.getDay()])+' '+hh(rr[0][0]) };
+ }
+ return { open:false, txt:'Fermé' };
+}
+
+function openBadge(){
+ const st = openState(), el = $('#sta');
+ el.classList.toggle('on', st.open);
+ el.querySelector('span').textContent = st.txt;
+}
+
+function banner(){
+ const b = $('#ban');
+ if(!S.set.accepting_orders){
+  b.hidden = false;
+  b.innerHTML = '<b>Commandes en ligne momentanément suspendues.</b> Le catalogue reste consultable — appelez le 09 81 54 19 36 pour réserver.';
+ } else if(S.set.announcement && S.set.announcement_active !== false && String(S.set.announcement).trim()){
+  b.hidden = false; b.textContent = S.set.announcement;
+ } else b.hidden = true;
+}
+
+function contact(){
+ const tel = S.set.phone || '+33981541936';
+ const clean = tel.replace(/[^+0-9]/g,'');
+ const pretty = clean.startsWith('+33') ? ('0'+clean.slice(3)).replace(/(\d\d)(?=\d)/g,'$1 ') : tel.trim();
+ $$('a[href^="tel:"]').forEach(a => {
+  a.href = 'tel:' + clean;
+  const sp = a.querySelector('span');
+  if(sp && /\d/.test(sp.textContent)) sp.textContent = pretty;
+  else [...a.childNodes].forEach(n => { if(n.nodeType === 3 && /\d{2}/.test(n.nodeValue)) n.nodeValue = pretty });
+ });
+ $('#telBtn').querySelector('span').textContent = pretty;
+ $('#telLnk').innerHTML = '<svg class="ic"><use href="#i-tel"/></svg><b>'+esc(pretty)+'</b>';
+ if(S.set.address) $('#addr').textContent = S.set.address;
+ const maps = S.set.maps_url || ('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(S.set.address || '51 Avenue General Leclerc 38950 Saint-Martin-le-Vinoux'));
+ $('#mapLnk').href = maps; $('#mapLnk2').href = maps;
+ if(S.set.instagram_url) $$('a[aria-label="Instagram"]').forEach(a => a.href = S.set.instagram_url);
+ if(S.set.facebook_url)  $$('a[aria-label="Facebook"]').forEach(a => a.href = S.set.facebook_url);
+}
+
+/* ---------- 8. PANIER ---------- */
+function tot(){
+ let t = 0, u = 0, w = false;
+ S.cart.forEach(l => {
+  const p = P(l.id); if(!p) return;
+  if(p.price == null) u++; else t += p.price * l.q;
+  if(p.price_unit === 'kg' || p.price_unit === '100g') w = true;
+ });
+ return { t: Math.round(t*100)/100, u, w };
+}
+
+const qtyLabel = (p,q) => p.price_unit === 'kg' ? q.toLocaleString('fr-FR')+' kg'
+ : p.price_unit === '100g' ? (q*100)+' g'
+ : q + ' × ' + (p.price_unit === 'lot' ? 'lot' : 'pièce') + (q>1?'s':'');
+
+function line(l){
+ const p = P(l.id), s = step(p.price_unit);
+ return '<div class="ln">'+
+  '<span class="lim">'+pimg(p)+'</span>'+
+  '<div><b>'+esc(p.name)+'</b><span class="lmu">'+(p.price==null?esc(p.price_label||'Prix en boutique'):eur(p.price)+' '+(UL[p.price_unit]||''))+'</span>'+
+   '<div class="qs"><button data-q="'+l.id+'" data-d="-1" aria-label="Diminuer">−</button>'+
+   '<input type="number" data-qi="'+l.id+'" min="'+s+'" max="99" step="'+s+'" value="'+l.q+'" aria-label="Quantité pour '+esc(p.name)+'">'+
+   '<button data-q="'+l.id+'" data-d="1" aria-label="Augmenter">+</button></div>'+
+  '</div>'+
+  '<div class="lr"><button class="x" data-del="'+l.id+'" aria-label="Retirer '+esc(p.name)+'"><svg class="ic"><use href="#i-trash"/></svg></button>'+
+   '<span class="pr">'+(p.price==null?'—':eur(Math.round(p.price*l.q*100)/100))+'</span></div>'+
+ '</div>';
+}
+
+function cart(){
+ const n = S.cart.length;
+ const cn = $('#cn'); cn.textContent = n; $('#cn2').textContent = n;
+ cn.classList.add('pop'); setTimeout(() => cn.classList.remove('pop'), 320);
+ $('#cl').innerHTML = n ? S.cart.map(line).join('')
+  : '<div class="empty" style="padding:48px 10px"><svg class="ic"><use href="#i-cart"/></svg><h3>Votre panier est vide</h3><p class="mu">Ajoutez de belles pièces depuis le catalogue, nous préparons le reste.</p><button class="btn o" data-close>Voir le catalogue</button></div>';
+ const T = tot();
+ $('#ct').innerHTML = n
+  ? '<div class="tr"><span>Total estimatif</span><b>'+eur(T.t)+'</b></div>'+
+    (T.u ? '<p class="mu">+ '+T.u+' article'+(T.u>1?'s':'')+' au prix communiqué en boutique.</p>' : '')+
+    (T.w ? '<p class="mu">Montant ajusté au poids réel pesé en boutique.</p>' : '')+
+    '<p class="mu"><svg class="ic" style="vertical-align:-2px;color:var(--r2)"><use href="#i-shield"/></svg> Paiement uniquement en boutique, au retrait.</p>'+
+    '<button class="btn" id="go"'+(S.set.accepting_orders===false?' disabled':'')+'><svg class="ic"><use href="#i-clock"/></svg>Choisir mon créneau de retrait</button>'+
+    (S.set.accepting_orders===false?'<p class="mu" style="text-align:center">Commandes en ligne suspendues — appelez la boutique.</p>':'')
+  : '';
+ saveCart();
+}
+
+function add(id, q){
+ const p = P(id); if(!p) return;
+ const l = S.cart.find(x => x.id === id);
+ if(l) l.q = clamp(+(l.q + (q || step(p.price_unit))).toFixed(2), step(p.price_unit), 99);
+ else S.cart.push({ id, q: clamp(q || step(p.price_unit), step(p.price_unit), 99) });
+ cart(); toast(p.name + ' ajouté au panier');
+}
+
+const open = on => {
+ $('#dr').classList.toggle('on', on);
+ $('#ov').classList.toggle('on', on);
+ document.body.style.overflow = on ? 'hidden' : '';
+};
+
+/* ---------- 9. CRÉNEAUX ---------- */
+const mins = t => { const [a,b] = String(t).split(':').map(Number); return a*60 + (b||0) };
+function slotsFor(d){
+ if(!d || S.set.closed_dates.includes(d)) return [];
+ const r = ranges(S.set.opening_hours[DAYS[new Date(d+'T12:00:00').getDay()]]);
+ if(!r.length) return [];
+ const today = iso(new Date()), now = new Date(), nowM = now.getHours()*60 + now.getMinutes();
+ const lead = (S.set.min_lead_hours ?? 0) * 60;
+ return (S.set.pickup_slots || []).filter(s => {
+  const [a,b] = String(s).split('-'); if(!b) return false;
+  if(!r.some(([x,y]) => a >= x && b <= y)) return false;
+  if(d === today && mins(a) < nowM + lead) return false;
+  return true;
+ });
+}
+function firstDate(){
+ for(let k=0;k<31;k++){ const d = iso(new Date(Date.now()+k*864e5)); if(slotsFor(d).length) return d; }
+ return iso(new Date());
+}
+
+/* ---------- 10. COMMANDE ---------- */
+function checkout(){
+ const t = new Date(), max = new Date(Date.now()+30*864e5), d0 = firstDate();
+ const T = tot();
+ $('#ckb').innerHTML =
+  '<div class="stepz"><i class="on"></i><i class="on"></i><i></i></div>'+
+  '<span class="eyebrow">Étape 2 sur 3</span>'+
+  '<h2 style="margin:10px 0 6px">Votre retrait</h2>'+
+  '<p class="mu">'+S.cart.length+' article'+(S.cart.length>1?'s':'')+' · total estimatif <b style="color:var(--r2)">'+eur(T.t)+'</b></p>'+
+  '<form class="fm" id="ckf" novalidate>'+
+   '<div class="r2"><label>Prénom<input name="p" required maxlength="40" autocomplete="given-name" placeholder="Morgan"></label>'+
+   '<label>Nom<input name="n" required maxlength="40" autocomplete="family-name" placeholder="Coulet"></label></div>'+
+   '<label>Téléphone <span style="color:var(--r2)">(obligatoire pour vous confirmer la commande)</span>'+
+   '<input name="t" type="tel" required minlength="8" maxlength="25" autocomplete="tel" placeholder="06 00 00 00 00"></label>'+
+   '<div class="r2"><label>Date de retrait<input name="d" id="dt" type="date" required min="'+iso(t)+'" max="'+iso(max)+'" value="'+d0+'"></label>'+
+   '<label>Créneau<select name="s" id="sl" required></select></label></div>'+
+   '<label>Précisions pour le boucher (facultatif)<textarea name="c" rows="2" maxlength="500" placeholder="Épaisseur des côtes, viande hachée sur place, emballage séparé…"></textarea></label>'+
+   '<p class="mu"><svg class="ic" style="vertical-align:-2px;color:var(--r2)"><use href="#i-shield"/></svg> Commande soumise à confirmation par la boutique. Paiement sur place, aucun paiement en ligne.</p>'+
+   '<div class="er" id="er" role="alert"></div>'+
+   '<button class="btn" id="sbm">Envoyer ma commande</button>'+
+   '<button type="button" class="btn o" data-closeck>Revenir au panier</button>'+
+  '</form>';
+ $('#ck').classList.add('on');
+ document.body.style.overflow = 'hidden';
+ fillSlots();
+ $('#dt').onchange = fillSlots;
+ $('#ckf').onsubmit = submitOrder;
+ setTimeout(() => { const f = $('#ckf input[name=p]'); if(f) f.focus() }, 120);
+}
+
+function fillSlots(){
+ const d = $('#dt').value, s = slotsFor(d), sel = $('#sl');
+ sel.innerHTML = s.length
+  ? s.map(x => '<option value="'+esc(x)+'">'+esc(slot2(x))+'</option>').join('')
+  : '<option value="">Aucun créneau ce jour-là</option>';
+ sel.disabled = !s.length;
+}
+
+async function submitOrder(e){
+ e.preventDefault();
+ if(busy) return;
+ const f = new FormData(e.target), b = $('#sbm'), er = $('#er');
+ const first = (f.get('p')||'').trim(), last = (f.get('n')||'').trim();
+ const phone = (f.get('t')||'').trim(), date = f.get('d'), slot = f.get('s');
+ er.textContent = '';
+ if(!first || !last) return er.textContent = 'Merci d’indiquer votre prénom et votre nom.';
+ if(phone.replace(/[^0-9]/g,'').length < 8) return er.textContent = 'Le numéro de téléphone semble incomplet.';
+ if(!date || !slot) return er.textContent = 'Choisissez une date et un créneau de retrait disponibles.';
+ busy = true; b.disabled = true; b.textContent = 'Envoi en cours…';
+ const { data, error } = await sb.rpc('submit_store_order', {
+  p_customer_name: first + ' ' + last,
+  p_customer_phone: phone,
+  p_pickup_date: date,
+  p_pickup_slot: slot,
+  p_customer_note: f.get('c') || '',
+  p_items: S.cart.map(l => ({ product_id: l.id, quantity: l.q }))
+ });
+ busy = false;
+ if(error || !data || !data[0]){
+  b.disabled = false; b.textContent = 'Envoyer ma commande';
+  er.textContent = error ? ('Envoi impossible : ' + error.message) : 'Une erreur est survenue, merci de réessayer ou de nous appeler.';
+  return;
+ }
+ const o = data[0], T = tot(), items = S.cart.map(l => { const p = P(l.id); return { n:p.name, q:qtyLabel(p,l.q), t:p.price==null?null:Math.round(p.price*l.q*100)/100 } });
+ S.cart = []; cart();
+ buildTicket(o.order_number, first+' '+last, phone, date, slot, items, T.t);
+ $('#ckb').innerHTML =
+  '<div class="stepz"><i class="on"></i><i class="on"></i><i class="on"></i></div>'+
+  '<span class="eyebrow ok" style="color:var(--ok)">Commande envoyée</span>'+
+  '<h2 style="margin:10px 0 8px">Merci '+esc(first)+' !</h2>'+
+  '<div class="tk"><span>Votre numéro de commande</span><b>'+esc(o.order_number)+'</b></div>'+
+  '<p>Retrait prévu le <b>'+esc(new Date(date+'T12:00:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'}))+'</b>, créneau <b>'+esc(slot2(slot))+'</b>.</p>'+
+  '<p class="mu" style="margin-top:10px">Votre commande est <b>soumise à confirmation par la boutique</b>. Nous vous appelons si une pièce doit être adaptée selon les arrivages.</p>'+
+  '<p class="ok" style="margin-top:12px"><svg class="ic" style="vertical-align:-2px"><use href="#i-shield"/></svg> Paiement directement en boutique lors du retrait.</p>'+
+  '<div class="fm"><button class="btn" onclick="window.print()"><svg class="ic"><use href="#i-print"/></svg>Imprimer le récapitulatif</button>'+
+  '<button class="btn o" data-closeck>Fermer</button></div>';
+}
+
+function buildTicket(num, name, phone, date, slot, items, total){
+ $('#prt').innerHTML =
+  '<h1>Boucherie Acem — Commande '+esc(num)+'</h1>'+
+  '<p>'+esc(name)+' · '+esc(phone)+'<br>Retrait : '+esc(new Date(date+'T12:00:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'}))+' — '+esc(slot2(slot))+'</p>'+
+  '<table><thead><tr><th>Produit</th><th>Quantité</th><th style="text-align:right">Montant</th></tr></thead><tbody>'+
+  items.map(i => '<tr><td>'+esc(i.n)+'</td><td>'+esc(i.q)+'</td><td style="text-align:right">'+(i.t==null?'prix en boutique':eur(i.t))+'</td></tr>').join('')+
+  '</tbody></table><p class="tot">Total estimatif : '+eur(total)+'</p>'+
+  '<p class="ft">Montant ajusté au poids réel pesé en boutique. Paiement sur place au retrait, aucun paiement en ligne.<br>51 Avenue Général Leclerc, 38950 Saint-Martin-le-Vinoux · 09 81 54 19 36</p>';
+}
+
+/* ---------- 11. FICHE PRODUIT ---------- */
+function msub(){
+ const p = P(S.vp), q = parseFloat($('#mqv').value) || 0;
+ $('#msub').innerHTML = p.price == null
+  ? 'Prix communiqué en boutique selon la pièce choisie.'
+  : 'Sous-total estimatif : <b style="color:var(--r2)">' + eur(Math.round(p.price*q*100)/100) + '</b>';
+}
+
+function view(id, push){
+ const p = P(id); if(!p) return;
+ S.vp = id;
+ const u = p.price_unit, s = step(u);
+ const sim = S.prods.filter(x => x.category_id === p.category_id && x.id !== id).slice(0,3);
+ $('#pbody').innerHTML =
+  '<button class="x pc" data-closepm aria-label="Fermer"><svg class="ic"><use href="#i-close"/></svg></button>'+
+  '<div class="pg2"><div class="pim">'+pimg(p)+badges(p)+'</div>'+
+  '<div class="pin">'+
+   '<span class="tag">'+esc(catName(p))+'</span>'+
+   '<h2>'+esc(p.name)+'</h2>'+
+   '<span class="ok2"><i></i>Disponible aujourd’hui</span>'+
+   '<p class="mu">'+esc(p.description || 'Pièce sélectionnée par nos bouchers. Demandez-nous le détail de la découpe au comptoir.')+'</p>'+
+   '<div class="pr big">'+priceTxt(p)+'</div>'+
+   '<div class="meta">'+
+    '<div><span>Conditionnement</span><span>'+esc(u || 'pièce')+'</span></div>'+
+    (p.origin ? '<div><span>Origine</span><span>'+esc(p.origin)+'</span></div>' : '')+
+    '<div><span>Retrait</span><span>En boutique</span></div>'+
+    '<div><span>Paiement</span><span>Sur place</span></div>'+
+   '</div>'+
+   '<p class="mu">'+esc(UNOTE[u] || '')+'</p>'+
+   '<div class="qs"><button data-mq="-1" aria-label="Diminuer">−</button>'+
+   '<input id="mqv" type="number" min="'+s+'" max="99" step="'+s+'" value="'+s+'" aria-label="Quantité">'+
+   '<button data-mq="1" aria-label="Augmenter">+</button>'+
+   '<span class="mu" style="margin-left:6px">'+esc(u === 'kg' ? 'kg' : u === '100g' ? '× 100 g' : u || '')+'</span></div>'+
+   '<div id="msub" class="mu"></div>'+
+   '<button class="btn" data-madd="'+id+'"><svg class="ic"><use href="#i-cart"/></svg>Ajouter au panier</button>'+
+   '<p class="mu"><svg class="ic" style="vertical-align:-2px;color:var(--r2)"><use href="#i-shield"/></svg> Paiement uniquement en boutique au retrait.</p>'+
+  '</div></div>'+
+  (sim.length ? '<h3 class="sm2">Dans la même catégorie</h3><div class="simg">'+sim.map(x =>
+    '<div class="sim" data-view="'+x.id+'"><span class="si">'+pimg(x)+'</span><b>'+esc(x.name)+'</b><span class="pr">'+priceTxt(x)+'</span></div>').join('')+'</div>' : '');
+ $('#mqv').oninput = msub; msub();
+ $('#pm').classList.add('on'); $('#pm').scrollTop = 0;
+ document.body.style.overflow = 'hidden';
+ document.title = p.name + ' — Boucherie Acem';
+ if(push !== false) history.replaceState(null, '', '#p-' + p.slug);
+}
+
+function closePm(){
+ if(!$('#pm').classList.contains('on')) return;
+ $('#pm').classList.remove('on');
+ if(!$('#dr').classList.contains('on') && !$('#ck').classList.contains('on')) document.body.style.overflow = '';
+ document.title = 'Boucherie Acem — Boucherie halal premium à Saint-Martin-le-Vinoux';
+ if(location.hash.indexOf('#p-') === 0) history.replaceState(null, '', '#catalogue');
+}
+
+function deepLink(){
+ const m = location.hash.match(/^#p-(.+)/);
+ if(m){ const p = S.prods.find(x => x.slug === m[1]); if(p) view(p.id, false) }
+}
+
+/* ---------- 12. INTERACTIONS ---------- */
+document.addEventListener('click', e => {
+ const t = e.target;
+ if(t.id === 'ov'){ open(false); return }
+ if(t.id === 'pm'){ closePm(); return }
+
+ const a = t.closest('[data-add]');
+ if(a){ e.preventDefault(); e.stopPropagation(); add(a.dataset.add); fly(a); return }
+
+ const ma = t.closest('[data-madd]');
+ if(ma){ const p = P(ma.dataset.madd); add(ma.dataset.madd, parseFloat($('#mqv').value) || step(p.price_unit)); fly(ma); return }
+
+ const mq = t.closest('[data-mq]');
+ if(mq){
+  const p = P(S.vp), s = step(p.price_unit), i = $('#mqv');
+  i.value = +clamp((parseFloat(i.value) || s) + (+mq.dataset.mq)*s, s, 99).toFixed(2);
+  msub(); return;
+ }
+ const q = t.closest('[data-q]');
+ if(q){
+  const l = S.cart.find(x => x.id === q.dataset.q), p = P(q.dataset.q), s = step(p.price_unit);
+  if(l){ l.q = +clamp(l.q + (+q.dataset.d)*s, s, 99).toFixed(2); cart() }
+  return;
+ }
+ const del = t.closest('[data-del]');
+ if(del){ S.cart = S.cart.filter(l => l.id !== del.dataset.del); cart(); toast('Article retiré'); return }
+
+ const fq = t.closest('[data-fq]');
+ if(fq){
+  const box = fq.parentElement, pan = box.querySelector('.fqa'), on = box.classList.toggle('on');
+  fq.setAttribute('aria-expanded', on);
+  pan.style.maxHeight = on ? pan.scrollHeight + 'px' : 0;
+  return;
+ }
+ const cat = t.closest('[data-cat]');
+ if(cat){
+  S.cat = cat.dataset.cat; S.q = ''; $('#q').value = '';
+  $$('.chip').forEach(c => { const on = c.dataset.cat === S.cat; c.classList.toggle('on', on); c.setAttribute('aria-selected', on) });
+  grid(); return;
+ }
+ const go = t.closest('[data-go]');
+ if(go){ location.hash = go.dataset.go; return }
+
+ const v = t.closest('[data-view]');
+ if(v){ view(v.dataset.view); return }
+
+ if(t.closest('[data-open]')){ open(true); return }
+ if(t.closest('[data-close]')){ open(false); return }
+ if(t.closest('[data-closeck]')){ $('#ck').classList.remove('on'); document.body.style.overflow = ''; return }
+ if(t.closest('[data-closepm]')){ closePm(); return }
+ if(t.closest('#cb')){ open(true); return }
+ if(t.closest('#go') && S.cart.length){ open(false); checkout(); return }
+ if(t.closest('#bg')){ const n = $('#nv'), on = n.classList.toggle('on'); $('#bg').setAttribute('aria-expanded', on); return }
+ if(t.closest('#nv')) $('#nv').classList.remove('on');
+});
+
+document.addEventListener('input', e => {
+ const id = e.target.dataset.qi; if(!id) return;
+ const l = S.cart.find(x => x.id === id), v = parseFloat(e.target.value);
+ if(l && v > 0 && v <= 99){ l.q = v; const T = tot(); $('#ct').querySelector('b').textContent = eur(T.t); saveCart() }
+});
+document.addEventListener('change', e => { if(e.target.dataset.qi) cart() });
+
+$('#q').oninput  = e => { S.q = e.target.value; grid() };
+$('#so').onchange = e => { S.sort = e.target.value; grid() };
+
+document.addEventListener('keydown', e => {
+ if(e.key === 'Escape'){
+  if($('#pm').classList.contains('on')) return closePm();
+  if($('#ck').classList.contains('on')){ $('#ck').classList.remove('on'); document.body.style.overflow = ''; return }
+  if($('#dr').classList.contains('on')) return open(false);
+ }
+ if((e.key === 'Enter' || e.key === ' ') && e.target.dataset && e.target.dataset.view && e.target.classList.contains('card')){
+  e.preventDefault(); view(e.target.dataset.view);
+ }
+});
+
+/* barre de progression, header, barre mobile */
+let lastY = 0;
+addEventListener('scroll', () => {
+ const y = scrollY, h = document.documentElement.scrollHeight - innerHeight || 1;
+ $('#pg').style.width = (y/h*100) + '%';
+ $('header').classList.toggle('sm', y > 50);
+ $('#mb').classList.toggle('on', y > 420);
+ lastY = y;
+}, { passive:true });
+
+/* reveal */
+let io;
+function reveal(){
+ if(reduced()){ $$('.rv').forEach(x => x.classList.add('in')); return }
+ io = io || new IntersectionObserver(es => es.forEach(en => {
+  if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target) }
+ }), { threshold:.08, rootMargin:'0px 0px -50px 0px' });
+ $$('.rv:not(.in)').forEach(x => io.observe(x));
+}
+
+/* compteurs */
+function counters(){
+ $$('[data-count]').forEach(el => {
+  const to = +el.dataset.count;
+  if(reduced()){ el.textContent = to; return }
+  const t0 = performance.now(), dur = 1400;
+  const tick = now => {
+   const p = Math.min(1, (now-t0)/dur), e = 1 - Math.pow(1-p, 3);
+   el.textContent = Math.round(to*e);
+   if(p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+  /* filet de sécurité : si l'onglet est en arrière-plan, requestAnimationFrame
+     ne se déclenche pas — on affiche alors directement la valeur finale. */
+  setTimeout(() => { if(+el.textContent !== to) el.textContent = to }, dur + 900);
+ });
+}
+
+/* animation d'ajout au panier */
+function fly(el){
+ if(reduced()) return;
+ const a = el.getBoundingClientRect(), b = $('#cb').getBoundingClientRect();
+ const d = document.createElement('i');
+ d.className = 'fl';
+ d.style.cssText = 'left:'+(a.left+a.width/2-8)+'px;top:'+(a.top+a.height/2-8)+'px';
+ document.body.append(d);
+ d.animate([
+  { transform:'translate(0,0) scale(1)', opacity:1 },
+  { transform:'translate('+(b.left+b.width/2-a.left-a.width/2)+'px,'+(b.top+b.height/2-a.top-a.height/2)+'px) scale(.25)', opacity:.2 }
+ ], { duration:700, easing:'cubic-bezier(.5,-.25,.7,1)' }).onfinish = () => d.remove();
+}
+
+/* tilt 3D, halo et ondes (souris uniquement) */
+if(matchMedia('(hover:hover)').matches && !reduced()){
+ document.addEventListener('pointermove', e => {
+  const c = e.target.closest && e.target.closest('.tilt'); if(!c) return;
+  const r = c.getBoundingClientRect(), x = (e.clientX-r.left)/r.width, y = (e.clientY-r.top)/r.height;
+  c.style.transform = 'rotateY('+((x-.5)*9)+'deg) rotateX('+((.5-y)*9)+'deg) translateZ(6px)';
+  c.style.setProperty('--mx', x*100+'%'); c.style.setProperty('--my', y*100+'%');
+ }, { passive:true });
+ document.addEventListener('pointerout', e => {
+  const c = e.target.closest && e.target.closest('.tilt');
+  if(c && !c.contains(e.relatedTarget)) c.style.transform = '';
+ });
+ document.addEventListener('pointerdown', e => {
+  const b = e.target.closest && e.target.closest('.btn:not(#cb),.add,.chip');
+  if(!b) return;
+  const r = b.getBoundingClientRect(), s = document.createElement('span');
+  s.className = 'rp'; s.style.cssText = 'left:'+(e.clientX-r.left)+'px;top:'+(e.clientY-r.top)+'px';
+  b.append(s); setTimeout(() => s.remove(), 650);
+ });
+}
+
+/* ---------- 13. ROUTAGE ---------- */
+async function route(){
+ const admin = location.hash === '#admin';
+ $('#pub').hidden = admin;
+ $('#adm').hidden = !admin;
+ document.body.style.overflow = '';
+ if(admin){ open(false); closePm(); $('#ck').classList.remove('on'); adminInit() }
+ else if(S.ready) deepLink();
+}
+addEventListener('hashchange', route);
+
+init();
+reveal();
+route();
+setTimeout(counters, document.documentElement.classList.contains('intro') ? 4500 : 900);
+setInterval(openBadge, 60000);
+
+/* ==================================================================
+   14. ESPACE ADMIN  (#admin)
+   ================================================================== */
+const ST = { nouvelle:'Nouvelle', confirmee:'Acceptée', en_preparation:'En préparation', prete:'Prête', recuperee:'Terminée', annulee:'Refusée / annulée' };
+const STC = { nouvelle:'s0', confirmee:'s1', en_preparation:'s2', prete:'s3', recuperee:'s4', annulee:'s5' };
+const NEXT = { nouvelle:'confirmee', confirmee:'en_preparation', en_preparation:'prete', prete:'recuperee' };
+const A = { o:[], st:'', q:'', tab:'d', email:'', sub:null };
+const opt = (o,v) => Object.entries(o).map(([k,l]) => '<option value="'+esc(k)+'"'+(k===v?' selected':'')+'>'+esc(l)+'</option>').join('');
+const slug = n => n.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const PUB = '/storage/v1/object/public/product-images/';
+const BK = () => sb.storage.from('product-images');
+const sqlHint = e => /column|42703|schema cache/i.test(e.message||'') ? ' — pensez à exécuter le fichier SQL fourni.' : '';
+
+/* Enregistre en ignorant automatiquement les colonnes qui n'existent pas encore
+   en base (tant que le fichier SQL n'a pas été exécuté). */
+async function safeUpdate(table, payload, id){
+ const p = Object.assign({}, payload), dropped = [];
+ for(let i = 0; i < 10; i++){
+  const r = await sb.from(table).update(p).eq('id', id);
+  if(!r.error) return { ok:true, dropped };
+  const m = /'([a-z_]+)' column/i.exec(r.error.message) || /column "?([a-z_]+)"?/i.exec(r.error.message);
+  if(m && Object.prototype.hasOwnProperty.call(p, m[1])){ delete p[m[1]]; dropped.push(m[1]); continue }
+  return { ok:false, error:r.error };
+ }
+ return { ok:false, error:{ message:'Trop de colonnes manquantes' } };
+}
+const savedMsg = d => d.length ? 'Enregistré (colonnes ignorées : '+d.join(', ')+' — exécutez le fichier SQL)' : 'Enregistré';
+
+function login(msg){
+ $('#adm').innerHTML =
+ '<div class="lgin"><div class="lgc">'+
+  '<img src="'+esc(LOGO)+'" alt="">'+
+  '<span class="eyebrow" style="justify-content:center">Espace boutique</span>'+
+  '<h2 style="margin:8px 0 4px">Administration</h2>'+
+  '<p class="mu">Gestion des commandes, du catalogue et des horaires.</p>'+
+  '<form class="fm" id="lf">'+
+   '<label>Adresse e-mail<input name="e" type="email" required autocomplete="username" placeholder="vous@exemple.fr"></label>'+
+   '<label>Mot de passe<input name="p" type="password" required autocomplete="current-password"></label>'+
+   '<div class="er">'+esc(msg||'')+'</div>'+
+   '<button class="btn" id="lb">Se connecter</button>'+
+   '<button type="button" class="btn o" id="lr">Mot de passe oublié</button>'+
+   '<a class="mu" href="#top" style="text-align:center;font-size:.85rem">← Retour au site</a>'+
+  '</form></div></div>';
+ $('#lf').onsubmit = async e => {
+  e.preventDefault();
+  const f = new FormData(e.target), b = $('#lb');
+  b.disabled = true; b.textContent = 'Connexion…';
+  const { error } = await sb.auth.signInWithPassword({ email:(f.get('e')||'').trim(), password:f.get('p') });
+  if(error){ login('Identifiants invalides. Vérifiez l’e-mail et le mot de passe.'); return }
+  adminInit();
+ };
+ $('#lr').onclick = async () => {
+  const em = ($('#lf [name=e]').value||'').trim();
+  if(!em) return toast('Saisissez d’abord votre e-mail', true);
+  const { error } = await sb.auth.resetPasswordForEmail(em, { redirectTo: location.origin + location.pathname + '#admin' });
+  toast(error ? 'Erreur : '+error.message : 'E-mail de réinitialisation envoyé', !!error);
+ };
+}
+
+async function adminInit(){
+ const { data:{ session } } = await sb.auth.getSession();
+ if(!session) return login();
+ A.email = session.user.email || '';
+ const { data:ok, error } = await sb.rpc('is_store_admin');
+ if(error || !ok){
+  await sb.auth.signOut();
+  return login(error ? ('Vérification impossible : '+error.message) : 'Ce compte n’est pas autorisé à administrer la boutique.');
+ }
+ $('#adm').innerHTML =
+ '<div class="atop"><div class="w">'+
+  '<div class="alg"><img src="'+esc(LOGO)+'" alt=""><span><b>Boucherie Acem</b><span>Administration</span></span></div>'+
+  '<div class="hact"><span class="sta"><svg class="ic"><use href="#i-user"/></svg>'+esc(A.email)+'</span>'+
+  '<a class="btn o sm" href="#top">Voir le site</a>'+
+  '<button class="btn o sm" id="lo"><svg class="ic"><use href="#i-out"/></svg>Déconnexion</button></div>'+
+ '</div></div>'+
+ '<div class="w"><div class="tabs">'+
+  '<button class="chip'+(A.tab==='d'?' on':'')+'" data-t="d">Tableau de bord</button>'+
+  '<button class="chip'+(A.tab==='o'?' on':'')+'" data-t="o">Commandes</button>'+
+  '<button class="chip'+(A.tab==='p'?' on':'')+'" data-t="p">Produits</button>'+
+  '<button class="chip'+(A.tab==='c'?' on':'')+'" data-t="c">Catégories</button>'+
+  '<button class="chip'+(A.tab==='s'?' on':'')+'" data-t="s">Réglages</button>'+
+ '</div><div id="at"></div></div>';
+ $('#lo').onclick = async () => { if(A.sub){ sb.removeChannel(A.sub); A.sub = null } await sb.auth.signOut(); login() };
+ $$('[data-t]').forEach(b => b.onclick = () => {
+  A.tab = b.dataset.t;
+  $$('[data-t]').forEach(x => x.classList.toggle('on', x === b));
+  ({ d:tabD, o:tabO, p:tabP, c:tabC, s:tabS })[A.tab]();
+ });
+ ({ d:tabD, o:tabO, p:tabP, c:tabC, s:tabS })[A.tab]();
+ live();
+}
+
+/* notification temps réel des nouvelles commandes */
+function beep(){
+ try{
+  const c = new (window.AudioContext||window.webkitAudioContext)(), o = c.createOscillator(), g = c.createGain();
+  o.connect(g); g.connect(c.destination); o.type = 'sine'; o.frequency.value = 880;
+  g.gain.setValueAtTime(.0001, c.currentTime);
+  g.gain.exponentialRampToValueAtTime(.25, c.currentTime+.02);
+  g.gain.exponentialRampToValueAtTime(.0001, c.currentTime+.5);
+  o.start(); o.stop(c.currentTime+.5);
+ }catch(e){}
+}
+function live(){
+ if(A.sub) return;
+ A.sub = sb.channel('acem-orders')
+  .on('postgres_changes', { event:'INSERT', schema:'public', table:'orders' }, () => {
+   beep(); toast('Nouvelle commande reçue !');
+   if(A.tab === 'o') tabO(); else if(A.tab === 'd') tabD();
+  }).subscribe();
+}
+
+async function loadOrders(){
+ const { data, error } = await sb.from('orders').select('*,order_items(*)').order('created_at',{ascending:false}).limit(300);
+ if(error){ $('#at').innerHTML = '<p class="er">Chargement impossible : '+esc(error.message)+'</p>'; return false }
+ A.o = data || []; return true;
+}
+
+/* ---------- 14.1 TABLEAU DE BORD ---------- */
+async function tabD(){
+ $('#at').innerHTML = '<p class="mu">Chargement…</p>';
+ if(!await loadOrders()) return;
+ const n = s => A.o.filter(o => o.status === s).length;
+ const month = new Date().toISOString().slice(0,7);
+ const ca = A.o.filter(o => o.status === 'recuperee' && String(o.created_at).slice(0,7) === month).reduce((a,o) => a + Number(o.total||0), 0);
+ const days = [...Array(7)].map((_,i) => iso(new Date(Date.now()-(6-i)*864e5)));
+ const cnt = days.map(d => A.o.filter(o => String(o.created_at).slice(0,10) === d).length);
+ const mx = Math.max(1, ...cnt);
+ const today = iso(new Date());
+ const soon = A.o.filter(o => ['nouvelle','confirmee','en_preparation','prete'].includes(o.status) && o.pickup_date >= today)
+                 .sort((a,b) => (a.pickup_date+a.pickup_slot).localeCompare(b.pickup_date+b.pickup_slot)).slice(0,6);
+ $('#at').innerHTML =
+ '<div class="kp">'+
+  '<div'+(n('nouvelle')?' class="al"':'')+'><b>'+n('nouvelle')+'</b><span>À traiter</span></div>'+
+  '<div><b>'+n('confirmee')+'</b><span>Acceptées</span></div>'+
+  '<div><b>'+n('en_preparation')+'</b><span>En préparation</span></div>'+
+  '<div><b>'+n('prete')+'</b><span>Prêtes à retirer</span></div>'+
+  '<div><b>'+A.o.filter(o => o.pickup_date === today).length+'</b><span>Retraits aujourd’hui</span></div>'+
+  '<div><b>'+eur(ca)+'</b><span>CA du mois (terminées)</span></div>'+
+ '</div>'+
+ '<div class="pnl"><h3>Commandes des 7 derniers jours</h3><div class="chart">'+
+  days.map((d,i) => '<div><b>'+cnt[i]+'</b><i style="height:'+(cnt[i]/mx*100)+'%"></i><em>'+DFR[new Date(d+'T12:00:00').getDay()].slice(0,3)+'</em></div>').join('')+
+ '</div></div>'+
+ '<div class="pnl"><h3>Prochains retraits</h3>'+
+  (soon.length ? soon.map(o =>
+   '<div class="ocH" style="padding:11px 0;border-bottom:1px solid var(--line)">'+
+   '<span><b>'+esc(o.pickup_date === today ? 'Aujourd’hui' : new Date(o.pickup_date+'T12:00:00').toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'}))+'</b> '+esc(slot2(o.pickup_slot))+' · '+esc(o.customer_name)+'</span>'+
+   '<span class="st '+STC[o.status]+'">'+esc(ST[o.status]||o.status)+'</span></div>').join('')
+   : '<p class="mu">Aucun retrait programmé.</p>')+
+ '</div>'+
+ '<div class="pnl"><h3>Rappels</h3><p class="mu">Les commandes restent <b>soumises à confirmation</b> : passez-les en « Acceptée » après vérification du stock, puis « Prête » quand le client peut venir. Le paiement se fait uniquement en boutique.</p></div>';
+}
+
+/* ---------- 14.2 COMMANDES ---------- */
+async function tabO(){
+ $('#at').innerHTML = '<p class="mu">Chargement…</p>';
+ if(!await loadOrders()) return;
+ $('#at').innerHTML =
+ '<div class="bar"><span class="srch"><svg class="ic"><use href="#i-search"/></svg><input id="oq" placeholder="Nom, téléphone, n° de commande…" value="'+esc(A.q)+'"></span>'+
+ '<select id="of"><option value="">Tous les statuts</option>'+opt(ST, A.st)+'</select>'+
+ '<button class="btn o sm" id="orf">Rafraîchir</button></div><div id="ol"></div>';
+ $('#oq').oninput = e => { A.q = e.target.value.toLowerCase(); ol() };
+ $('#of').onchange = e => { A.st = e.target.value; ol() };
+ $('#orf').onclick = tabO;
+ ol();
+}
+function ol(){
+ const today = iso(new Date());
+ const l = A.o.filter(o => (!A.st || o.status === A.st) &&
+  (o.order_number+' '+o.customer_name+' '+o.customer_phone).toLowerCase().includes(A.q));
+ $('#ol').innerHTML = l.length ? l.map(o =>
+  '<div class="oc'+(o.status==='nouvelle'?' nw':'')+'">'+
+   '<div class="ocH"><span class="ocN">#'+esc(o.order_number)+' · '+esc(o.customer_name)+'</span>'+
+   '<span class="st '+STC[o.status]+'">'+esc(ST[o.status]||o.status)+'</span></div>'+
+   '<div class="mu">Retrait <b style="color:var(--i)">'+esc(o.pickup_date===today?'aujourd’hui':new Date(o.pickup_date+'T12:00:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'}))+'</b> · '+esc(slot2(o.pickup_slot))+
+   ' — reçue le '+esc(new Date(o.created_at).toLocaleString('fr-FR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}))+'</div>'+
+   '<ul>'+(o.order_items||[]).map(i =>
+    '<li><span><span class="qty">'+esc(i.quantity)+' '+esc(i.price_unit||'')+'</span> × '+esc(i.product_name)+'</span><span>'+(i.line_total==null?'prix boutique':eur(i.line_total))+'</span></li>').join('')+'</ul>'+
+   (o.customer_note ? '<p style="border-left:2px solid var(--r);padding-left:12px;font-style:italic">'+esc(o.customer_note)+'</p>' : '')+
+   '<div class="ocH"><span>Total estimatif : <b style="color:var(--r2);font-size:1.15rem">'+eur(o.total)+'</b></span>'+
+   '<div class="ocA">'+
+    '<a class="btn o sm" href="tel:'+esc(String(o.customer_phone).replace(/[^+0-9]/g,''))+'"><svg class="ic"><use href="#i-tel"/></svg>'+esc(o.customer_phone)+'</a>'+
+    '<button class="btn o sm" data-pr="'+o.id+'"><svg class="ic"><use href="#i-print"/></svg>Bon</button>'+
+    (NEXT[o.status] ? '<button class="btn sm" data-nx="'+o.id+'">→ '+esc(ST[NEXT[o.status]])+'</button>' : '')+
+    '<select data-st="'+o.id+'" aria-label="Statut">'+opt(ST, o.status)+'</select>'+
+   '</div></div>'+
+  '</div>').join('') : '<p class="mu">Aucune commande ne correspond à ce filtre.</p>';
+
+ $$('[data-nx]').forEach(b => b.onclick = () => setStatus(b.dataset.nx, NEXT[A.o.find(x => x.id === b.dataset.nx).status]));
+ $$('[data-pr]').forEach(b => b.onclick = () => {
+  const o = A.o.find(x => x.id === b.dataset.pr);
+  buildTicket(o.order_number, o.customer_name, o.customer_phone, o.pickup_date, o.pickup_slot,
+   (o.order_items||[]).map(i => ({ n:i.product_name, q:i.quantity+' '+(i.price_unit||''), t:i.line_total })), o.total);
+  window.print();
+ });
+}
+async function setStatus(id, st){
+ const { error } = await sb.from('orders').update({ status:st }).eq('id', id);
+ if(error) return toast('Erreur : '+error.message, true);
+ const o = A.o.find(x => x.id === id); if(o) o.status = st;
+ toast('Statut : '+(ST[st]||st)); ol();
+}
+document.addEventListener('change', e => {
+ const id = e.target.dataset && e.target.dataset.st;
+ if(id) setStatus(id, e.target.value);
+});
+
+/* ---------- 14.3 PRODUITS ---------- */
+async function shrink(f, maxPx, keepAlpha){
+ const b = await createImageBitmap(f);
+ const k = Math.min(1, (maxPx || 1400)/Math.max(b.width, b.height));
+ const c = document.createElement('canvas');
+ c.width = Math.round(b.width*k); c.height = Math.round(b.height*k);
+ c.getContext('2d').drawImage(b, 0, 0, c.width, c.height);
+ const blob = (t,q) => new Promise(r => c.toBlob(r, t, q));
+ let o = await blob('image/webp', keepAlpha ? .92 : .82);
+ if(!o || o.type !== 'image/webp') o = await blob(keepAlpha ? 'image/png' : 'image/jpeg', .9);
+ return o;
+}
+async function rmFile(u){
+ const i = (u||'').indexOf(PUB);
+ if(i > -1) await BK().remove([decodeURIComponent(u.slice(i+PUB.length))]);
+}
+const thumb = u => u ? '<img class="thi" src="'+esc(u)+'" alt="">' : '<span class="mu">Pas de photo</span>';
+
+async function upImg(row, f){
+ if(!f) return;
+ if(f.size > 15e6) return toast('Image trop lourde (15 Mo maximum)', true);
+ toast('Compression et envoi de la photo…');
+ try{
+  const o = await shrink(f);
+  const path = row.dataset.p + '/' + Date.now() + '.' + (o.type === 'image/webp' ? 'webp' : 'jpg');
+  const up = await BK().upload(path, o, { contentType:o.type, cacheControl:'31536000' });
+  if(up.error) throw up.error;
+  const url = BK().getPublicUrl(path).data.publicUrl;
+  const r = await sb.from('products').update({ image_url:url }).eq('id', row.dataset.p);
+  if(r.error) throw r.error;
+  await rmFile(row.dataset.img);
+  row.dataset.img = url;
+  tabP();
+  toast('Photo enregistrée');
+ }catch(e){ toast('Erreur : '+(e.message||e), true) }
+}
+
+async function tabP(){
+ const [c,p] = await Promise.all([
+  sb.from('categories').select('*').order('sort_order'),
+  sb.from('products').select('*').order('sort_order')
+ ]);
+ if(c.error || p.error) return $('#at').innerHTML = '<p class="er">Erreur de chargement du catalogue.</p>';
+ const list = p.data || [], cats = c.data || [];
+ const co = Object.fromEntries(cats.map(x => [x.id, x.name]));
+ const un = Object.fromEntries(UN.map(u => [u, u]));
+ const sel = v => '<option value="">Sans catégorie</option>' + opt(co, v);
+ $('#at').innerHTML =
+ '<div class="pnl"><h3>Ajouter un produit</h3>'+
+  '<p class="mu" style="margin-bottom:12px">Le produit est créé en brouillon (non visible). Complétez-le puis cochez « En vente ».</p>'+
+  '<div class="p2" style="margin:0"><input id="nn" placeholder="Nom du produit" class="fw">'+
+  '<select id="nc">'+sel('')+'</select>'+
+  '<input id="npx" type="number" min="0" step="0.01" placeholder="Prix (vide = prix boutique)">'+
+  '<select id="nu">'+opt(un,'kg')+'</select>'+
+  '<button class="btn" id="na"><svg class="ic"><use href="#i-plus"/></svg>Créer</button></div></div>'+
+ '<div class="bar"><span class="srch"><svg class="ic"><use href="#i-search"/></svg><input id="pq" placeholder="Filtrer les produits…"></span>'+
+ '<span class="mu">'+list.length+' produit(s) · '+list.filter(x=>x.available).length+' en vente</span></div>'+
+ '<div id="pl"></div>';
+
+ const render = (flt) => {
+  const l = list.filter(x => !flt || (x.name+' '+(x.description||'')).toLowerCase().includes(flt));
+  $('#pl').innerHTML = l.map((x,i) =>
+   '<div class="p2" data-p="'+x.id+'" data-img="'+esc(x.image_url||'')+'">'+
+    '<div class="th">'+thumb(x.image_url)+
+     '<label class="btn o sm">Changer la photo<input class="pi" type="file" accept="image/*" hidden></label>'+
+     (x.image_url ? '<button class="btn o sm" data-rm>Retirer</button>' : '')+
+     '<span class="mu" style="margin-left:auto">'+(x.available?'● En vente':'○ Brouillon')+(x.featured?' · sélection':'')+'</span>'+
+    '</div>'+
+    '<input class="pn" value="'+esc(x.name)+'" aria-label="Nom" placeholder="Nom du produit">'+
+    '<textarea class="pd" rows="2" placeholder="Description visible par les clients">'+esc(x.description||'')+'</textarea>'+
+    '<select class="pc" aria-label="Catégorie">'+sel(x.category_id)+'</select>'+
+    '<input class="pp" type="number" min="0" step="0.01" placeholder="Prix (vide = boutique)" value="'+(x.price ?? '')+'">'+
+    '<select class="pu" aria-label="Unité">'+opt(un, x.price_unit)+'</select>'+
+    '<input class="pb" placeholder="Badge (Nouveau, Promo…)" value="'+esc(x.badge||'')+'">'+
+    '<input class="po" placeholder="Origine (France, Irlande…)" value="'+esc(x.origin||'')+'">'+
+    '<label><input class="pa" type="checkbox"'+(x.available?' checked':'')+'> En vente</label>'+
+    '<label><input class="pf" type="checkbox"'+(x.featured?' checked':'')+'> Sélection</label>'+
+    '<div class="fw ocA">'+
+     '<button class="btn sm" data-sv>Enregistrer</button>'+
+     '<button class="x" data-mvp="-1"'+(i?'':' disabled')+' aria-label="Monter">▲</button>'+
+     '<button class="x" data-mvp="1"'+(i<l.length-1?'':' disabled')+' aria-label="Descendre">▼</button>'+
+     '<button class="btn o sm" data-dup><svg class="ic"><use href="#i-copy"/></svg>Dupliquer</button>'+
+     '<button class="btn o sm" data-pdel><svg class="ic"><use href="#i-trash"/></svg>Supprimer</button>'+
+    '</div>'+
+   '</div>').join('') || '<p class="mu">Aucun produit.</p>';
+  bindP(list);
+ };
+ $('#pq').oninput = e => render(e.target.value.toLowerCase());
+ render('');
+
+ $('#na').onclick = async () => {
+  const n = $('#nn').value.trim(); if(!n) return toast('Indiquez un nom', true);
+  const pv = $('#npx').value;
+  const { error } = await sb.from('products').insert({
+   name:n, slug:slug(n)+'-'+Math.random().toString(36).slice(2,6),
+   category_id:$('#nc').value||null, price:pv===''?null:+pv, price_unit:$('#nu').value,
+   description:'', price_label:'Prix en boutique', available:false, featured:false,
+   sort_order:(list.length?Math.max(...list.map(x=>x.sort_order||0)):0)+10
+  });
+  if(error) return toast('Erreur : '+error.message+sqlHint(error), true);
+  toast('Produit créé en brouillon'); tabP();
+ };
+}
+
+function bindP(list){
+ $$('.pi').forEach(i => i.onchange = () => { upImg(i.closest('[data-p]'), i.files[0]); i.value = '' });
+ $$('[data-rm]').forEach(b => b.onclick = async () => {
+  const r = b.closest('[data-p]');
+  const { error } = await sb.from('products').update({ image_url:null }).eq('id', r.dataset.p);
+  if(error) return toast('Erreur : '+error.message, true);
+  await rmFile(r.dataset.img);
+  toast('Photo retirée'); tabP();
+ });
+ $$('[data-sv]').forEach(b => b.onclick = async () => {
+  const r = b.closest('[data-p]'), nm = r.querySelector('.pn').value.trim(), pv = r.querySelector('.pp').value;
+  if(!nm) return toast('Le nom est obligatoire', true);
+  b.disabled = true;
+  const res = await safeUpdate('products', {
+   name:nm,
+   description:r.querySelector('.pd').value.trim(),
+   category_id:r.querySelector('.pc').value || null,
+   price:pv === '' ? null : +pv,
+   price_unit:r.querySelector('.pu').value,
+   badge:r.querySelector('.pb').value.trim() || null,
+   origin:r.querySelector('.po').value.trim() || null,
+   available:r.querySelector('.pa').checked,
+   featured:r.querySelector('.pf').checked
+  }, r.dataset.p);
+  b.disabled = false;
+  toast(res.ok ? savedMsg(res.dropped) : 'Erreur : '+res.error.message+sqlHint(res.error), !res.ok);
+ });
+ $$('[data-dup]').forEach(b => b.onclick = async () => {
+  const x = list.find(y => y.id === b.closest('[data-p]').dataset.p);
+  const { error } = await sb.from('products').insert({
+   name:x.name+' (copie)', slug:slug(x.name)+'-'+Math.random().toString(36).slice(2,6),
+   description:x.description, category_id:x.category_id, price:x.price, price_unit:x.price_unit,
+   price_label:x.price_label, image_url:x.image_url, available:false, featured:false,
+   sort_order:(x.sort_order||0)+1
+  });
+  toast(error ? 'Erreur : '+error.message : 'Produit dupliqué (brouillon)', !!error);
+  if(!error) tabP();
+ });
+ $$('[data-pdel]').forEach(b => b.onclick = async () => {
+  const r = b.closest('[data-p]'), x = list.find(y => y.id === r.dataset.p);
+  if(!confirm('Supprimer définitivement « '+x.name+' » ?\n\nLes commandes passées conservent le nom du produit et ne seront pas modifiées.')) return;
+  const { error } = await sb.from('products').delete().eq('id', r.dataset.p);
+  if(error) return toast('Suppression impossible : '+error.message, true);
+  await rmFile(r.dataset.img);
+  toast('Produit supprimé'); tabP();
+ });
+ $$('[data-mvp]').forEach(b => b.onclick = async () => {
+  const id = b.closest('[data-p]').dataset.p;
+  const i = list.findIndex(x => x.id === id), j = i + (+b.dataset.mvp);
+  if(j < 0 || j >= list.length) return;
+  const arr = [...list]; [arr[i],arr[j]] = [arr[j],arr[i]];
+  const rs = await Promise.all(arr.map((x,k) => sb.from('products').update({ sort_order:(k+1)*10 }).eq('id', x.id)));
+  if(rs.some(r => r.error)) toast('Erreur de réorganisation', true);
+  tabP();
+ });
+}
+
+/* ---------- 14.4 CATÉGORIES ---------- */
+async function tabC(){
+ const { data:c, error } = await sb.from('categories').select('*').order('sort_order');
+ if(error) return $('#at').innerHTML = '<p class="er">Erreur de chargement.</p>';
+ $('#at').innerHTML =
+ '<div class="pnl"><h3>Ajouter une catégorie</h3>'+
+  '<div class="p2" style="margin:0"><input id="cn2i" placeholder="Nom de la catégorie (ex. Bœuf, Volaille, Agneau…)" class="fw">'+
+  '<button class="btn" id="ca"><svg class="ic"><use href="#i-plus"/></svg>Ajouter</button></div></div>'+
+  '<p class="mu" style="margin-bottom:14px">Réorganisez avec ▲ ▼ : l’ordre ci-dessous est celui des filtres sur le site. Une catégorie masquée disparaît du site mais ses produits restent.</p>'+
+ (c||[]).map((x,i) =>
+  '<div class="p2" data-c="'+x.id+'">'+
+   '<input class="cnm fw" value="'+esc(x.name)+'" aria-label="Nom">'+
+   '<label><input class="cac" type="checkbox"'+(x.active!==false?' checked':'')+'> Visible sur le site</label>'+
+   '<div class="ocA"><button class="x" data-mv="-1"'+(i?'':' disabled')+' aria-label="Monter">▲</button>'+
+   '<button class="x" data-mv="1"'+(i<c.length-1?'':' disabled')+' aria-label="Descendre">▼</button>'+
+   '<button class="btn sm" data-cs>Enregistrer</button>'+
+   '<button class="btn o sm" data-cd><svg class="ic"><use href="#i-trash"/></svg>Supprimer</button></div>'+
+  '</div>').join('');
+ $('#ca').onclick = async () => {
+  const n = $('#cn2i').value.trim(); if(!n) return toast('Indiquez un nom', true);
+  const { error } = await sb.from('categories').insert({ name:n, slug:slug(n), active:true,
+   sort_order:(c.length?Math.max(...c.map(x=>x.sort_order||0)):0)+10 });
+  toast(error ? 'Erreur : '+error.message : 'Catégorie ajoutée', !!error);
+  if(!error) tabC();
+ };
+ $$('[data-cs]').forEach(b => b.onclick = async () => {
+  const r = b.closest('[data-c]'), n = r.querySelector('.cnm').value.trim();
+  if(!n) return toast('Le nom est obligatoire', true);
+  const { error } = await sb.from('categories').update({ name:n, active:r.querySelector('.cac').checked }).eq('id', r.dataset.c);
+  toast(error ? 'Erreur : '+error.message : 'Catégorie enregistrée', !!error);
+ });
+ $$('[data-mv]').forEach(b => b.onclick = async () => {
+  const i = c.findIndex(x => x.id === b.closest('[data-c]').dataset.c), j = i + (+b.dataset.mv);
+  if(j < 0 || j >= c.length) return;
+  const arr = [...c]; [arr[i],arr[j]] = [arr[j],arr[i]];
+  const rs = await Promise.all(arr.map((x,k) => sb.from('categories').update({ sort_order:(k+1)*10 }).eq('id', x.id)));
+  if(rs.some(r => r.error)) toast('Erreur de réorganisation', true);
+  tabC();
+ });
+ $$('[data-cd]').forEach(b => b.onclick = async () => {
+  const id = b.closest('[data-c]').dataset.c;
+  if(!confirm('Supprimer cette catégorie ?\n\nSes produits seront conservés mais se retrouveront sans catégorie.')) return;
+  const u = await sb.from('products').update({ category_id:null }).eq('category_id', id);
+  if(u.error) return toast('Erreur : '+u.error.message, true);
+  const { error } = await sb.from('categories').delete().eq('id', id);
+  toast(error ? 'Erreur : '+error.message : 'Catégorie supprimée', !!error);
+  if(!error) tabC();
+ });
+}
+
+/* ---------- 14.5 RÉGLAGES ---------- */
+async function tabS(){
+ const { data:s, error } = await sb.from('store_settings').select('*').eq('id',1).maybeSingle();
+ if(error || !s) return $('#at').innerHTML = '<p class="er">Erreur de chargement des réglages.</p>';
+ const oh = s.opening_hours || {};
+ $('#at').innerHTML =
+ '<div class="pnl"><h3>Logo officiel de la boucherie</h3>'+
+  '<p class="mu" style="margin-bottom:14px">Ce logo est utilisé <b>partout</b> : vidéo d’intro, en-tête du site, pied de page, onglet du navigateur et espace admin. Format conseillé : PNG ou WebP carré avec fond transparent.</p>'+
+  '<div class="th" style="margin-bottom:12px">'+
+   '<img class="thi" id="lgPrev" src="'+esc(s.logo_url || LOGO)+'" alt="" style="background:#0B0B0C;object-fit:contain;padding:6px">'+
+   '<label class="btn">Choisir une image<input id="lgF" type="file" accept="image/*" hidden></label>'+
+   (s.logo_url ? '<button class="btn o" id="lgX">Revenir au logo par défaut</button>' : '')+
+   '<span class="mu">'+(s.logo_url ? 'Logo personnalisé actif' : 'Logo par défaut (fichier logo.js)')+'</span>'+
+  '</div>'+
+ '</div>'+
+ '<div class="pnl"><h3>Vidéo d’intro</h3>'+
+  '<p class="mu" style="margin-bottom:14px">Vidéo affichée en plein écran à l’ouverture du site, une fois par visite. Sans vidéo, c’est l’animation du logo qui est jouée. Format MP4, horizontal, 3 à 6 secondes, 25 Mo maximum.</p>'+
+  '<div class="th" style="margin-bottom:12px">'+
+   (s.intro_video_url ? '<video src="'+esc(s.intro_video_url)+'" class="thi" muted playsinline controls></video>' : '<span class="mu">Aucune vidéo — animation du logo</span>')+
+   '<label class="btn">Choisir une vidéo<input id="ivF" type="file" accept="video/*" hidden></label>'+
+   (s.intro_video_url ? '<button class="btn o" id="ivX">Retirer la vidéo</button>' : '')+
+  '</div>'+
+ '</div>'+
+ '<div class="pnl"><h3>Commandes en ligne</h3>'+
+  '<label class="p2" style="margin:0;border:0;padding:0"><input type="checkbox" id="sa"'+(s.accepting_orders?' checked':'')+'> Accepter les commandes en ligne</label>'+
+  '<p class="mu">Décoché : le catalogue reste visible, mais le bouton de commande est désactivé et un bandeau invite à appeler.</p>'+
+ '</div>'+
+ '<div class="pnl"><h3>Bandeau d’information</h3><div class="fm" style="margin:0">'+
+  '<label><span style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="sann"'+(s.announcement_active?' checked':'')+' style="width:18px;height:18px;min-height:0;accent-color:var(--r)"> Afficher le bandeau rouge en haut du site</span></label>'+
+  '<label>Message<input id="sanm" maxlength="160" value="'+esc(s.announcement||'')+'" placeholder="Ex. Fermeture exceptionnelle le 1er mai — commandes à retirer avant 12 h"></label>'+
+ '</div></div>'+
+ '<div class="pnl"><h3>Horaires d’ouverture</h3><p class="mu" style="margin-bottom:12px">Formats acceptés : <code>08:00-19:30</code>, <code>08:00-12:30,14:00-19:30</code> ou <code>closed</code>.</p><div class="fm" style="margin:0">'+
+  ORDER_DAYS.map(i => '<label>'+DFR[i]+'<input data-h="'+DAYS[i]+'" value="'+esc(oh[DAYS[i]]||'closed')+'"></label>').join('')+
+ '</div></div>'+
+ '<div class="pnl"><h3>Retrait des commandes</h3><div class="fm" style="margin:0">'+
+  '<label>Créneaux proposés (un par ligne, ex. 10:00-12:00)<textarea id="ss" rows="6">'+esc((s.pickup_slots||[]).join('\n'))+'</textarea></label>'+
+  '<label>Jours de fermeture exceptionnelle (un par ligne, AAAA-MM-JJ)<textarea id="sd" rows="3">'+esc((s.closed_dates||[]).join('\n'))+'</textarea></label>'+
+  '<div class="r2"><label>Délai minimum avant retrait (heures)<input id="sh" type="number" min="0" max="72" value="'+(s.min_lead_hours ?? 0)+'"></label>'+
+  '<label>Commandes max. par créneau (vide = illimité)<input id="sc" type="number" min="1" value="'+(s.slot_capacity ?? '')+'"></label></div>'+
+ '</div></div>'+
+ '<div class="pnl"><h3>Coordonnées affichées sur le site</h3><div class="fm" style="margin:0">'+
+  '<div class="r2"><label>Téléphone<input id="sp" value="'+esc(s.phone||'+33981541936')+'"></label>'+
+  '<label>Adresse<input id="sad" value="'+esc(s.address||'51 Avenue Général Leclerc')+'"></label></div>'+
+  '<div class="r2"><label>Lien Instagram<input id="sig" value="'+esc(s.instagram_url||'https://www.instagram.com/boucherie.acem/')+'"></label>'+
+  '<label>Lien Facebook<input id="sfb" value="'+esc(s.facebook_url||'https://www.facebook.com/p/Boucherie-Acem-61583428986283/')+'"></label></div>'+
+  '<label>Lien Google Maps (facultatif)<input id="smp" value="'+esc(s.maps_url||'')+'"></label>'+
+ '</div></div>'+
+ '<button class="btn" id="sv2">Enregistrer tous les réglages</button>';
+
+ /* --- logo officiel --- */
+ $('#lgF').onchange = async e => {
+  const f = e.target.files[0]; e.target.value = '';
+  if(!f) return;
+  if(!/^image\//.test(f.type)) return toast('Choisissez un fichier image', true);
+  if(f.size > 10e6) return toast('Image trop lourde (10 Mo maximum)', true);
+  toast('Envoi du logo…');
+  try{
+   const o = await shrink(f, 600, true);
+   const path = 'branding/logo-' + Date.now() + '.' + (o.type === 'image/webp' ? 'webp' : 'png');
+   const up = await BK().upload(path, o, { contentType:o.type, cacheControl:'3600' });
+   if(up.error) throw up.error;
+   const url = BK().getPublicUrl(path).data.publicUrl;
+   const r = await safeUpdate('store_settings', { logo_url:url }, 1);
+   if(!r.ok) throw r.error;
+   LOGO = url; applyLogo();
+   try{ localStorage.setItem('acem_logo', url) }catch(_){}
+   toast('Logo officiel enregistré'); tabS();
+  }catch(err){ toast('Erreur : '+(err.message||err)+sqlHint(err), true) }
+ };
+ if($('#lgX')) $('#lgX').onclick = async () => {
+  const r = await safeUpdate('store_settings', { logo_url:null }, 1);
+  if(!r.ok) return toast('Erreur : '+r.error.message, true);
+  try{ localStorage.removeItem('acem_logo') }catch(_){}
+  toast('Logo par défaut rétabli — rechargez la page'); tabS();
+ };
+
+ /* --- vidéo d'intro --- */
+ $('#ivF').onchange = async e => {
+  const f = e.target.files[0]; e.target.value = '';
+  if(!f) return;
+  if(!/^video\//.test(f.type)) return toast('Choisissez un fichier vidéo', true);
+  if(f.size > 25e6) return toast('Vidéo trop lourde (25 Mo maximum)', true);
+  toast('Envoi de la vidéo, patientez…');
+  try{
+   const ext = (f.name.split('.').pop() || 'mp4').toLowerCase().slice(0,4);
+   const path = 'branding/intro-' + Date.now() + '.' + ext;
+   const up = await BK().upload(path, f, { contentType:f.type, cacheControl:'3600' });
+   if(up.error) throw up.error;
+   const url = BK().getPublicUrl(path).data.publicUrl;
+   const r = await safeUpdate('store_settings', { intro_video_url:url }, 1);
+   if(!r.ok) throw r.error;
+   try{ localStorage.setItem('acem_intro_video', url) }catch(_){}
+   toast('Vidéo d’intro enregistrée'); tabS();
+  }catch(err){ toast('Erreur : '+(err.message||err)+sqlHint(err), true) }
+ };
+ if($('#ivX')) $('#ivX').onclick = async () => {
+  const r = await safeUpdate('store_settings', { intro_video_url:null }, 1);
+  if(!r.ok) return toast('Erreur : '+r.error.message, true);
+  try{ localStorage.removeItem('acem_intro_video') }catch(_){}
+  toast('Vidéo retirée — l’animation du logo reprend'); tabS();
+ };
+
+ $('#sv2').onclick = async () => {
+  const hrs = {}; let bad = '';
+  $$('[data-h]').forEach(i => {
+   const v = i.value.trim().replace(/\s/g,'');
+   if(!/^(closed|\d\d:\d\d-\d\d:\d\d(,\d\d:\d\d-\d\d:\d\d)*)$/.test(v)) bad = 'Horaires invalides pour « '+i.previousSibling.textContent+' »';
+   hrs[i.dataset.h] = v;
+  });
+  const sl = $('#ss').value.split('\n').map(x => x.trim()).filter(Boolean);
+  const cd = $('#sd').value.split('\n').map(x => x.trim()).filter(Boolean);
+  if(sl.some(x => !/^\d\d:\d\d-\d\d:\d\d$/.test(x))) bad = 'Créneau invalide (format 10:00-12:00)';
+  if(cd.some(x => !/^\d{4}-\d\d-\d\d$/.test(x))) bad = 'Date de fermeture invalide (format 2026-05-01)';
+  if(bad) return toast(bad, true);
+  const cap = $('#sc').value;
+  const payload = {
+   accepting_orders:$('#sa').checked, opening_hours:hrs, pickup_slots:sl, closed_dates:cd,
+   slot_capacity:cap === '' ? null : +cap,
+   announcement:$('#sanm').value.trim() || null, announcement_active:$('#sann').checked,
+   min_lead_hours:+($('#sh').value || 0),
+   phone:$('#sp').value.trim(), address:$('#sad').value.trim(),
+   instagram_url:$('#sig').value.trim() || null, facebook_url:$('#sfb').value.trim() || null,
+   maps_url:$('#smp').value.trim() || null
+  };
+  const res = await safeUpdate('store_settings', payload, 1);
+  if(!res.ok) return toast('Erreur : '+res.error.message+sqlHint(res.error), true);
+  toast(res.dropped.length ? savedMsg(res.dropped) : 'Réglages enregistrés');
+ };
+}
+</script>
+</body>
+</html>
