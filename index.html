@@ -672,24 +672,59 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
 @media(max-width:560px){.igg{grid-template-columns:1fr}.igload{min-height:340px}}
 
 /* ==========================================================================
-   23 ter. PARTENARIATS & COLLABORATIONS
+   23 ter. PARTENARIATS — affiche de match « Acem VS … »
+   Noms de classes préfixés mv- pour éviter tout conflit.
    ========================================================================== */
-.pts{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:clamp(14px,1.8vw,22px)}
-.pt{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:20px;overflow:hidden;
- background:linear-gradient(170deg,#FFFFFF0C,#FFFFFF04);
- transition:transform .4s var(--ease),border-color .3s,box-shadow .4s}
-.pt:hover{transform:translateY(-6px);border-color:#E1060066;box-shadow:0 22px 50px #00000073}
-.ptl{display:grid;place-items:center;aspect-ratio:16/10;background:var(--cream);padding:clamp(16px,2vw,26px);overflow:hidden}
-.ptl img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;transition:transform .55s var(--ease)}
-.pt:hover .ptl img{transform:scale(1.07)}
-.ptm{font:600 clamp(1.8rem,3vw,2.4rem) var(--serif);color:var(--rd);letter-spacing:.06em}
-.ptb{padding:clamp(15px,1.6vw,20px);display:grid;gap:8px;align-content:start;flex:1}
-.ptb h3{font-size:clamp(1.15rem,1rem + .5vw,1.38rem)}
-.ptb p{font-size:.87rem;color:var(--mu);line-height:1.55}
-.ptw{display:inline-flex;align-items:center;gap:7px;color:var(--r2);font-size:.84rem;margin-top:auto;padding-top:6px}
-.ptw svg{width:15px;height:15px;transition:transform .3s var(--ease)}
-.pt:hover .ptw svg{transform:translateX(4px)}
-@media(max-width:480px){.pts{grid-template-columns:1fr 1fr}.ptb{padding:12px}.ptb p{display:none}.ptb h3{font-size:1.02rem}}
+.mvs{display:grid;gap:clamp(11px,1.3vw,16px)}
+.mv{position:relative;display:block;border:1px solid var(--line);border-radius:16px;overflow:hidden;
+ background:linear-gradient(100deg,#1E0A0933 0%,#121214 42%,#121214 58%,#0E0E1033 100%);
+ transition:border-color .35s,box-shadow .4s,transform .35s var(--ease)}
+.mv:hover{border-color:#E1060059;box-shadow:0 16px 42px #00000066;transform:translateY(-3px)}
+/* ligne de partage inclinée, derrière le VS */
+.mv::before{content:'';position:absolute;top:-30%;bottom:-30%;left:50%;width:1px;
+ background:linear-gradient(transparent,var(--line2) 30%,var(--line2) 70%,transparent);
+ transform:skewX(-14deg);pointer-events:none}
+.mv-tag{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:2;
+ background:var(--r);color:#fff;font:600 .58rem var(--sans);letter-spacing:.17em;text-transform:uppercase;
+ padding:4px 14px 5px;border-radius:0 0 9px 9px;white-space:nowrap}
+.mv-row{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+ gap:clamp(10px,2.4vw,30px);padding:clamp(22px,2.4vw,28px) clamp(14px,2.4vw,30px) clamp(16px,2vw,22px)}
+.mv-side{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.3vw,16px);min-width:0;
+ transition:transform .4s var(--ease)}
+.mv-side.b{flex-direction:row-reverse}
+.mv:hover .mv-side.a{transform:translateX(-5px)}
+.mv:hover .mv-side.b{transform:translateX(5px)}
+.mv-crest{position:relative;flex:none;width:clamp(46px,5.6vw,68px);height:clamp(46px,5.6vw,68px);display:grid;place-items:center}
+.mv-crest::before{content:'';position:absolute;inset:-22%;border-radius:50%;
+ background:radial-gradient(#E1060038,transparent 68%);opacity:0;transition:opacity .45s}
+.mv:hover .mv-crest::before{opacity:1}
+.mv-crest img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;
+ filter:drop-shadow(0 5px 12px #000000A6);transition:transform .45s var(--ease)}
+.mv:hover .mv-crest img{transform:scale(1.07)}
+.mv-mono{font:600 1.3rem var(--serif);color:var(--r2);border:1px solid #E1060059;border-radius:50%;
+ width:100%;height:100%;display:grid;place-items:center;letter-spacing:.04em}
+.mv-name{font:600 clamp(.92rem,.76rem + .55vw,1.3rem) var(--serif);line-height:1.15;min-width:0;
+ overflow-wrap:anywhere}
+.mv-vs{position:relative;z-index:1;flex:none;display:grid;place-items:center;
+ width:clamp(40px,4.2vw,52px);height:clamp(40px,4.2vw,52px);border-radius:50%;
+ border:1px solid #E1060066;background:#0E0E10;transition:all .35s var(--ease)}
+.mv-vs span{font:700 .72rem var(--sans);letter-spacing:.08em;color:var(--r2);transition:color .35s}
+.mv:hover .mv-vs{background:var(--r);border-color:var(--r);transform:rotate(-8deg) scale(1.08)}
+.mv:hover .mv-vs span{color:#fff}
+.mv-foot{border-top:1px solid var(--line);padding:10px clamp(14px,2.4vw,30px);
+ display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;text-align:center}
+.mv-foot p{font-size:.85rem;color:var(--mu);line-height:1.5;margin:0}
+.mv-go{display:inline-flex;align-items:center;gap:6px;color:var(--r2);font-size:.8rem;white-space:nowrap}
+.mv-go svg{width:14px;height:14px;transition:transform .3s var(--ease)}
+.mv:hover .mv-go svg{transform:translateX(4px)}
+@media(min-width:1100px){.mvs.two{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){
+ .mv-row{grid-template-columns:1fr auto 1fr;gap:8px;padding:24px 10px 16px}
+ .mv-side,.mv-side.b{flex-direction:column;gap:9px;text-align:center}
+ .mv-name{font-size:.84rem}
+ .mv-foot{padding:9px 14px}
+ .mv-foot p{font-size:.8rem}
+}
 
 /* ==========================================================================
    24. AJUSTEMENTS MOBILE / TABLETTE
@@ -988,11 +1023,11 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
 <section class="sec sline" id="partenaires" hidden>
  <div class="w">
   <div class="hd rv">
-   <span class="eyebrow">Partenariats & collaborations</span>
-   <h2>Ils travaillent avec nous</h2>
-   <p class="lead">Producteurs, restaurants, traiteurs et commerçants du bassin grenoblois : des partenaires choisis pour la même exigence que la nôtre sur la qualité et la traçabilité.</p>
+   <span class="eyebrow">Partenariats</span>
+   <h2>Ils portent nos couleurs</h2>
+   <p class="lead">Clubs, restaurants et commerçants du bassin grenoblois avec qui nous faisons équipe.</p>
   </div>
-  <div class="pts rv" id="pts"></div>
+  <div class="mvs rv" id="pts"></div>
  </div>
 </section>
 
@@ -1373,7 +1408,11 @@ function banner(){
 }
 
 /* ---------- 7 bis. PARTENAIRES ---------- */
-const monogram = n => String(n||'?').trim().split(/\s+/).slice(0,2).map(w => w[0]||'').join('').toUpperCase();
+const PETITS = ['de','du','des','le','la','les','l','d','et','&','aux','au'];
+const monogram = n => {
+ const mots = String(n||'?').trim().split(/\s+/).filter(w => !PETITS.includes(w.toLowerCase().replace(/[’']/g,'')));
+ return (mots.length ? mots : [String(n||'?')]).slice(0,2).map(w => w[0] || '').join('').toUpperCase() || '?';
+};
 
 function partners(){
  const box = $('#pts'), sec = $('#partenaires');
@@ -1382,21 +1421,38 @@ function partners(){
  sec.hidden = !l.length;
  $$('[data-pnav]').forEach(a => { a.hidden = !l.length });
  if(!l.length) return;
+ box.classList.toggle('two', l.length > 2);
+ const crest = (url, name) => '<span class="mv-crest">' + (url
+   ? '<img src="'+esc(url)+'" alt="'+esc(name)+'" data-mono="'+esc(monogram(name))+'">'
+   : '<span class="mv-mono">'+esc(monogram(name))+'</span>') + '</span>';
  box.innerHTML = l.map(x => {
+  const foot = (x.description || x.website_url)
+   ? '<div class="mv-foot">'+
+     (x.description ? '<p>'+esc(x.description)+'</p>' : '')+
+     (x.website_url ? '<span class="mv-go">Découvrir<svg class="ic"><use href="#i-arrow"/></svg></span>' : '')+
+     '</div>' : '';
   const inner =
-   '<span class="ptl">'+(x.logo_url
-     ? '<img loading="lazy" src="'+esc(x.logo_url)+'" alt="'+esc(x.name)+'" onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{className:\'ptm\',textContent:this.alt.slice(0,2).toUpperCase()}))">'
-     : '<span class="ptm">'+esc(monogram(x.name))+'</span>')+'</span>'+
-   '<span class="ptb">'+
-    (x.role ? '<span class="tag">'+esc(x.role)+'</span>' : '')+
-    '<h3>'+esc(x.name)+'</h3>'+
-    (x.description ? '<p>'+esc(x.description)+'</p>' : '')+
-    (x.website_url ? '<span class="ptw">Découvrir<svg class="ic"><use href="#i-arrow"/></svg></span>' : '')+
-   '</span>';
+   '<span class="mv-tag">'+esc(x.role || 'Partenariat')+'</span>'+
+   '<div class="mv-row">'+
+    '<span class="mv-side a">'+crest(LOGO,'Boucherie Acem')+'<span class="mv-name">Boucherie Acem</span></span>'+
+    '<span class="mv-vs"><span>VS</span></span>'+
+    '<span class="mv-side b">'+crest(x.logo_url, x.name)+'<span class="mv-name">'+esc(x.name)+'</span></span>'+
+   '</div>'+ foot;
   return x.website_url
-   ? '<a class="pt" href="'+esc(x.website_url)+'" target="_blank" rel="noopener">'+inner+'</a>'
-   : '<article class="pt">'+inner+'</article>';
+   ? '<a class="mv" href="'+esc(x.website_url)+'" target="_blank" rel="noopener">'+inner+'</a>'
+   : '<article class="mv">'+inner+'</article>';
  }).join('');
+ /* logo introuvable ou illisible : on bascule sur les initiales */
+ $$('#pts .mv-crest img').forEach(img => {
+  const secours = () => {
+   const sp = document.createElement('span');
+   sp.className = 'mv-mono';
+   sp.textContent = img.dataset.mono || '?';
+   img.replaceWith(sp);
+  };
+  img.onerror = secours;
+  if(img.complete && img.naturalWidth === 0) secours();
+ });
  reveal();
 }
 
@@ -2474,10 +2530,10 @@ async function tabPt(){
  const l = data || [];
  $('#at').innerHTML =
  '<div class="pnl"><h3>Ajouter un partenaire</h3>'+
-  '<p class="mu" style="margin-bottom:12px">Créez la fiche avec le nom du commerçant, puis complétez-la et ajoutez son logo. '+
-  'Un partenaire n’apparaît sur le site que si « Visible » est coché. Sans logo, ses initiales s’affichent.</p>'+
+  '<p class="mu" style="margin-bottom:12px">Chaque partenaire s’affiche comme une <b>affiche de match</b> : votre logo à gauche, le sien à droite, « VS » au milieu. '+
+  'Fournissez un logo <b>détouré sur fond transparent</b> (PNG ou WebP). Un partenaire n’apparaît que si « Visible » est coché ; sans logo, ses initiales s’affichent.</p>'+
   '<div class="p2" style="margin:0"><input id="ptn" class="fw" placeholder="Nom du commerçant ou de l’établissement">'+
-  '<input id="ptr" placeholder="Rôle (Restaurant partenaire, Producteur…)">'+
+  '<input id="ptr" placeholder="Étiquette (Partenaire officiel, Sponsor maillot…)">'+
   '<button class="btn" id="pta"><svg class="ic"><use href="#i-plus"/></svg>Créer la fiche</button></div></div>'+
  '<p class="mu" style="margin-bottom:14px">'+l.length+' partenaire(s) · '+l.filter(x=>x.active!==false).length+' visible(s) sur le site. Utilisez ▲ ▼ pour l’ordre d’affichage.</p>'+
  (l.length ? l.map((x,i) =>
@@ -2490,7 +2546,7 @@ async function tabPt(){
     '<span class="mu" style="margin-left:auto">'+(x.active!==false ? '● Visible' : '○ Masqué')+'</span>'+
    '</div>'+
    '<input class="ptN fw" value="'+esc(x.name)+'" placeholder="Nom" aria-label="Nom">'+
-   '<input class="ptR" value="'+esc(x.role||'')+'" placeholder="Rôle affiché">'+
+   '<input class="ptR" value="'+esc(x.role||'')+'" placeholder="Étiquette rouge en haut de l’affiche">'+
    '<input class="ptU" value="'+esc(x.website_url||'')+'" placeholder="Site web (https://…)">'+
    '<textarea class="ptD fw" rows="2" placeholder="Quelques mots sur cette collaboration">'+esc(x.description||'')+'</textarea>'+
    '<label><input class="ptA" type="checkbox"'+(x.active!==false?' checked':'')+'> Visible sur le site</label>'+
