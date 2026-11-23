@@ -63,7 +63,7 @@ img{max-width:100%}
 .eyebrow{display:inline-flex;align-items:center;gap:9px;font:600 .72rem var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--r2)}
 .eyebrow::before{content:'';width:26px;height:1px;background:var(--r)}
 .lead{font-size:clamp(1rem,1.5vw,1.12rem);color:#D9D4CE;max-width:56ch}
-svg.ic{width:1.1em;height:1.1em;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+svg.ic{width:1.1em;height:1.1em;flex:none;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 /* ====================== 2. BOUTONS ====================== */
 .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--r);color:#fff;border:0;border-radius:999px;padding:13px 26px;font-weight:600;font-size:.95rem;cursor:pointer;min-height:48px;transition:transform .25s var(--ease),box-shadow .3s,background .2s;white-space:nowrap}
 .btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px #E1060055;background:#F50700}
@@ -725,6 +725,76 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
  .rv,.wsp>i{opacity:1!important;transform:none!important}
  html{scroll-behavior:auto}
 }
+
+/* ====================== FINITIONS v2 ====================== */
+/* alignements communs */
+.btn,.pill span,.ighandle{line-height:1.25}
+.btn{gap:10px}
+.pill span{min-height:36px}
+.mt span{display:inline-flex;align-items:center}
+.mt span::after{display:block;line-height:1}
+
+/* bannière : +6 % de hauteur, logo plus respirant, anneaux rouges uniquement (plus de liseré blanc) */
+.hero{min-height:min(98vh,960px);padding:60px 0}
+.lg{max-width:480px}
+.badge{width:82%}
+.ring{background:conic-gradient(var(--r),transparent 30%,#E1060073 50%,transparent 70%,var(--r))}
+.iring{background:conic-gradient(var(--r),transparent 32%,#E1060073 52%,transparent 74%,var(--r))}
+.badge img,.imark img,.logo img{background:transparent;border:0;outline:0;box-shadow:none;border-radius:0}
+@media(max-width:1000px){.lg{max-width:336px}}
+@media(max-width:860px){.hero{min-height:auto;padding:40px 0 60px}}
+
+/* vidéos Instagram : vraies vignettes, bouton lecture centré, voile léger, zoom au survol */
+.igf{display:block;aspect-ratio:4/5;min-height:0;padding:0;text-align:left;isolation:isolate}
+.igf .igi{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .9s var(--ease)}
+.igc:hover .igi,.igc:focus-visible .igi{transform:scale(1.06)}
+.igf::after{z-index:1;background:linear-gradient(180deg,#0B0B0C14 0%,#0B0B0C00 36%,#0B0B0C99 72%,#0B0B0CE6 100%),radial-gradient(circle at 50% 40%,#E1060026,transparent 60%)}
+.igf .ply{position:absolute;inset:0;margin:auto;z-index:2}
+.igf .igb{position:absolute;top:14px;right:14px;z-index:2;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#0B0B0C8C;border:1px solid #FFFFFF26;backdrop-filter:blur(6px);color:#fff;max-width:none}
+.igf .igb svg{width:17px;height:17px}
+.igt{position:absolute;left:0;right:0;bottom:0;z-index:2;display:grid;gap:5px;padding:0 22px 22px}
+.igt b{position:static;font:600 1.4rem/1.15 var(--serif);color:var(--i);text-shadow:0 1px 14px #000000B3}
+.igt p{font-size:.84rem;line-height:1.45;color:#E4DFD9;max-width:30ch;text-shadow:0 1px 10px #000000B3}
+.igc:focus-visible{outline:2px solid var(--r2);outline-offset:3px}
+
+/* colis : titres, prix, listes et boutons sur les mêmes lignes */
+.pk{padding:clamp(36px,3vw,40px) clamp(20px,2.2vw,28px) clamp(24px,2.4vw,30px);grid-template-rows:auto auto 1fr auto;row-gap:14px;align-content:stretch}
+.pk h3,.pk .pkp{line-height:1.1}
+.pk ul{align-content:start;gap:10px;margin:2px 0 6px}
+.pk li{display:grid;grid-template-columns:16px 1fr;column-gap:12px;align-items:start;line-height:1.5}
+.pk li svg{width:16px;height:16px;margin:calc((1.5em - 16px)/2) 0 0}
+.pk .btn{align-self:end;width:100%;min-height:52px}
+@supports (grid-template-rows:subgrid){.pk{grid-row:span 4;grid-template-rows:subgrid}}
+@media(max-width:480px){.pk{padding:36px 18px 22px}}
+
+/* barre mobile : icônes centrées au-dessus des libellés, zone de sécurité iPhone */
+#mb{padding:8px max(12px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));gap:8px}
+#mb a,#mb button{position:relative;flex:1 1 0;min-width:0;flex-direction:column;gap:5px;min-height:56px;padding:6px 4px;border-radius:14px;font:600 .74rem/1 var(--sans);letter-spacing:.02em;text-align:center;-webkit-tap-highlight-color:transparent}
+#mb svg.ic{width:22px;height:22px;stroke-width:1.8}
+#mb #cn2{position:absolute;top:5px;left:calc(50% + 7px);min-width:18px;height:18px;padding:0 5px;border-radius:99px;background:var(--i);color:var(--r);font-size:.66rem;font-weight:700;line-height:1;display:grid;place-items:center}
+@media(max-width:860px){
+ body{padding-bottom:calc(88px + env(safe-area-inset-bottom))}
+ #up{bottom:calc(88px + env(safe-area-inset-bottom))}
+}
+/* badge du panier (en-tête) : ne plus le rogner */
+#cb{overflow:visible}
+/* notification : invisible tant qu'elle n'est pas affichée (elle dépassait en bas de l'écran), et placée au-dessus de la barre mobile */
+#tt{opacity:0;visibility:hidden;transition:transform .4s var(--ease),opacity .3s,visibility 0s .4s}
+#tt.on{opacity:1;visibility:visible;transition-delay:0s}
+@media(max-width:860px){#tt{bottom:calc(88px + env(safe-area-inset-bottom))}}
+/* menu déroulant animé (rideau + liens en cascade) et flèche « remonter » centrée */
+#up svg.rg{inset:0;margin:auto}
+#up svg.ar{display:block}
+@media(max-width:860px){
+ nav#nv{display:flex;visibility:hidden;opacity:0;pointer-events:none;transform:translateY(-10px);clip-path:inset(0% 0% 100% 0%);
+  transition:clip-path .5s var(--ease),transform .5s var(--ease),opacity .3s ease,visibility 0s .5s}
+ nav#nv.on{visibility:visible;opacity:1;pointer-events:auto;transform:none;clip-path:inset(0% 0% 0% 0%);transition-delay:0s}
+ nav#nv a{opacity:0;transform:translateY(-10px);transition:opacity .2s ease,transform .25s var(--ease),color .2s}
+ nav#nv.on a{opacity:1;transform:none;transition:opacity .45s var(--ease),transform .55s var(--ease),color .2s;transition-delay:calc(.1s + var(--i,0)*.05s),calc(.1s + var(--i,0)*.05s),0s}
+ nav#nv a:nth-child(2){--i:1}nav#nv a:nth-child(3){--i:2}nav#nv a:nth-child(4){--i:3}nav#nv a:nth-child(5){--i:4}
+ nav#nv a:nth-child(6){--i:5}nav#nv a:nth-child(7){--i:6}nav#nv a:nth-child(8){--i:7}nav#nv a:nth-child(9){--i:8}
+}
+@media(prefers-reduced-motion:reduce){nav#nv.on a{transition-delay:0s!important}}
 </style>
 </head>
 <body>
@@ -767,9 +837,9 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
   </nav>
   <div class="hact">
    <span class="sta" id="sta" title="Horaires d’ouverture"><i></i><span>…</span></span>
-   <a class="btn o sm" id="telBtn" href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg><span>09 81 54 19 36</span></a>
-   <button class="btn" id="cb" aria-label="Ouvrir le panier"><svg class="ic"><use href="#i-cart"/></svg><span id="cn">0</span></button>
-   <button id="bg" aria-label="Menu" aria-expanded="false"><svg class="ic"><use href="#i-menu"/></svg></button>
+   <a class="btn o sm" id="telBtn" href="tel:+33981541936"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tel"/></svg><span>09 81 54 19 36</span></a>
+   <button class="btn" id="cb" aria-label="Ouvrir le panier"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cart"/></svg><span id="cn">0</span></button>
+   <button id="bg" aria-label="Menu" aria-expanded="false"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-menu"/></svg></button>
   </div>
  </div>
 </header>
@@ -785,13 +855,13 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
    <h1><span class="wd" style="--n:0">Boucherie</span> <span class="wd" style="--n:1"><em>Acem</em></span></h1>
    <p class="lead bl b2">Des viandes choisies une à une, découpées devant vous. Black Angus et Wagyu selon arrivages, préparations maison du jour. Vous commandez en ligne, nous préparons, vous retirez et réglez en boutique.</p>
    <div class="hcta bl b3">
-    <a class="btn" href="#catalogue"><svg class="ic"><use href="#i-cart"/></svg>Découvrir le catalogue</a>
+    <a class="btn" href="#catalogue"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cart"/></svg>Découvrir le catalogue</a>
     <a class="btn o" href="#commander">Comment commander</a>
    </div>
    <div class="pill bl b4">
-    <span><svg class="ic"><use href="#i-check"/></svg>100 % halal</span>
-    <span><svg class="ic"><use href="#i-knife"/></svg>Découpe à la demande</span>
-    <span><svg class="ic"><use href="#i-shop"/></svg>Paiement en boutique</span>
+    <span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>100 % halal</span>
+    <span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-knife"/></svg>Découpe à la demande</span>
+    <span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shop"/></svg>Paiement en boutique</span>
    </div>
    <div class="hst bl b4">
     <div><b data-count="7">0</b><span>jours sur 7 d’arrivages</span></div>
@@ -820,10 +890,10 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
    <p class="lead">Pas de libre-service anonyme : un comptoir, un boucher, et des conseils qui changent la cuisson de votre plat.</p>
   </div>
   <div class="eng rv">
-   <div><svg class="ic"><use href="#i-check"/></svg><h3>100 % halal</h3><p>Toutes nos viandes sont halal, sans exception et sans mélange en atelier. Filières et certificats disponibles en boutique.</p></div>
-   <div><svg class="ic"><use href="#i-leaf"/></svg><h3>Fraîcheur du jour</h3><p>Réceptions régulières, vitrine renouvelée, rien ne dort en chambre froide. Ce que vous voyez est ce qui est arrivé.</p></div>
-   <div><svg class="ic"><use href="#i-knife"/></svg><h3>Découpe à la demande</h3><p>Épaisseur de côte, pièce à griller, viande hachée minute, colis à partager : on taille selon votre besoin réel.</p></div>
-   <div><svg class="ic"><use href="#i-chat"/></svg><h3>Conseils de cuisson</h3><p>Chaque pièce part avec le mode de cuisson qui lui va. Un doute sur un plat ? Demandez, c’est compris dans le prix.</p></div>
+   <div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg><h3>100 % halal</h3><p>Toutes nos viandes sont halal, sans exception et sans mélange en atelier. Filières et certificats disponibles en boutique.</p></div>
+   <div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-leaf"/></svg><h3>Fraîcheur du jour</h3><p>Réceptions régulières, vitrine renouvelée, rien ne dort en chambre froide. Ce que vous voyez est ce qui est arrivé.</p></div>
+   <div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-knife"/></svg><h3>Découpe à la demande</h3><p>Épaisseur de côte, pièce à griller, viande hachée minute, colis à partager : on taille selon votre besoin réel.</p></div>
+   <div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat"/></svg><h3>Conseils de cuisson</h3><p>Chaque pièce part avec le mode de cuisson qui lui va. Un doute sur un plat ? Demandez, c’est compris dans le prix.</p></div>
   </div>
  </div>
 </section>
@@ -837,7 +907,7 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
    <p class="lead">Prix et disponibilités mis à jour par la boutique. Les produits au poids sont facturés au poids réel pesé lors du retrait.</p>
   </div>
   <div class="bar rv">
-   <span class="srch"><svg class="ic"><use href="#i-search"/></svg><input id="q" type="search" placeholder="Rechercher une pièce, une préparation…" aria-label="Rechercher un produit"></span>
+   <span class="srch"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-search"/></svg><input id="q" type="search" placeholder="Rechercher une pièce, une préparation…" aria-label="Rechercher un produit"></span>
    <select id="so" aria-label="Trier les produits">
     <option value="feat">Tri : notre sélection</option>
     <option value="name">Nom A → Z</option>
@@ -863,17 +933,17 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
   <div class="w spr" data-go="#catalogue">
    <div class="spn">01</div>
    <div class="spc"><h3>Black Angus</h3><p>Une race élevée pour le gras intramusculaire : la viande reste tendre même sur une cuisson franche. Côtes épaisses, entrecôtes, pavés — on taille devant vous selon le nombre de convives.</p><div class="spt"><b>Côte épaisse</b><b>Entrecôte</b><b>Pavé</b><b>Bavette</b></div></div>
-   <div class="spa"><svg class="ic"><use href="#i-arrow"/></svg></div>
+   <div class="spa"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></div>
   </div>
   <div class="w spr" data-go="#catalogue">
    <div class="spn">02</div>
    <div class="spc"><h3>Wagyu, selon arrivages</h3><p>Un persillé fin qui fond à la poêle et ne demande presque rien : une plancha brûlante, du sel, rien d’autre. Quantités très limitées — appelez-nous pour savoir ce qui est en vitrine aujourd’hui.</p><div class="spt"><b>Quantités limitées</b><b>Sur réservation</b></div></div>
-   <div class="spa"><svg class="ic"><use href="#i-arrow"/></svg></div>
+   <div class="spa"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></div>
   </div>
   <div class="w spr" data-go="#catalogue">
    <div class="spn">03</div>
    <div class="spc"><h3>Préparations maison</h3><p>Merguez, brochettes marinées, chich taouk, viande hachée minute, cecina : préparées à l’atelier, sans sous-traitance. Les marinades sont faites la veille pour que les épices prennent vraiment.</p><div class="spt"><b>Merguez</b><b>Brochettes</b><b>Chich taouk</b><b>Haché minute</b><b>Cecina</b></div></div>
-   <div class="spa"><svg class="ic"><use href="#i-arrow"/></svg></div>
+   <div class="spa"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></div>
   </div>
  </div>
 </section>
@@ -888,13 +958,13 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
     <p class="lead">Les arrivages du matin, la découpe au billot, les préparations qui sortent de l’atelier : tout passe d’abord sur notre Instagram.</p>
    </div>
    <a class="ighandle" id="igHandle" href="https://www.instagram.com/boucherie.acem/" target="_blank" rel="noopener">
-    <svg class="ic"><use href="#i-ig"/></svg><b>@boucherie.acem</b>
+    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ig"/></svg><b>@boucherie.acem</b>
    </a>
   </div>
   <div class="igg rv" id="igg"></div>
   <div style="margin-top:clamp(22px,3vw,34px)" class="rv">
    <a class="btn o mag" id="igAll" href="https://www.instagram.com/boucherie.acem/" target="_blank" rel="noopener">
-    <svg class="ic"><use href="#i-ig"/></svg>Voir toutes les vidéos sur Instagram
+    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ig"/></svg>Voir toutes les vidéos sur Instagram
    </a>
   </div>
  </div>
@@ -912,35 +982,35 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
    <div class="pk rv" style="--d:0ms">
     <h3>Colis Famille</h3><div class="pkp">Dès 59 €</div>
     <ul>
-     <li><svg class="ic"><use href="#i-check"/></svg>Environ 5 kg de viandes variées</li>
-     <li><svg class="ic"><use href="#i-check"/></svg>Bœuf à griller, à mijoter, poulet</li>
-     <li><svg class="ic"><use href="#i-check"/></svg>Préparations maison incluses</li>
-     <li><svg class="ic"><use href="#i-check"/></svg>Découpe et portions à votre choix</li>
+     <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Environ 5 kg de viandes variées</li>
+     <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Bœuf à griller, à mijoter, poulet</li>
+     <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Préparations maison incluses</li>
+     <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Découpe et portions à votre choix</li>
     </ul>
-    <a class="btn o" href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg>Réserver ce colis</a>
+    <a class="btn o" href="tel:+33981541936"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tel"/></svg>Réserver ce colis</a>
    </div>
    <div class="pk hi rv" style="--d:110ms">
     <h3>Box Barbecue</h3><div class="pkp">Dès 45 €</div>
     <ul>
-     <li><svg class="ic"><use href="#i-check"/></svg>Merguez et brochettes maison</li>
-     <li><svg class="ic"><use href="#i-check"/></svg>Côtelettes et pièces à griller</li>
-     <li><svg class="ic"><use href="#i-check"/></svg>Marinades préparées la veille</li>
-     <li><svg class="ic"><use href="#i-check"/></svg>Prévu pour 6 à 8 personnes</li>
+     <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Merguez et brochettes maison</li>
+     <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Côtelettes et pièces à griller</li>
+     <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Marinades préparées la veille</li>
+     <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Prévu pour 6 à 8 personnes</li>
     </ul>
-    <a class="btn" href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg>Réserver ce colis</a>
+    <a class="btn" href="tel:+33981541936"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tel"/></svg>Réserver ce colis</a>
    </div>
    <div class="pk rv" style="--d:220ms">
     <h3>Plateau Dégustation</h3><div class="pkp">Sur devis</div>
     <ul>
-     <li><svg class="ic"><use href="#i-check"/></svg>Pièces d’exception du moment</li>
-     <li><svg class="ic"><use href="#i-check"/></svg>Black Angus, Wagyu si disponible</li>
-     <li><svg class="ic"><use href="#i-check"/></svg>Conseils de cuisson pièce par pièce</li>
-     <li><svg class="ic"><use href="#i-check"/></svg>À réserver 48 h à l’avance</li>
+     <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Pièces d’exception du moment</li>
+     <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Black Angus, Wagyu si disponible</li>
+     <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>Conseils de cuisson pièce par pièce</li>
+     <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg>À réserver 48 h à l’avance</li>
     </ul>
-    <a class="btn o" href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg>Demander un devis</a>
+    <a class="btn o" href="tel:+33981541936"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tel"/></svg>Demander un devis</a>
    </div>
   </div>
-  <div class="note rv"><svg class="ic"><use href="#i-info"/></svg><p>Les tarifs des colis varient selon les arrivages et les pièces choisies. Le montant exact vous est confirmé en boutique avant préparation — <b>aucun prélèvement en ligne</b>.</p></div>
+  <div class="note rv"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-info"/></svg><p>Les tarifs des colis varient selon les arrivages et les pièces choisies. Le montant exact vous est confirmé en boutique avant préparation — <b>aucun prélèvement en ligne</b>.</p></div>
  </div>
 </section>
 
@@ -957,7 +1027,7 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
    <div><h3>Retirez et réglez</h3><p>La boutique confirme votre commande, la prépare, et vous réglez sur place au comptoir. Rien n’est débité avant.</p></div>
   </div>
   <div class="note rv">
-   <svg class="ic"><use href="#i-shield"/></svg>
+   <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield"/></svg>
    <p><b>Aucun paiement en ligne.</b> Ce site ne collecte ni carte bancaire ni acompte : vous payez uniquement en boutique, au moment du retrait. Votre commande reste soumise à confirmation par la boutique.</p>
   </div>
  </div>
@@ -991,17 +1061,17 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
     <div class="ibox">
      <h3>La boutique</h3>
      <p style="margin-bottom:14px"><b id="addr">51 Avenue Général Leclerc</b><br><span class="mu">38950 Saint-Martin-le-Vinoux</span></p>
-     <a class="ilnk" id="telLnk" href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg><b>09 81 54 19 36</b></a>
-     <a class="ilnk" id="mapLnk" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=51+Avenue+General+Leclerc+38950+Saint-Martin-le-Vinoux"><svg class="ic"><use href="#i-map"/></svg>Itinéraire et plan d’accès</a>
-     <a class="ilnk" href="#catalogue"><svg class="ic"><use href="#i-cart"/></svg>Commander et retirer en boutique</a>
+     <a class="ilnk" id="telLnk" href="tel:+33981541936"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tel"/></svg><b>09 81 54 19 36</b></a>
+     <a class="ilnk" id="mapLnk" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=51+Avenue+General+Leclerc+38950+Saint-Martin-le-Vinoux"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-map"/></svg>Itinéraire et plan d’accès</a>
+     <a class="ilnk" href="#catalogue"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cart"/></svg>Commander et retirer en boutique</a>
     </div>
    </div>
    <div class="rv" style="--d:220ms">
     <h3>Suivez les arrivages</h3>
     <p class="mu">Les pièces du jour, les nouveautés et les colis de saison sont annoncés sur nos réseaux.</p>
     <div class="soc" style="margin-top:16px">
-     <a href="https://www.instagram.com/boucherie.acem/" target="_blank" rel="noopener" aria-label="Instagram" style="border-color:#12121426;color:#121214"><svg class="ic"><use href="#i-ig"/></svg></a>
-     <a href="https://www.facebook.com/p/Boucherie-Acem-61583428986283/" target="_blank" rel="noopener" aria-label="Facebook" style="border-color:#12121426;color:#121214"><svg class="ic"><use href="#i-fb"/></svg></a>
+     <a href="https://www.instagram.com/boucherie.acem/" target="_blank" rel="noopener" aria-label="Instagram" style="border-color:#12121426;color:#121214"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ig"/></svg></a>
+     <a href="https://www.facebook.com/p/Boucherie-Acem-61583428986283/" target="_blank" rel="noopener" aria-label="Facebook" style="border-color:#12121426;color:#121214"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fb"/></svg></a>
     </div>
     <p class="mu" style="margin-top:20px">Vous êtes un professionnel (restaurant, traiteur, collectivité) ? Contactez-nous pour les volumes et les tarifs dédiés.</p>
    </div>
@@ -1016,7 +1086,7 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
   <h2>Dites-nous ce qu’il vous faut,<br>on le prépare</h2>
   <p class="lead" style="margin:auto">Une pièce particulière, un poids exact, un repas de fête : appelez la boutique, on s’occupe du reste.</p>
   <div class="hcta">
-   <a class="btn" href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg>09 81 54 19 36</a>
+   <a class="btn" href="tel:+33981541936"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tel"/></svg>09 81 54 19 36</a>
    <a class="btn o" href="#catalogue">Parcourir le catalogue</a>
   </div>
  </div>
@@ -1030,8 +1100,8 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
     <a class="logo" href="#top"><img data-logo alt=""><span class="lgt"><b>Boucherie Acem</b><span>Halal premium</span></span></a>
     <p class="mu" style="margin-top:16px;max-width:34ch">Boucherie halal à Saint-Martin-le-Vinoux, aux portes de Grenoble. Viandes fraîches, pièces d’exception et préparations maison.</p>
     <div class="soc">
-     <a href="https://www.instagram.com/boucherie.acem/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ic"><use href="#i-ig"/></svg></a>
-     <a href="https://www.facebook.com/p/Boucherie-Acem-61583428986283/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ic"><use href="#i-fb"/></svg></a>
+     <a href="https://www.instagram.com/boucherie.acem/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ig"/></svg></a>
+     <a href="https://www.facebook.com/p/Boucherie-Acem-61583428986283/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fb"/></svg></a>
     </div>
    </div>
    <div class="fc"><h4>La boutique</h4><a href="#catalogue">Catalogue</a><a href="#specialites">Spécialités</a><a href="#videos">Vidéos</a><a href="#colis">Colis & formules</a><a href="#commander">Commander en ligne</a></div>
@@ -1049,16 +1119,16 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
 </footer>
 
 <div id="mb">
- <a href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg>Appeler</a>
- <a href="#catalogue"><svg class="ic"><use href="#i-search"/></svg>Catalogue</a>
- <button class="pm" data-open="cart"><svg class="ic"><use href="#i-cart"/></svg>Panier <span id="cn2">0</span></button>
+ <a href="tel:+33981541936"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tel"/></svg>Appeler</a>
+ <a href="#catalogue"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-search"/></svg>Catalogue</a>
+ <button class="pm" data-open="cart"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cart"/></svg>Panier <span id="cn2">0</span></button>
 </div>
 </div><!-- /#pub -->
 
 <!-- =============== PANIER =============== -->
 <div id="ov"></div>
 <aside id="dr" aria-label="Votre panier">
- <div class="drh"><h2>Votre panier</h2><button class="x" data-close aria-label="Fermer le panier"><svg class="ic"><use href="#i-close"/></svg></button></div>
+ <div class="drh"><h2>Votre panier</h2><button class="x" data-close aria-label="Fermer le panier"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-close"/></svg></button></div>
  <div id="cl"></div>
  <div id="ct"></div>
 </aside>
@@ -1141,7 +1211,7 @@ const reduced = () => matchMedia('(prefers-reduced-motion:reduce)').matches;
 
 function toast(msg, bad){
  const t = $('#tt');
- t.innerHTML = '<svg class="ic"><use href="#'+(bad?'i-info':'i-check')+'"/></svg><span>'+esc(msg)+'</span>';
+ t.innerHTML = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#'+(bad?'i-info':'i-check')+'"/></svg><span>'+esc(msg)+'</span>';
  t.classList.toggle('bad', !!bad); t.classList.add('on');
  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('on'), 3200);
 }
@@ -1201,7 +1271,7 @@ const FAQ = [
  ['Comment conserver la viande après le retrait ?','Rentrez-la au frais rapidement : 2 à 3 jours au réfrigérateur pour les pièces entières, 24 h pour le haché et les préparations marinées. Tout se congèle très bien le jour du retrait, à plat et bien emballé.'],
  ['Faites-vous des commandes spéciales ou pour les professionnels ?','Oui : pièces particulières, découpes précises, grandes quantités pour restaurants, traiteurs ou événements familiaux. Appelez la boutique, nous établissons un devis adapté.']
 ];
-$('#faqL').innerHTML = FAQ.map((f,i) => '<div class="fq"><button aria-expanded="false" data-fq="'+i+'">'+esc(f[0])+'<svg class="ic"><use href="#i-plus"/></svg></button><div class="fqa"><p>'+esc(f[1])+'</p></div></div>').join('');
+$('#faqL').innerHTML = FAQ.map((f,i) => '<div class="fq"><button aria-expanded="false" data-fq="'+i+'">'+esc(f[0])+'<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plus"/></svg></button><div class="fqa"><p>'+esc(f[1])+'</p></div></div>').join('');
 
 /* ---------- 6. ÉTAT ---------- */
 const S = { cats:[], prods:[], set:{}, cat:'all', q:'', sort:'feat', cart:[], vp:null, ready:false };
@@ -1222,7 +1292,7 @@ async function init(){
   sb.from('store_settings').select('*').eq('id',1).maybeSingle()
  ]);
  if(p.error){
-  $('#grid').innerHTML = '<div class="empty"><svg class="ic"><use href="#i-info"/></svg><h3>Catalogue momentanément indisponible</h3><p class="mu">Un souci technique nous empêche d’afficher les produits. Appelez-nous, on vous renseigne tout de suite.</p><a class="btn" href="tel:+33981541936">09 81 54 19 36</a></div>';
+  $('#grid').innerHTML = '<div class="empty"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-info"/></svg><h3>Catalogue momentanément indisponible</h3><p class="mu">Un souci technique nous empêche d’afficher les produits. Appelez-nous, on vous renseigne tout de suite.</p><a class="btn" href="tel:+33981541936">09 81 54 19 36</a></div>';
   return;
  }
  S.cats  = (c.data || []).filter(x => x.active !== false);
@@ -1254,7 +1324,7 @@ function chips(){
 
 const pimg = (p, cls) => p.image_url
  ? '<img loading="lazy" src="'+esc(p.image_url)+'" alt="'+esc(p.name)+'" onerror="this.style.display=\'none\'">'
- : '<span class="ph"><svg class="ic"><use href="#i-knife"/></svg></span>';
+ : '<span class="ph"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-knife"/></svg></span>';
 
 function badges(p){
  const b = [];
@@ -1272,7 +1342,7 @@ const card = (p,i) =>
    '<h3>'+esc(p.name)+'</h3>'+
    '<p class="cl2">'+esc(p.description || '')+'</p>'+
    '<div class="cbtm"><span class="pr">'+priceTxt(p)+'</span>'+
-   '<button class="add" data-add="'+p.id+'" aria-label="Ajouter '+esc(p.name)+' au panier"><svg class="ic"><use href="#i-plus"/></svg></button></div>'+
+   '<button class="add" data-add="'+p.id+'" aria-label="Ajouter '+esc(p.name)+' au panier"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plus"/></svg></button></div>'+
   '</div></article>';
 
 function grid(){
@@ -1292,7 +1362,7 @@ function grid(){
  if(window.__mx) setTimeout(window.__mx.refresh, 0);
  $('#grid').innerHTML = l.length
   ? l.map(card).join('')
-  : '<div class="empty"><svg class="ic"><use href="#i-search"/></svg><h3>Aucun produit ne correspond</h3><p class="mu">Essayez un autre mot ou revenez à l’ensemble du catalogue.</p><button class="btn o" data-cat="all">Tout afficher</button></div>';
+  : '<div class="empty"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-search"/></svg><h3>Aucun produit ne correspond</h3><p class="mu">Essayez un autre mot ou revenez à l’ensemble du catalogue.</p><button class="btn o" data-cat="all">Tout afficher</button></div>';
  reveal();
 }
 
@@ -1337,30 +1407,42 @@ function banner(){
 
 /* ---------- 7 bis. VIDÉOS INSTAGRAM ---------- */
 let igDone = false;
-const igTile = (href, title, sub) =>
- '<a class="igc" href="'+esc(href)+'" target="_blank" rel="noopener">'+
-  '<span class="igf"><span class="ply"><svg class="ic"><use href="#i-play"/></svg></span>'+
-  '<b>'+esc(title)+'</b><span>'+esc(sub)+'</span></span></a>';
+/* Vignettes Instagram : une vraie image par vidéo, à déposer dans images/instagram/ (noms ci-dessous).
+   Tant qu'une image est absente, la vignette sombre reste affichée : aucune fausse miniature n'est utilisée. */
+const IG_EMBED = false; /* true = ancien affichage par intégration Instagram (embed.js) quand des publications sont saisies en admin */
+const IG_VIDEOS = [
+ {t:'Les arrivages du matin', s:'Ce qui entre en vitrine, filmé au comptoir', img:'images/instagram/arrivages-du-matin.jpg'},
+ {t:'La découpe au billot', s:'Côtes, pavés, brochettes : le geste en direct', img:'images/instagram/decoupe-au-billot.jpg'},
+ {t:'Les préparations maison', s:'Merguez, marinades et chich taouk de l’atelier', img:'images/instagram/preparations-maison.jpg'}
+];
+
+const igTile = (href, title, sub, img) =>
+ '<a class="igc" href="'+esc(href)+'" target="_blank" rel="noopener" aria-label="'+esc(title)+' — ouvrir sur Instagram">'+
+  '<div class="igf">'+
+   (img ? '<img class="igi" src="'+esc(img)+'" alt="" loading="lazy" decoding="async">' : '')+
+   '<span class="igb"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ig"/></svg></span>'+
+   '<span class="ply"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-play"/></svg></span>'+
+   '<div class="igt"><b>'+esc(title)+'</b><p>'+esc(sub)+'</p></div>'+
+  '</div></a>';
 
 function igFallback(urls, profile){
- const box = $('#igg');
- box.innerHTML = urls && urls.length
-  ? urls.map((u,i) => igTile(u, 'Publication '+(i+1), 'Ouvrir la vidéo sur Instagram')).join('')
-  : [
-     ['Les arrivages du matin','Ce qui entre en vitrine, filmé au comptoir'],
-     ['La découpe au billot','Côtes, pavés, brochettes : le geste en direct'],
-     ['Les préparations maison','Merguez, marinades et chich taouk de l’atelier']
-    ].map(t => igTile(profile, t[0], t[1])).join('');
+ const box = $('#igg'), list = urls || [], n = Math.max(IG_VIDEOS.length, list.length);
+ box.innerHTML = Array.from({length:n}, (_, i) => {
+  const v = IG_VIDEOS[i] || {t:'Publication '+(i+1), s:'Ouvrir la vidéo sur Instagram'};
+  return igTile(list[i] || profile, v.t, v.s, v.img);
+ }).join('');
+ /* image absente ou bloquée : on retire l'<img>, la vignette sombre prend le relais */
+ box.querySelectorAll('.igi').forEach(im => im.addEventListener('error', () => im.remove()));
 }
 
 function igRender(){
  const box = $('#igg'); if(!box) return;
  const profile = S.set.instagram_url || 'https://www.instagram.com/boucherie.acem/';
  const urls = (S.set.instagram_posts || []).map(u => String(u).trim()).filter(Boolean).slice(0, 6);
- if(!urls.length) return igFallback(null, profile);
+ if(!IG_EMBED || !urls.length) return igFallback(urls, profile);
  box.innerHTML = urls.map(u =>
   '<div class="igc"><blockquote class="instagram-media" data-instgrm-permalink="'+esc(u)+'" data-instgrm-version="14" style="margin:0">'+
-  '<div class="igload"><svg class="ic"><use href="#i-ig"/></svg>Chargement de la publication…</div></blockquote></div>').join('');
+  '<div class="igload"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ig"/></svg>Chargement de la publication…</div></blockquote></div>').join('');
  /* le script Instagram n'est chargé qu'à l'approche de la section */
  const sec = $('#videos'), io2 = new IntersectionObserver(es => {
   if(!es.some(e => e.isIntersecting)) return;
@@ -1391,7 +1473,7 @@ function contact(){
   else [...a.childNodes].forEach(n => { if(n.nodeType === 3 && /\d{2}/.test(n.nodeValue)) n.nodeValue = pretty });
  });
  $('#telBtn').querySelector('span').textContent = pretty;
- $('#telLnk').innerHTML = '<svg class="ic"><use href="#i-tel"/></svg><b>'+esc(pretty)+'</b>';
+ $('#telLnk').innerHTML = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tel"/></svg><b>'+esc(pretty)+'</b>';
  if(S.set.address) $('#addr').textContent = S.set.address;
  const maps = S.set.maps_url || ('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(S.set.address || '51 Avenue General Leclerc 38950 Saint-Martin-le-Vinoux'));
  $('#mapLnk').href = maps; $('#mapLnk2').href = maps;
@@ -1428,7 +1510,7 @@ function line(l){
    '<input type="number" data-qi="'+l.id+'" min="'+s+'" max="99" step="'+s+'" value="'+l.q+'" aria-label="Quantité pour '+esc(p.name)+'">'+
    '<button data-q="'+l.id+'" data-d="1" aria-label="Augmenter">+</button></div>'+
   '</div>'+
-  '<div class="lr"><button class="x" data-del="'+l.id+'" aria-label="Retirer '+esc(p.name)+'"><svg class="ic"><use href="#i-trash"/></svg></button>'+
+  '<div class="lr"><button class="x" data-del="'+l.id+'" aria-label="Retirer '+esc(p.name)+'"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-trash"/></svg></button>'+
    '<span class="pr">'+(p.price==null?'—':eur(Math.round(p.price*l.q*100)/100))+'</span></div>'+
  '</div>';
 }
@@ -1438,14 +1520,14 @@ function cart(){
  const cn = $('#cn'); cn.textContent = n; $('#cn2').textContent = n;
  cn.classList.add('pop'); setTimeout(() => cn.classList.remove('pop'), 320);
  $('#cl').innerHTML = n ? S.cart.map(line).join('')
-  : '<div class="empty" style="padding:48px 10px"><svg class="ic"><use href="#i-cart"/></svg><h3>Votre panier est vide</h3><p class="mu">Ajoutez de belles pièces depuis le catalogue, nous préparons le reste.</p><button class="btn o" data-close>Voir le catalogue</button></div>';
+  : '<div class="empty" style="padding:48px 10px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cart"/></svg><h3>Votre panier est vide</h3><p class="mu">Ajoutez de belles pièces depuis le catalogue, nous préparons le reste.</p><button class="btn o" data-close>Voir le catalogue</button></div>';
  const T = tot();
  $('#ct').innerHTML = n
   ? '<div class="tr"><span>Total estimatif</span><b>'+eur(T.t)+'</b></div>'+
     (T.u ? '<p class="mu">+ '+T.u+' article'+(T.u>1?'s':'')+' au prix communiqué en boutique.</p>' : '')+
     (T.w ? '<p class="mu">Montant ajusté au poids réel pesé en boutique.</p>' : '')+
-    '<p class="mu"><svg class="ic" style="vertical-align:-2px;color:var(--r2)"><use href="#i-shield"/></svg> Paiement uniquement en boutique, au retrait.</p>'+
-    '<button class="btn" id="go"'+(S.set.accepting_orders===false?' disabled':'')+'><svg class="ic"><use href="#i-clock"/></svg>Choisir mon créneau de retrait</button>'+
+    '<p class="mu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align:-2px;color:var(--r2)"><use href="#i-shield"/></svg> Paiement uniquement en boutique, au retrait.</p>'+
+    '<button class="btn" id="go"'+(S.set.accepting_orders===false?' disabled':'')+'><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock"/></svg>Choisir mon créneau de retrait</button>'+
     (S.set.accepting_orders===false?'<p class="mu" style="text-align:center">Commandes en ligne suspendues — appelez la boutique.</p>':'')
   : '';
  saveCart();
@@ -1502,7 +1584,7 @@ function checkout(){
    '<div class="r2"><label>Date de retrait<input name="d" id="dt" type="date" required min="'+iso(t)+'" max="'+iso(max)+'" value="'+d0+'"></label>'+
    '<label>Créneau<select name="s" id="sl" required></select></label></div>'+
    '<label>Précisions pour le boucher (facultatif)<textarea name="c" rows="2" maxlength="500" placeholder="Épaisseur des côtes, viande hachée sur place, emballage séparé…"></textarea></label>'+
-   '<p class="mu"><svg class="ic" style="vertical-align:-2px;color:var(--r2)"><use href="#i-shield"/></svg> Commande soumise à confirmation par la boutique. Paiement sur place, aucun paiement en ligne.</p>'+
+   '<p class="mu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align:-2px;color:var(--r2)"><use href="#i-shield"/></svg> Commande soumise à confirmation par la boutique. Paiement sur place, aucun paiement en ligne.</p>'+
    '<div class="er" id="er" role="alert"></div>'+
    '<button class="btn" id="sbm">Envoyer ma commande</button>'+
    '<button type="button" class="btn o" data-closeck>Revenir au panier</button>'+
@@ -1558,8 +1640,8 @@ async function submitOrder(e){
   '<div class="tk"><span>Votre numéro de commande</span><b>'+esc(o.order_number)+'</b></div>'+
   '<p>Retrait prévu le <b>'+esc(new Date(date+'T12:00:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'}))+'</b>, créneau <b>'+esc(slot2(slot))+'</b>.</p>'+
   '<p class="mu" style="margin-top:10px">Votre commande est <b>soumise à confirmation par la boutique</b>. Nous vous appelons si une pièce doit être adaptée selon les arrivages.</p>'+
-  '<p class="ok" style="margin-top:12px"><svg class="ic" style="vertical-align:-2px"><use href="#i-shield"/></svg> Paiement directement en boutique lors du retrait.</p>'+
-  '<div class="fm"><button class="btn" onclick="window.print()"><svg class="ic"><use href="#i-print"/></svg>Imprimer le récapitulatif</button>'+
+  '<p class="ok" style="margin-top:12px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align:-2px"><use href="#i-shield"/></svg> Paiement directement en boutique lors du retrait.</p>'+
+  '<div class="fm"><button class="btn" onclick="window.print()"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-print"/></svg>Imprimer le récapitulatif</button>'+
   '<button class="btn o" data-closeck>Fermer</button></div>';
 }
 
@@ -1587,7 +1669,7 @@ function view(id, push){
  const u = p.price_unit, s = step(u);
  const sim = S.prods.filter(x => x.category_id === p.category_id && x.id !== id).slice(0,3);
  $('#pbody').innerHTML =
-  '<button class="x pc" data-closepm aria-label="Fermer"><svg class="ic"><use href="#i-close"/></svg></button>'+
+  '<button class="x pc" data-closepm aria-label="Fermer"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-close"/></svg></button>'+
   '<div class="pg2"><div class="pim">'+pimg(p)+badges(p)+'</div>'+
   '<div class="pin">'+
    '<span class="tag">'+esc(catName(p))+'</span>'+
@@ -1607,8 +1689,8 @@ function view(id, push){
    '<button data-mq="1" aria-label="Augmenter">+</button>'+
    '<span class="mu" style="margin-left:6px">'+esc(u === 'kg' ? 'kg' : u === '100g' ? '× 100 g' : u || '')+'</span></div>'+
    '<div id="msub" class="mu"></div>'+
-   '<button class="btn" data-madd="'+id+'"><svg class="ic"><use href="#i-cart"/></svg>Ajouter au panier</button>'+
-   '<p class="mu"><svg class="ic" style="vertical-align:-2px;color:var(--r2)"><use href="#i-shield"/></svg> Paiement uniquement en boutique au retrait.</p>'+
+   '<button class="btn" data-madd="'+id+'"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cart"/></svg>Ajouter au panier</button>'+
+   '<p class="mu"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align:-2px;color:var(--r2)"><use href="#i-shield"/></svg> Paiement uniquement en boutique au retrait.</p>'+
   '</div></div>'+
   (sim.length ? '<h3 class="sm2">Dans la même catégorie</h3><div class="simg">'+sim.map(x =>
     '<div class="sim" data-view="'+x.id+'"><span class="si">'+pimg(x)+'</span><b>'+esc(x.name)+'</b><span class="pr">'+priceTxt(x)+'</span></div>').join('')+'</div>' : '');
@@ -1691,8 +1773,16 @@ document.addEventListener('click', e => {
  if(t.closest('[data-closepm]')){ closePm(); return }
  if(t.closest('#cb')){ open(true); return }
  if(t.closest('#go') && S.cart.length){ open(false); checkout(); return }
- if(t.closest('#bg')){ const n = $('#nv'), on = n.classList.toggle('on'); $('#bg').setAttribute('aria-expanded', on); return }
- if(t.closest('#nv')) $('#nv').classList.remove('on');
+ const navSet = on => {
+  const b = $('#bg'), u = b.querySelector('use'), ic = b.querySelector('svg');
+  $('#nv').classList.toggle('on', on); b.setAttribute('aria-expanded', on);
+  if(u) u.setAttribute('href', on ? '#i-close' : '#i-menu');
+  if(ic && ic.animate && !(typeof reduced === 'function' && reduced()))
+   ic.animate([{transform:'rotate(-90deg) scale(.55)',opacity:0},{transform:'none',opacity:1}],{duration:380,easing:'cubic-bezier(.2,.8,.2,1)'});
+ };
+ if(t.closest('#bg')){ navSet(!$('#nv').classList.contains('on')); return }
+ if(t.closest('#nv')) navSet(false);
+ 
 });
 
 document.addEventListener('input', e => {
@@ -1847,7 +1937,7 @@ setInterval(openBadge, 60000);
  up.id = 'up'; up.type = 'button'; up.setAttribute('aria-label', 'Revenir en haut de la page');
  up.innerHTML = '<svg class="rg" viewBox="0 0 54 54" aria-hidden="true">'+
   '<circle class="bg2" cx="27" cy="27" r="25"/><circle class="fg2" cx="27" cy="27" r="25"/></svg>'+
-  '<svg class="ic ar" aria-hidden="true"><use href="#i-arrow"/></svg>';
+  '<svg class="ic ar" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-arrow"/></svg>';
  up.onclick = () => scrollTo({ top:0, behavior: reduced() ? 'auto' : 'smooth' });
  $('#pub').append(up);
  const ring = up.querySelector('.fg2');
@@ -2031,9 +2121,9 @@ async function adminInit(){
  $('#adm').innerHTML =
  '<div class="atop"><div class="w">'+
   '<div class="alg"><img src="'+esc(LOGO)+'" alt=""><span><b>Boucherie Acem</b><span>Administration</span></span></div>'+
-  '<div class="hact"><span class="sta"><svg class="ic"><use href="#i-user"/></svg>'+esc(A.email)+'</span>'+
+  '<div class="hact"><span class="sta"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-user"/></svg>'+esc(A.email)+'</span>'+
   '<a class="btn o sm" href="#top">Voir le site</a>'+
-  '<button class="btn o sm" id="lo"><svg class="ic"><use href="#i-out"/></svg>Déconnexion</button></div>'+
+  '<button class="btn o sm" id="lo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-out"/></svg>Déconnexion</button></div>'+
  '</div></div>'+
  '<div class="w"><div class="tabs">'+
   '<button class="chip'+(A.tab==='d'?' on':'')+'" data-t="d">Tableau de bord</button>'+
@@ -2118,7 +2208,7 @@ async function tabO(){
  $('#at').innerHTML = '<p class="mu">Chargement…</p>';
  if(!await loadOrders()) return;
  $('#at').innerHTML =
- '<div class="bar"><span class="srch"><svg class="ic"><use href="#i-search"/></svg><input id="oq" placeholder="Nom, téléphone, n° de commande…" value="'+esc(A.q)+'"></span>'+
+ '<div class="bar"><span class="srch"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-search"/></svg><input id="oq" placeholder="Nom, téléphone, n° de commande…" value="'+esc(A.q)+'"></span>'+
  '<select id="of"><option value="">Tous les statuts</option>'+opt(ST, A.st)+'</select>'+
  '<button class="btn o sm" id="orf">Rafraîchir</button></div><div id="ol"></div>';
  $('#oq').oninput = e => { A.q = e.target.value.toLowerCase(); ol() };
@@ -2141,8 +2231,8 @@ function ol(){
    (o.customer_note ? '<p style="border-left:2px solid var(--r);padding-left:12px;font-style:italic">'+esc(o.customer_note)+'</p>' : '')+
    '<div class="ocH"><span>Total estimatif : <b style="color:var(--r2);font-size:1.15rem">'+eur(o.total)+'</b></span>'+
    '<div class="ocA">'+
-    '<a class="btn o sm" href="tel:'+esc(String(o.customer_phone).replace(/[^+0-9]/g,''))+'"><svg class="ic"><use href="#i-tel"/></svg>'+esc(o.customer_phone)+'</a>'+
-    '<button class="btn o sm" data-pr="'+o.id+'"><svg class="ic"><use href="#i-print"/></svg>Bon</button>'+
+    '<a class="btn o sm" href="tel:'+esc(String(o.customer_phone).replace(/[^+0-9]/g,''))+'"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tel"/></svg>'+esc(o.customer_phone)+'</a>'+
+    '<button class="btn o sm" data-pr="'+o.id+'"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-print"/></svg>Bon</button>'+
     (NEXT[o.status] ? '<button class="btn sm" data-nx="'+o.id+'">→ '+esc(ST[NEXT[o.status]])+'</button>' : '')+
     '<select data-st="'+o.id+'" aria-label="Statut">'+opt(ST, o.status)+'</select>'+
    '</div></div>'+
@@ -2221,8 +2311,8 @@ async function tabP(){
   '<select id="nc">'+sel('')+'</select>'+
   '<input id="npx" type="number" min="0" step="0.01" placeholder="Prix (vide = prix boutique)">'+
   '<select id="nu">'+opt(un,'kg')+'</select>'+
-  '<button class="btn" id="na"><svg class="ic"><use href="#i-plus"/></svg>Créer</button></div></div>'+
- '<div class="bar"><span class="srch"><svg class="ic"><use href="#i-search"/></svg><input id="pq" placeholder="Filtrer les produits…"></span>'+
+  '<button class="btn" id="na"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plus"/></svg>Créer</button></div></div>'+
+ '<div class="bar"><span class="srch"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-search"/></svg><input id="pq" placeholder="Filtrer les produits…"></span>'+
  '<span class="mu">'+list.length+' produit(s) · '+list.filter(x=>x.available).length+' en vente</span></div>'+
  '<div id="pl"></div>';
 
@@ -2248,8 +2338,8 @@ async function tabP(){
      '<button class="btn sm" data-sv>Enregistrer</button>'+
      '<button class="x" data-mvp="-1"'+(i?'':' disabled')+' aria-label="Monter">▲</button>'+
      '<button class="x" data-mvp="1"'+(i<l.length-1?'':' disabled')+' aria-label="Descendre">▼</button>'+
-     '<button class="btn o sm" data-dup><svg class="ic"><use href="#i-copy"/></svg>Dupliquer</button>'+
-     '<button class="btn o sm" data-pdel><svg class="ic"><use href="#i-trash"/></svg>Supprimer</button>'+
+     '<button class="btn o sm" data-dup><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-copy"/></svg>Dupliquer</button>'+
+     '<button class="btn o sm" data-pdel><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-trash"/></svg>Supprimer</button>'+
     '</div>'+
    '</div>').join('') || '<p class="mu">Aucun produit.</p>';
   bindP(list);
@@ -2335,7 +2425,7 @@ async function tabC(){
  $('#at').innerHTML =
  '<div class="pnl"><h3>Ajouter une catégorie</h3>'+
   '<div class="p2" style="margin:0"><input id="cn2i" placeholder="Nom de la catégorie (ex. Bœuf, Volaille, Agneau…)" class="fw">'+
-  '<button class="btn" id="ca"><svg class="ic"><use href="#i-plus"/></svg>Ajouter</button></div></div>'+
+  '<button class="btn" id="ca"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plus"/></svg>Ajouter</button></div></div>'+
   '<p class="mu" style="margin-bottom:14px">Réorganisez avec ▲ ▼ : l’ordre ci-dessous est celui des filtres sur le site. Une catégorie masquée disparaît du site mais ses produits restent.</p>'+
  (c||[]).map((x,i) =>
   '<div class="p2" data-c="'+x.id+'">'+
@@ -2344,7 +2434,7 @@ async function tabC(){
    '<div class="ocA"><button class="x" data-mv="-1"'+(i?'':' disabled')+' aria-label="Monter">▲</button>'+
    '<button class="x" data-mv="1"'+(i<c.length-1?'':' disabled')+' aria-label="Descendre">▼</button>'+
    '<button class="btn sm" data-cs>Enregistrer</button>'+
-   '<button class="btn o sm" data-cd><svg class="ic"><use href="#i-trash"/></svg>Supprimer</button></div>'+
+   '<button class="btn o sm" data-cd><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-trash"/></svg>Supprimer</button></div>'+
   '</div>').join('');
  $('#ca').onclick = async () => {
   const n = $('#cn2i').value.trim(); if(!n) return toast('Indiquez un nom', true);
