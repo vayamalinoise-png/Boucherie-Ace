@@ -45,6 +45,9 @@ html.intro{--sd:3.1s}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--k);color:var(--i);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* le bandeau incliné déborde volontairement de 14 px : on le rogne ici plutôt que
+   de laisser la page signaler un débordement horizontal sur les grands écrans. */
+main{overflow-x:clip}
 body::after{content:'';position:fixed;inset:0;z-index:9;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
 h1,h2,h3,h4,.sr{font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:-.01em}
 h2{font-size:clamp(2.1rem,5vw,3.4rem)}h3{font-size:clamp(1.35rem,2.4vw,1.75rem)}
@@ -509,10 +512,10 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
 .sec+.sec{padding-top:0}
 
 /* filet lumineux de séparation entre les grandes sections */
-.sec.ln::before{content:'';position:absolute;top:0;left:var(--gut);right:var(--gut);height:1px;
+.sec.sline::before{content:'';position:absolute;top:0;left:var(--gut);right:var(--gut);height:1px;
  background:linear-gradient(90deg,transparent,var(--line2) 18%,var(--line2) 82%,transparent);
  transform:scaleX(.2);opacity:0;transition:transform 1.3s var(--ease),opacity .8s}
-.sec.ln.in::before{transform:scaleX(1);opacity:1}
+.sec.sline.in::before{transform:scaleX(1);opacity:1}
 
 /* 1 — HERO */
 .hero h1{font-size:clamp(2.9rem,1.6rem + 6.4vw,6.4rem);line-height:.96}
@@ -534,7 +537,9 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
 .cnt{margin:0 0 18px}
 
 /* 4 — SPÉCIALITÉS */
-.spr{padding:clamp(24px,3.4vw,46px) clamp(4px,2vw,26px)}
+/* .w a margin:auto ; dans une grille, les marges auto empêchent l'étirement :
+   on force la largeur pour que les lignes suivent la largeur du site. */
+.spz .spr{width:100%;padding:clamp(24px,3.4vw,46px) clamp(4px,2vw,26px)}
 .spc h3{font-size:clamp(1.45rem,1.1rem + 1.5vw,2.25rem)}
 .spc p{font-size:clamp(.9rem,.87rem + .16vw,1rem)}
 
@@ -824,7 +829,7 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
 </section>
 
 <!-- ---------- CATALOGUE ---------- -->
-<section class="sec ln" id="catalogue">
+<section class="sec sline" id="catalogue">
  <div class="w">
   <div class="hd rv">
    <span class="eyebrow">Notre catalogue</span>
@@ -874,7 +879,7 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
 </section>
 
 <!-- ---------- VIDÉOS INSTAGRAM ---------- -->
-<section class="sec ln" id="videos">
+<section class="sec sline" id="videos">
  <div class="w">
   <div class="igh rv">
    <div class="hd" style="margin-bottom:0">
@@ -1831,7 +1836,7 @@ setInterval(openBadge, 60000);
 
  /* --- filet lumineux en tête de section --- */
  const secs = $$('#pub section.sec');
- secs.forEach(x => x.classList.add('ln'));
+ secs.forEach(x => x.classList.add('sline'));
  const ioS = new IntersectionObserver(es => es.forEach(e => {
   if(e.isIntersecting){ e.target.classList.add('in'); ioS.unobserve(e.target) }
  }), { threshold:.02 });
