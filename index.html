@@ -86,6 +86,8 @@ html.intro,html.intro body{overflow:hidden}
 #intro .ivid{position:absolute;top:50%;left:50%;width:100%;height:100%;transform:translate(-50%,-50%);object-fit:cover;object-position:50% 50%;background:#000;opacity:0;transition:opacity .5s;image-rendering:auto;backface-visibility:hidden}
 #intro.fit .ivid{object-fit:contain}
 #intro.vid .ivid{opacity:1}#intro.vid .istage{opacity:0;pointer-events:none}
+/* tant que la vidéo n'est pas prête : écran noir pur, aucun logo (l'animation n'apparaît que si la vidéo est absente) */
+#intro.wait .veil{background:#000}#intro.wait .istage,#intro.wait .slice{display:none}
 #intro.out{animation:iout .9s var(--ease) forwards}
 @keyframes iout{to{clip-path:inset(0 0 100% 0);opacity:0}}
 #intro .veil{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,#2B0806 0%,#070708 62%)}
@@ -844,7 +846,7 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
 <body>
 
 <!-- =============== INTRO (logo animé ; déposez intro.mp4 à côté du fichier pour une vraie vidéo) =============== -->
-<div id="intro" aria-hidden="true">
+<div id="intro" class="wait" aria-hidden="true">
  <div class="veil"></div>
  <video class="ivid" id="ivid" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload noremoteplayback"></video>
  <div class="slice"></div>
@@ -1316,16 +1318,22 @@ $('#yr').textContent = new Date().getFullYear();
     – de la base : init() la transmet via window.__introVideo dès que les réglages sont lus,
       ce qui permet à la vidéo de jouer aussi à la TOUTE PREMIÈRE visite d'un client. */
  const v = $('#ivid');
- let t = 0, tried = '', vidOn = false, fb = '';
+ let t = 0, tried = '', vidOn = false, fb = '', gaveUp = false, failed = false, dbDone = false, wt = 0;
  const mob = matchMedia('(max-width:860px) and (orientation:portrait)').matches;
  const arm = ms => { clearTimeout(t); t = setTimeout(end, ms) };
- const left = () => Math.max(600, 4300 - performance.now());
+ /* Pas de vidéo (absente, illisible ou trop lente) : on révèle alors l'animation du logo de secours. */
+ const reveal = () => {
+  if(done || vidOn || !el.classList.contains('wait')) return;
+  gaveUp = true; clearTimeout(wt);
+  el.classList.remove('wait');
+  arm(4300);
+ };
  const showVid = () => {
-  if(done || vidOn) return; vidOn = true;
+  if(done || vidOn || gaveUp) return; vidOn = true; clearTimeout(wt);
   el.classList.add('vid');
   const d = isFinite(v.duration) && v.duration > 0 ? Math.min(v.duration, 30) : 30;
   arm(d*1000 + 2500);                                  /* filet de sécurité si « ended » n'arrive jamais */
-  v.play().catch(() => { vidOn = false; el.classList.remove('vid'); arm(left()) });
+  v.play().catch(() => { vidOn = false; el.classList.remove('vid'); reveal() });
  };
  /* Cadrage : format proche de l'écran -> on remplit (cover) ; sinon la vidéo est affichée
     en entier et centrée (contain), sans coupe ni agrandissement excessif. */
@@ -1340,14 +1348,17 @@ $('#yr').textContent = new Date().getFullYear();
  v.addEventListener('loadeddata', showVid);
  v.addEventListener('canplay', showVid);
  v.addEventListener('ended', end);
- v.addEventListener('error', () => { if(fb){ const f = fb; fb = ''; v.src = f; v.load(); return } vidOn = false; el.classList.remove('vid'); v.removeAttribute('src'); if(!done) arm(left()) });
+ v.addEventListener('error', () => { if(fb){ const f = fb; fb = ''; v.src = f; v.load(); return } vidOn = false; el.classList.remove('vid'); v.removeAttribute('src'); failed = true; if(dbDone) reveal() });
  window.__introVideo = u => {
   if(done || vidOn || typeof u !== 'string' || !u || u === tried) return;
-  tried = u; let src = u;
+  tried = u; failed = false; let src = u;
   /* téléphone en portrait : intro-mobile.mp4 (vertical) s'il existe, sinon intro.mp4 */
   if(mob && /(^|\/)intro\.mp4$/.test(u)){ fb = u; src = u.replace(/intro\.mp4$/, 'intro-mobile.mp4') }
-  v.src = src; v.load(); arm(5000);           /* temps laissé au chargement de la vidéo */
+  v.src = src; v.load();
  };
+ /* la base de réglages ne contient pas de vidéo : si intro.mp4 a échoué, on passe à l'animation */
+ window.__introNoVideo = () => { dbDone = true; if(failed) reveal() };
+ wt = setTimeout(reveal, 3000);               /* temps maximal laissé à la vidéo avant de renoncer */
  arm(4300);
  window.__introVideo(INTRO_VID);
  $('#iskip').onclick = e => { e.stopPropagation(); clearTimeout(t); end(); };
@@ -1412,7 +1423,7 @@ async function init(){
  if(S.set.accepting_orders == null) S.set.accepting_orders = true;
  S.cart = S.cart.filter(l => P(l.id));
  /* vidéo d'intro : transmise tout de suite à l'intro en cours (1re visite comprise) */
- try{ if(window.__introVideo && S.set.intro_video_url) window.__introVideo(S.set.intro_video_url) }catch(e){}
+ try{ if(S.set.intro_video_url){ if(window.__introVideo) window.__introVideo(S.set.intro_video_url) } else if(window.__introNoVideo) window.__introNoVideo() }catch(e){}
  /* logo officiel et vidéo d'intro définis dans l'espace admin */
  try{
   if(S.set.logo_url && S.set.logo_url !== LOGO){ LOGO = S.set.logo_url; applyLogo(); localStorage.setItem('acem_logo', LOGO) }
