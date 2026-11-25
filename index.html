@@ -673,6 +673,22 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
 .igf b{position:relative;font:600 1.15rem var(--serif)}
 .igf span{position:relative;font-size:.8rem;color:var(--mu);max-width:26ch}
 @media(max-width:560px){.igg{grid-template-columns:1fr}.igload{min-height:340px}}
+/* ---- slider horizontal : mobile uniquement (au-dessus de 860 px, la grille d'origine est conservée) ---- */
+.igd{display:none}
+@media(max-width:860px){
+ .igg{--g:var(--gut);display:flex;grid-template-columns:none;gap:14px;position:relative;
+  margin-left:calc(var(--g) * -1);margin-right:calc(var(--g) * -1);padding:10px var(--g) 18px;scroll-padding-inline:var(--g);
+  overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none}
+ .igg::-webkit-scrollbar{display:none}
+ .igg>.igc{flex:0 0 min(84%,380px);min-width:0;scroll-snap-align:start;scroll-snap-stop:always}
+ .igd{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:2px}
+ .igd:empty{display:none}
+ .igd button{position:relative;width:8px;height:8px;padding:0;border:0;border-radius:99px;background:#FFFFFF38;cursor:pointer;
+  transition:width .35s var(--ease),background .3s}
+ .igd button::after{content:'';position:absolute;inset:-14px -4px}
+ .igd button.on{width:26px;background:var(--r)}
+}
 
 /* ==========================================================================
    23 ter. PARTENARIATS — affiche de match « Acem VS … »
@@ -807,13 +823,43 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
 .eng .em{display:grid;align-items:center;justify-items:start;height:64px;font:44px/1 "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
 .soc{align-items:center}
 .soc .hseal-f{width:54px;height:auto;margin-left:6px}
-#mentions{padding:clamp(44px,6vw,72px) 0;border-top:1px solid var(--line);scroll-margin-top:80px}
-#mentions h2{font-size:clamp(1.5rem,1.2rem + 1vw,2rem);margin:10px 0 26px}
+#mentions{padding:clamp(16px,2.4vw,26px) 0;border-top:1px solid var(--line);scroll-margin-top:80px}
+#mentions h2.mlh{margin:0;font:400 1rem/1.4 var(--sans);letter-spacing:0}
+/* bandeau déroulant (même esprit que la FAQ) */
+.mlt{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;background:none;border:0;color:var(--i);font:inherit;text-align:left;cursor:pointer;padding:clamp(14px,2vw,20px) 0;min-height:64px;transition:color .25s}
+.mlt-t{display:grid;gap:5px;justify-items:start;min-width:0}
+.mlt-t b{font:600 clamp(1.3rem,1.1rem + .7vw,1.7rem) var(--serif);letter-spacing:-.01em;line-height:1.1;transition:color .25s}
+.mlt-t small{font:400 .82rem/1.45 var(--sans);color:var(--mu)}
+.mlt-i{flex:none;width:46px;height:46px;border-radius:50%;border:1px solid #E1060059;color:var(--r2);display:grid;place-items:center;transition:background .3s var(--ease),color .3s,border-color .3s,transform .4s var(--ease)}
+.mlt-i svg{width:19px;height:19px}
+.mlt:hover .mlt-t b{color:var(--r2)}
+.mlt:hover .mlt-i{background:var(--r);color:#fff;border-color:var(--r)}
+.mlt[aria-expanded="true"] .mlt-i{transform:rotate(45deg)}
+.mlt:focus-visible{outline:2px solid var(--r2);outline-offset:4px;border-radius:14px}
+.mlp{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .55s var(--ease),visibility 0s .55s}
+.mlp.on{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .55s var(--ease),visibility 0s}
+.mlpi{overflow:hidden;min-height:0}
+#mlg{padding-top:8px}
+@media(prefers-reduced-motion:reduce){.mlp,.mlp.on{transition:none}}
 .mlg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 36px;margin:0}
 .mlg div{min-width:0}
 .mlg dt{font:600 .8rem var(--sans);color:var(--mu);margin:0 0 4px}
 .mlg dd{margin:0;font-size:.95rem;color:#CFCAC4;line-height:1.55;overflow-wrap:anywhere}
 #mlg>p{margin-top:22px;max-width:78ch;font-size:.88rem;color:var(--mu);line-height:1.7}
+#mlg .mli{margin:6px 0 26px;max-width:78ch;font-size:.9rem;color:var(--mu);line-height:1.7}
+#mlg .mlb{border-top:1px solid var(--line);padding:26px 0 30px}
+#mlg .mlb h3,#mlg .mla h3{font:600 clamp(1.25rem,1.1rem + .5vw,1.5rem) var(--serif);letter-spacing:-.01em;margin:0 0 18px;color:var(--i)}
+#mlg .mlb>p{margin:12px 0 0;max-width:78ch;font-size:.9rem;color:var(--mu);line-height:1.7}
+#mlg .mlx{border-top:1px solid var(--line);padding-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:30px clamp(24px,4vw,48px)}
+#mlg .mlx + .mlb{margin-top:30px}
+#mlg .mla{min-width:0}
+#mlg .mla h3{font-size:1.2rem;margin-bottom:12px}
+#mlg .mla p{margin:0 0 12px;font-size:.88rem;color:var(--mu);line-height:1.7;max-width:62ch;overflow-wrap:anywhere}
+#mlg .mla p:last-child{margin-bottom:0}
+#mlg a{color:var(--i);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--r)}
+#mlg a:hover{color:var(--r2)}
+/* repère « à compléter » : volontairement visible tant que l’information manque */
+#mlg .mlph{display:inline-block;border:1px dashed #C9A22799;background:#C9A22714;color:#E6C75E;border-radius:6px;padding:1px 9px;font:600 .8rem/1.6 var(--sans);letter-spacing:.02em;overflow-wrap:anywhere}
 
 @media(max-width:480px){.credit{padding-bottom:70px}}
 
@@ -840,6 +886,162 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
  nav#nv.on a:nth-child(n+8){transition-delay:.43s}
  #bg svg{transition:transform .4s var(--ease)}
  #bg[aria-expanded="true"] svg{transform:rotate(90deg)}
+}
+
+/* ==========================================================================
+   25. PARCOURS DU SITE — RYTHME, TRANSITIONS ET ANCRES
+   Ordre : Hero › L'esprit Acem › Catalogue › Savoir-faire › Vidéos › Colis ›
+           Commander › Partenaires › FAQ › Horaires & contact
+   ========================================================================== */
+
+/* — ancres : le titre d'une section ne disparaît plus sous l'en-tête collant — */
+:root{--hh:calc(61px + env(safe-area-inset-top,0px))}
+main,.sec{scroll-margin-top:var(--hh)}
+#esprit,.sec.info{scroll-margin-top:max(0px,calc(var(--hh) - var(--sp)*.45))}
+/* anciennes ancres (#specialites, #engagements) : repères invisibles en haut de section */
+.alias{position:absolute;top:0;left:0;width:0;height:0;overflow:hidden;pointer-events:none;scroll-margin-top:var(--hh)}
+
+/* — rythme vertical : le filet de séparation ne colle plus au titre suivant — */
+.sec{padding-bottom:calc(var(--sp)*.8)}
+.sec+.sec{padding-top:clamp(30px,4.2vw,60px)}
+.mq+.sec::before{display:none}            /* le bandeau rouge sert déjà de séparateur */
+
+/* — fonds : chaque section reprend une lueur déjà présente dans le hero (rouge) ou la
+     formule mise en avant (or), en alternance, pour que le passage de l'une à l'autre se lise
+     comme une seule pièce et non comme des blocs empilés — */
+#esprit{background:radial-gradient(ellipse 70% 380px at 0% 300px,#E1060022,transparent 72%)}
+#catalogue{background:radial-gradient(ellipse 60% 260px at 50% 190px,#E1060014,transparent 70%),
+ linear-gradient(180deg,transparent,#FFFFFF07 14%,#FFFFFF07 86%,transparent)}
+#savoir-faire{background:radial-gradient(ellipse 70% 380px at 100% 300px,#E1060020,transparent 72%)}
+#videos{background:linear-gradient(180deg,transparent,#FFFFFF06 18%,#FFFFFF06 82%,transparent)}
+#colis{background:radial-gradient(ellipse 55% 360px at 50% 46%,#C9A22712,transparent 72%)}
+#commander{background:radial-gradient(ellipse 70% 340px at 0% calc(100% - 300px),#E1060018,transparent 72%)}
+
+/* — « L'esprit Acem » : plus de bandes grises de chaque côté des trois lignes sur grand écran.
+     Les séparateurs deviennent de vrais filets pleine largeur, le fond du site reste continu — */
+.spz{background:none;gap:0}
+.spz .spr{background:transparent}
+.spz .spr:hover{background:#121214}
+.spz .spr{padding-left:var(--gut);padding-right:var(--gut)}   /* numéros alignés sur le titre de la section */
+.spz .spr+.spr::after{content:'';position:absolute;top:0;left:50%;width:100vw;height:1px;
+ background:var(--line);transform:translateX(-50%);pointer-events:none}
+
+/* — bande crème (horaires & contact) : bords légèrement inclinés, dans le sens du bandeau
+     rouge du hero, au lieu d'une coupure franche noir → crème — */
+.sec.info{--cut:clamp(14px,2.2vw,30px);
+ padding-top:calc(var(--sp) + var(--cut));padding-bottom:calc(var(--sp) + var(--cut));
+ clip-path:polygon(0 var(--cut),100% 0,100% calc(100% - var(--cut)),0 100%)}
+
+/* — savoir-faire : 3 + 2 cartes sur grand écran, jamais de case vide — */
+.eng{grid-template-columns:repeat(6,1fr)}
+.eng>div{grid-column:span 2}
+.eng>div:nth-child(n+4){grid-column:span 3}
+@media(max-width:1000px){
+ .eng{grid-template-columns:repeat(2,1fr)}
+ .eng>div,.eng>div:nth-child(n+4){grid-column:auto}
+ .eng>div:last-child{grid-column:1/-1}
+}
+@media(max-width:560px){
+ .eng{grid-template-columns:1fr}
+ .eng>div:last-child{grid-column:auto}
+}
+
+/* — vidéos : le filet rouge sous le titre apparaît comme dans les autres sections — */
+.igh.in .hd h2::after{width:96px}
+
+/* — points de navigation : celui de « Partenaires » n'existe que si la section est affichée — */
+#pub:has(#partenaires[hidden]) #dots a[href="#partenaires"]{display:none}
+
+/* — en-tête entre 861 et 1100 px : les 8 liens + statut + téléphone + panier ne tenaient pas
+     dans la largeur (le panier sortait de l'écran et la page défilait latéralement) — */
+@media(min-width:861px) and (max-width:1100px){
+ nav#nv a{margin-left:clamp(11px,1.5vw,18px);font-size:.84rem}
+ .sta{display:none}
+ #telBtn{padding-left:13px;padding-right:13px}
+ #telBtn span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+ .logo{gap:9px}
+}
+
+/* ==========================================================================
+   26. DÉBUT DU PARCOURS — HERO ÉPURÉ + L'ESPRIT ACEM (TRANSITION VISUELLE)
+   ========================================================================== */
+.hero{min-height:min(100svh,1000px)}
+.hero h1{font-size:clamp(3.4rem,1rem + 8vw,7.8rem);line-height:.94}
+.hk{font:italic 500 clamp(1.3rem,1rem + 1.2vw,2.1rem)/1.25 var(--serif);color:#E9E4DE;max-width:20ch;margin:clamp(18px,2.4vw,28px) 0 clamp(26px,3.2vw,38px)}
+.lg{max-width:min(540px,100%)}
+@media(max-width:1000px){.lg{max-width:min(76vw,340px)}.hero{min-height:calc(100svh - 61px)}.hk{max-width:none}}
+
+#esprit.esp{position:relative;height:225vh;padding:0;background:none;--e:0;--p:0}
+.esp-pin{position:sticky;top:0;height:100vh;height:100svh;min-height:560px;overflow:hidden;display:flex;align-items:flex-end;background:var(--k);
+ clip-path:inset(calc((1 - var(--e))*13%) calc((1 - var(--e))*5%) 0 round calc((1 - var(--e))*30px) calc((1 - var(--e))*30px) 0 0)}
+.esp-pin::after{content:'';position:absolute;inset:auto 0 0;height:38%;z-index:2;pointer-events:none;background:linear-gradient(transparent,var(--k) 92%);opacity:calc(.25 + var(--p)*.75)}
+.esp-bg{position:absolute;inset:0;background:radial-gradient(ellipse 62% 56% at 18% 84%,#E1060045,transparent 64%),radial-gradient(ellipse 46% 50% at 88% 12%,#C9A2271C,transparent 62%),radial-gradient(ellipse 70% 60% at 60% 50%,#E1060014,transparent 70%),var(--k2)}
+.esp-seal{position:absolute;left:50%;top:46%;width:min(78vmin,640px);aspect-ratio:1;object-fit:contain;opacity:.09;transform:translate(-50%,-50%) rotate(calc(var(--p)*40deg)) scale(calc(.92 + var(--p)*.12))}
+.esp-media{position:absolute;inset:0;opacity:0;transition:opacity 1.4s var(--ease)}
+.esp-media img,.esp-media video{width:100%;height:100%;object-fit:cover;display:block;transform:scale(calc(1.18 - var(--p)*.12))}
+.esp-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#0B0B0C66,#0B0B0C20 40%,#0B0B0CCC)}
+.esp.has-media .esp-media{opacity:1}
+.esp.has-media .esp-seal,.esp.has-media .esp-rail{display:none}
+.esp-t{position:relative;z-index:3;margin:0 0 clamp(96px,15vh,170px) var(--gut);padding-right:var(--gut);font:600 clamp(2.6rem,1rem + 8.4vw,8.2rem)/.96 var(--serif);letter-spacing:-.025em;
+ text-shadow:0 4px 40px #0008;transform:translate3d(0,calc(var(--p)*-7vh),0);opacity:calc(1.9 - var(--p)*1.6)}
+.esp-t .l{display:block}
+.esp-t .l+.l{font-style:italic}
+.esp-t .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding:.02em .08em .14em 0;margin-right:.2em}
+.esp-t .w i{display:inline-block;font-style:inherit;transform:translateY(112%);transition:transform 1.15s var(--ease) calc(.2s + var(--i)*.1s)}
+.esp.in .esp-t .w i{transform:none}
+.esp-go{position:absolute;z-index:4;left:50%;bottom:clamp(26px,5vh,48px);width:58px;height:58px;margin-left:-29px;border-radius:50%;display:grid;place-items:center;border:1px solid #E1060080;background:#0B0B0C80;backdrop-filter:blur(8px);color:var(--i);opacity:calc(var(--p)*2.4 - .2);transition:background .3s,border-color .3s}
+.esp-go:hover{background:var(--r);border-color:var(--r)}
+.esp-go svg{width:20px;height:20px;transform:rotate(90deg);animation:espd 2.2s ease-in-out infinite}
+@keyframes espd{50%{transform:rotate(90deg) translateX(6px)}}
+@media(max-width:860px){
+ #esprit.esp{height:185vh}
+ .esp-go{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+}
+@media(prefers-reduced-motion:reduce){
+ #esprit.esp{height:auto}
+ .esp-pin{position:relative;height:88svh;clip-path:none}
+ .esp-t .w i{transform:none}.esp-c img{clip-path:inset(0)}.esp-go{opacity:1}
+}
+
+/* L'esprit Acem : deux rangées de photos qui défilent en sens inverse (remplacent les 3 cadres) */
+.esp-pin{--cw:clamp(120px,15vw,240px);--g:clamp(10px,1.4vw,20px);--t:clamp(76px,10vh,110px)}
+.esp-pin::before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,#0B0B0C55,transparent 22%,transparent 36%,#0B0B0CE6 74%,var(--k))}
+.esp-rail{position:absolute;z-index:1;left:0;display:flex;gap:var(--g);transform:translate3d(calc(var(--x0) + var(--p)*var(--v)),0,0);will-change:transform}
+.esp-rail.r1{top:var(--t);--x0:-3vw;--v:-26vw}
+.esp-rail.r2{top:calc(var(--t) + var(--cw)*1.25 + var(--g));--x0:-40vw;--v:26vw}
+.esp-c{flex:none;margin:0;width:var(--cw);aspect-ratio:4/5;overflow:hidden;border-radius:4px;background:var(--k3);opacity:0;box-shadow:0 0 0 1px #FFFFFF14;transition:opacity .6s calc(.15s + var(--j)*.08s)}
+.esp-c img{width:100%;height:100%;object-fit:cover;display:block;clip-path:inset(100% 0 0 0);transform:scale(calc(1.25 - var(--p)*.15));transition:clip-path 1.3s var(--ease) calc(.15s + var(--j)*.08s)}
+.esp.in .esp-c.ok{opacity:1}
+.esp.in .esp-c.ok img{clip-path:inset(0)}
+@media(max-width:860px){.esp-pin{--cw:34vw}}
+
+/* ==========================================================================
+   27. FORMULES : cartes avec photo, carrousel à glisser sur mobile
+   ========================================================================== */
+#colis .pks{align-items:stretch;position:relative}
+#colis .pk{padding:0;gap:0;overflow:hidden;text-align:left;align-content:start}
+#colis .pk.hi{box-shadow:0 30px 90px #C9A2271F}
+#colis .pkf{position:relative;margin:0;aspect-ratio:4/3;overflow:hidden;background:radial-gradient(ellipse 80% 70% at 30% 100%,#E1060055,transparent 70%),#151517}
+#colis .pk.hi .pkf{background:radial-gradient(ellipse 80% 70% at 30% 100%,#C9A22755,transparent 70%),#17140E}
+#colis .pkf::after{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 38%,#0B0B0CF2)}
+#colis .pkl{position:absolute;z-index:0;left:50%;top:42%;width:46%;aspect-ratio:1;object-fit:contain;opacity:.12;transform:translate(-50%,-50%)}
+#colis .pki{position:absolute;z-index:1;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.15);transition:opacity .9s var(--ease),transform 1.4s var(--ease)}
+#colis .pki.ok{opacity:1;transform:scale(1.02)}
+#colis .pk:hover .pki.ok{transform:scale(1.09)}
+#colis .pkf figcaption{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:20px 22px}
+#colis .pkf h3{font-size:clamp(1.6rem,1.2rem + 1vw,2.05rem);text-align:left;text-shadow:0 2px 24px #000A}
+#colis .pkp{position:absolute;z-index:3;top:16px;right:16px;font:600 .9rem var(--sans);text-align:center;padding:7px 14px;border-radius:999px;background:#0B0B0CB3;backdrop-filter:blur(8px);border:1px solid #E1060080;color:var(--i)}
+#colis .pk.hi .pkp{border-color:#C9A22788;color:var(--gold)}
+#colis .pk.hi{padding-top:0}
+#colis .pk.hi::before{left:0;right:auto;top:0;z-index:4;transform:none;border-radius:0 0 14px 0}
+#colis .pk ul{margin:0;padding:22px 22px 4px;width:auto;gap:10px}
+#colis .pk li{text-align:left;align-items:flex-start}
+#colis .pk .btn{margin:16px 22px 22px;width:auto;max-width:none;justify-self:stretch}
+@media(max-width:860px){
+ #colis .pks{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 calc(var(--gut)*-1);padding:6px var(--gut) 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ #colis .pks::-webkit-scrollbar{display:none}
+ #colis .pk{flex:0 0 min(80vw,350px);scroll-snap-align:center}
+ #colis .pk.rv{opacity:1}
 }
 </style>
 </head>
@@ -874,7 +1076,7 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
   </a>
   <nav id="nv">
    <a href="#catalogue">Catalogue</a>
-   <a href="#specialites">Spécialités</a>
+   <a href="#savoir-faire">Savoir-faire</a>
    <a href="#videos">Vidéos</a>
    <a href="#colis">Colis</a>
    <a href="#commander">Commander</a>
@@ -898,22 +1100,11 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
 <section class="hero">
  <div class="w hw">
   <div>
-   <span class="eyebrow bl">Boucherie halal · Saint-Martin-le-Vinoux</span>
    <h1><span class="wd" style="--n:0">Boucherie</span> <span class="wd" style="--n:1"><em>Acem</em></span></h1>
-   <p class="lead bl b2">Des viandes choisies une à une, découpées devant vous. Black Angus et Wagyu selon arrivages, préparations maison du jour. Vous commandez en ligne, nous préparons, vous retirez et réglez en boutique.</p>
+   <p class="hk bl b2">Choisies une à une, découpées devant vous.</p>
    <div class="hcta bl b3">
-    <a class="btn" href="#catalogue"><svg class="ic"><use href="#i-cart"/></svg>Découvrir le catalogue</a>
-    <a class="btn o" href="#commander">Comment commander</a>
-   </div>
-   <div class="pill bl b4">
-    <span><svg class="ic"><use href="#i-check"/></svg>100 % halal</span>
-    <span><svg class="ic"><use href="#i-knife"/></svg>Découpe à la demande</span>
-    <span><svg class="ic"><use href="#i-shop"/></svg>Paiement en boutique</span>
-   </div>
-   <div class="hst bl b4">
-    <div><b data-count="7">0</b><span>jours sur 7 d’arrivages</span></div>
-    <div><b>100 %</b><span>viandes halal certifiées</span></div>
-    <div><b data-count="30">0</b><span>minutes pour préparer</span></div>
+    <a class="btn" href="#catalogue"><svg class="ic"><use href="#i-cart"/></svg>Découvrir la boutique</a>
+    <a class="btn o" href="#colis"><svg class="ic"><use href="#i-box"/></svg>Nos formules</a>
    </div>
   </div>
   <div class="lg">
@@ -929,24 +1120,23 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
 
 <div class="mq" aria-hidden="true"><div class="mt"></div></div>
 
-<!-- ---------- ENGAGEMENTS ---------- -->
-<section class="sec" id="engagements">
- <div class="w">
-  <div class="hd rv">
-   <span class="eyebrow">Nos engagements</span>
-   <h2>Le travail d’un vrai boucher</h2>
-   <p class="lead">Pas de libre-service anonyme : un comptoir, un boucher, et des conseils qui changent la cuisson de votre plat.</p>
-  </div>
-  <div class="eng rv">
-   <div><img class="hseal-s" data-halal alt="Certifié 100 % halal" width="64" height="64"><h3>100 % halal</h3><p>Toutes nos viandes sont halal, sans exception et sans mélange en atelier. Filières et certificats disponibles en boutique.</p></div>
-   <div><span class="em" aria-hidden="true">🥩</span><h3>Fraîcheur du jour</h3><p>Réceptions régulières, vitrine renouvelée, rien ne dort en chambre froide. Ce que vous voyez est ce qui est arrivé.</p></div>
-   <div><span class="em" aria-hidden="true">🔪</span><h3>Découpe à la demande</h3><p>Épaisseur de côte, pièce à griller, viande hachée minute, colis à partager : on taille selon votre besoin réel.</p></div>
-   <div><span class="em" aria-hidden="true">🔥</span><h3>Conseils de cuisson</h3><p>Chaque pièce part avec le mode de cuisson qui lui va. Un doute sur un plat ? Demandez, c’est compris dans le prix.</p></div>
-  </div>
+<!-- ---------- 2. L’ESPRIT ACEM : transition visuelle, aucun paragraphe ----------
+     PHOTO PLEIN ÉCRAN : déposez « esprit.jpg » (ou une vidéo « esprit.mp4 ») dans le même dossier que
+     index.html, elle s’affiche toute seule. Sans fichier, les 3 cadres reprennent de vraies photos du catalogue. -->
+<section class="esp" id="esprit" aria-label="L’esprit Acem">
+ <div class="esp-pin">
+  <div class="esp-bg"><img class="esp-seal" data-logo alt=""></div>
+  <div class="esp-media" aria-hidden="true"></div>
+  <div class="esp-rail r1" aria-hidden="true"></div><div class="esp-rail r2" aria-hidden="true"></div>
+  <h2 class="esp-t" aria-label="Le plaisir de bien vous servir.">
+   <span class="l" aria-hidden="true"><span class="w" style="--i:0"><i>Le</i></span><span class="w" style="--i:1"><i>plaisir</i></span><span class="w" style="--i:2"><i>de</i></span></span>
+   <span class="l" aria-hidden="true"><span class="w" style="--i:3"><i>bien</i></span><span class="w" style="--i:4"><i>vous</i></span><span class="w" style="--i:5"><i>servir.</i></span></span>
+  </h2>
+  <a class="esp-go" href="#catalogue" aria-label="Voir le catalogue"><svg class="ic"><use href="#i-arrow"/></svg></a>
  </div>
 </section>
 
-<!-- ---------- CATALOGUE ---------- -->
+<!-- ---------- 3. CATALOGUE (recherche, filtres, panier : inchangés) ---------- -->
 <section class="sec sline" id="catalogue">
  <div class="w">
   <div class="hd rv">
@@ -969,29 +1159,22 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
  </div>
 </section>
 
-<!-- ---------- SPÉCIALITÉS ---------- -->
-<section class="sec" id="specialites">
+<!-- ---------- 4. NOTRE SAVOIR-FAIRE (réutilise l’ancienne section « Nos engagements ») ---------- -->
+<section class="sec" id="savoir-faire">
+ <!-- anciennes ancres conservées : les liens #specialites et #engagements arrivent ici -->
+ <span class="alias" id="specialites" aria-hidden="true"></span><span class="alias" id="engagements" aria-hidden="true"></span>
  <div class="w">
   <div class="hd rv">
-   <span class="eyebrow">Les signatures</span>
-   <h2>Ce qu’on vient chercher ici</h2>
+   <span class="eyebrow">Notre savoir-faire</span>
+   <h2>Le travail d’un vrai boucher</h2>
+   <p class="lead">Pas de libre-service anonyme : un comptoir, un boucher, et des conseils qui changent la cuisson de votre plat.</p>
   </div>
- </div>
- <div class="spz rv">
-  <div class="w spr" data-go="#catalogue">
-   <div class="spn">01</div>
-   <div class="spc"><h3>Black Angus</h3><p>Une race élevée pour le gras intramusculaire : la viande reste tendre même sur une cuisson franche. Côtes épaisses, entrecôtes, pavés — on taille devant vous selon le nombre de convives.</p><div class="spt"><b>Côte épaisse</b><b>Entrecôte</b><b>Pavé</b><b>Bavette</b></div></div>
-   <div class="spa"><svg class="ic"><use href="#i-arrow"/></svg></div>
-  </div>
-  <div class="w spr" data-go="#catalogue">
-   <div class="spn">02</div>
-   <div class="spc"><h3>Wagyu, selon arrivages</h3><p>Un persillé fin qui fond à la poêle et ne demande presque rien : une plancha brûlante, du sel, rien d’autre. Quantités très limitées — appelez-nous pour savoir ce qui est en vitrine aujourd’hui.</p><div class="spt"><b>Quantités limitées</b><b>Sur réservation</b></div></div>
-   <div class="spa"><svg class="ic"><use href="#i-arrow"/></svg></div>
-  </div>
-  <div class="w spr" data-go="#catalogue">
-   <div class="spn">03</div>
-   <div class="spc"><h3>Préparations maison</h3><p>Merguez, brochettes marinées, chich taouk, viande hachée minute, cecina : préparées à l’atelier, sans sous-traitance. Les marinades sont faites la veille pour que les épices prennent vraiment.</p><div class="spt"><b>Merguez</b><b>Brochettes</b><b>Chich taouk</b><b>Haché minute</b><b>Cecina</b></div></div>
-   <div class="spa"><svg class="ic"><use href="#i-arrow"/></svg></div>
+  <div class="eng rv">
+   <div><span class="em" aria-hidden="true">🔪</span><h3>Découpe à la demande</h3><p>Épaisseur de côte, pièce à griller, viande hachée minute, colis à partager : on taille selon votre besoin réel.</p></div>
+   <div><span class="em" aria-hidden="true">🍢</span><h3>Préparations maison</h3><p>Merguez, brochettes, marinades : les préparations du jour sortent de l’atelier de la boutique, à retrouver au comptoir et dans nos colis.</p></div>
+   <div><span class="em" aria-hidden="true">🔥</span><h3>Conseils de cuisson</h3><p>Chaque pièce part avec le mode de cuisson qui lui va. Un doute sur un plat ? Demandez, c’est compris dans le prix.</p></div>
+   <div><span class="em" aria-hidden="true">🥩</span><h3>Fraîcheur du jour</h3><p>Réceptions régulières, vitrine renouvelée, rien ne dort en chambre froide. Ce que vous voyez est ce qui est arrivé.</p></div>
+   <div><img class="hseal-s" data-halal alt="Certifié 100 % halal" width="64" height="64"><h3>100 % halal</h3><p>Toutes nos viandes sont halal, sans exception et sans mélange en atelier. Filières et certificats disponibles en boutique.</p></div>
   </div>
  </div>
 </section>
@@ -1010,6 +1193,7 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
    </a>
   </div>
   <div class="igg rv" id="igg"></div>
+  <div class="igd" id="igd" role="group" aria-label="Choisir une vidéo"></div>
   <div style="margin-top:clamp(22px,3vw,34px)" class="rv">
    <a class="btn o mag" id="igAll" href="https://www.instagram.com/boucherie.acem/" target="_blank" rel="noopener">
     <svg class="ic"><use href="#i-ig"/></svg>Voir toutes les vidéos sur Instagram
@@ -1024,11 +1208,11 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
   <div class="hd rv">
    <span class="eyebrow">Colis & formules</span>
    <h2>Pour la famille, le barbecue, les grandes tablées</h2>
-   <p class="lead">Composés le matin même selon les arrivages. Réservez par téléphone : on adapte les pièces et les quantités à votre repas.</p>
+   <p class="lead">Composés le matin même. Réservez par téléphone, on adapte pièces et quantités.</p>
   </div>
   <div class="pks">
-   <div class="pk rv" style="--d:0ms">
-    <h3>Colis Famille</h3><div class="pkp">Dès 59 €</div>
+   <article class="pk rv" data-kw="boeuf|bœuf|steak|poulet|rumsteck|bavette" style="--d:0ms">
+    <figure class="pkf"><img class="pkl" data-logo alt=""><div class="pkp">Dès 59 €</div><figcaption><h3>Colis Famille</h3></figcaption></figure>
     <ul>
      <li><svg class="ic"><use href="#i-check"/></svg>Environ 5 kg de viandes variées</li>
      <li><svg class="ic"><use href="#i-check"/></svg>Bœuf à griller, à mijoter, poulet</li>
@@ -1036,9 +1220,9 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
      <li><svg class="ic"><use href="#i-check"/></svg>Découpe et portions à votre choix</li>
     </ul>
     <a class="btn o" href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg>Réserver ce colis</a>
-   </div>
-   <div class="pk hi rv" style="--d:110ms">
-    <h3>Box Barbecue</h3><div class="pkp">Dès 45 €</div>
+   </article>
+   <article class="pk hi rv" data-kw="merguez|brochette|cotelette|grill|saucisse|agneau" style="--d:110ms">
+    <figure class="pkf"><img class="pkl" data-logo alt=""><div class="pkp">Dès 45 €</div><figcaption><h3>Box Barbecue</h3></figcaption></figure>
     <ul>
      <li><svg class="ic"><use href="#i-check"/></svg>Merguez et brochettes maison</li>
      <li><svg class="ic"><use href="#i-check"/></svg>Côtelettes et pièces à griller</li>
@@ -1046,9 +1230,9 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
      <li><svg class="ic"><use href="#i-check"/></svg>Prévu pour 6 à 8 personnes</li>
     </ul>
     <a class="btn" href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg>Réserver ce colis</a>
-   </div>
-   <div class="pk rv" style="--d:220ms">
-    <h3>Plateau Dégustation</h3><div class="pkp">Sur devis</div>
+   </article>
+   <article class="pk rv" data-kw="wagyu|angus|entrecote|faux-filet|cote de boeuf|onglet" style="--d:220ms">
+    <figure class="pkf"><img class="pkl" data-logo alt=""><div class="pkp">Sur devis</div><figcaption><h3>Plateau Dégustation</h3></figcaption></figure>
     <ul>
      <li><svg class="ic"><use href="#i-check"/></svg>Pièces d’exception du moment</li>
      <li><svg class="ic"><use href="#i-check"/></svg>Black Angus, Wagyu si disponible</li>
@@ -1056,7 +1240,7 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
      <li><svg class="ic"><use href="#i-check"/></svg>À réserver 48 h à l’avance</li>
     </ul>
     <a class="btn o" href="tel:+33981541936"><svg class="ic"><use href="#i-tel"/></svg>Demander un devis</a>
-   </div>
+   </article>
   </div>
   <div class="note rv"><svg class="ic"><use href="#i-info"/></svg><p>Les tarifs des colis varient selon les arrivages et les pièces choisies. Le montant exact vous est confirmé en boutique avant préparation — <b>aucun prélèvement en ligne</b>.</p></div>
  </div>
@@ -1155,9 +1339,11 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
 <!-- ---------- MENTIONS LÉGALES ---------- -->
 <section id="mentions" aria-labelledby="mlt">
  <div class="w">
-  <span class="eyebrow">Informations légales</span>
-  <h2 id="mlt">Mentions légales</h2>
-  <div id="mlg"></div>
+  <h2 class="mlh"><button type="button" class="mlt" id="mltb" aria-expanded="false" aria-controls="mlp">
+   <span class="mlt-t"><span class="eyebrow">Informations légales</span><b id="mlt">Mentions légales</b><small>Éditeur, hébergeur, propriété intellectuelle, données personnelles</small></span>
+   <span class="mlt-i" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span>
+  </button></h2>
+  <div class="mlp" id="mlp" role="region" aria-labelledby="mlt"><div class="mlpi"><div id="mlg"></div></div></div>
  </div>
 </section>
 </main>
@@ -1174,8 +1360,8 @@ h3{font-size:clamp(1.3rem,1.05rem + .8vw,1.8rem)}
      <img class="hseal-f" data-halal alt="Certifié 100 % halal" width="54" height="54">
     </div>
    </div>
-   <div class="fc"><h4>La boutique</h4><a href="#catalogue">Catalogue</a><a href="#specialites">Spécialités</a><a href="#videos">Vidéos</a><a href="#colis">Colis & formules</a><a href="#commander">Commander en ligne</a><a href="#partenaires" data-pnav hidden>Partenaires</a></div>
-   <div class="fc"><h4>Informations</h4><a href="#infos">Horaires</a><a href="#faq">Questions fréquentes</a><a href="#infos">Nous trouver</a><a href="tel:+33981541936">09 81 54 19 36</a></div>
+   <div class="fc"><h4>La boutique</h4><a href="#esprit">L’esprit Acem</a><a href="#catalogue">Catalogue</a><a href="#savoir-faire">Savoir-faire</a><a href="#videos">Vidéos</a><a href="#colis">Colis & formules</a><a href="#commander">Commander en ligne</a><a href="#partenaires" data-pnav hidden>Partenaires</a></div>
+   <div class="fc"><h4>Informations</h4><a href="#faq">Questions fréquentes</a><a href="#infos">Horaires</a><a href="#infos">Nous trouver</a><a href="tel:+33981541936">09 81 54 19 36</a></div>
    <div class="fc"><h4>Adresse</h4><p>51 Avenue Général Leclerc</p><p>38950 Saint-Martin-le-Vinoux</p><a id="mapLnk2" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=51+Avenue+General+Leclerc+38950+Saint-Martin-le-Vinoux">Voir sur la carte</a></div>
   </div>
   <div class="fbt">
@@ -1433,6 +1619,8 @@ async function init(){
  }catch(e){}
  S.ready = true;
  chips(); grid(); hours(); openBadge(); banner(); contact(); legal(); igRender(); partners(); cart();
+ try{ espritPhotos() }catch(e){}
+ try{ formulesPhotos() }catch(e){}
  deepLink();
 }
 
@@ -1646,30 +1834,76 @@ function contact(){
 
 /* ---------- MENTIONS LÉGALES (modifiables dans l’espace admin → Réglages) ---------- */
 const LEGAL = [
- ['name','Raison sociale / nom commercial','Boucherie Acem'],
- ['form','Forme juridique','SARL, SAS, entreprise individuelle…'],
+ ['name','Nom commercial','Boucherie Acem'],
+ ['legal','Identité juridique de l’entreprise','Dénomination sociale, ou prénom et nom de l’exploitant'],
+ ['form','Statut juridique','SARL, SAS, entreprise individuelle…'],
  ['siret','SIRET','14 chiffres'],
- ['tva','N° de TVA intracommunautaire','FR 00 000000000'],
- ['addr','Adresse du siège','51 Avenue Général Leclerc, 38950 Saint-Martin-le-Vinoux'],
+ ['tva','N° de TVA intracommunautaire (facultatif)','FR 00 000000000'],
+ ['rcs','Immatriculation et capital social (facultatif)','RCS ou Répertoire des métiers, capital social'],
+ ['addr','Adresse du siège ou de l’établissement','51 Avenue Général Leclerc, 38950 Saint-Martin-le-Vinoux'],
  ['pub','Directeur de la publication','Prénom Nom'],
  ['mail','E-mail de contact','contact@…'],
  ['tel','Téléphone','09 81 54 19 36'],
- ['host','Hébergeur du site','Nom, adresse et téléphone de l’hébergeur']
+ ['host','Hébergeur du site','Nom, adresse et téléphone de l’hébergeur'],
+ ['privacy','Lien vers la politique de confidentialité (facultatif)','https://… — uniquement si elle existe'],
+ ['retention','Durée de conservation des données personnelles','À indiquer par l’éditeur']
 ];
+/* Rubriques obligatoires : si elles ne sont pas renseignées, un repère « À COMPLÉTER » est affiché
+   (rien n’est inventé). Les rubriques absentes de cette liste n’apparaissent que si elles sont remplies. */
+const LEGAL_PH = {
+ name:'NOM COMMERCIAL À COMPLÉTER', legal:'IDENTITÉ DE L’ÉDITEUR À COMPLÉTER', form:'STATUT JURIDIQUE À COMPLÉTER',
+ siret:'SIRET À COMPLÉTER', addr:'ADRESSE À COMPLÉTER', pub:'DIRECTEUR DE LA PUBLICATION À COMPLÉTER',
+ mail:'E-MAIL DE CONTACT À COMPLÉTER', tel:'TÉLÉPHONE À COMPLÉTER',
+ host:'HÉBERGEUR À COMPLÉTER — nom, adresse et coordonnées'
+};
 function legal(){
  const L = S.set.legal_mentions || {}, box = $('#mlg'); if(!box) return;
  const a = S.set.address || '51 Avenue Général Leclerc';
- const d = { name:'Boucherie Acem', addr:/\d{5}/.test(a) ? a : a+', 38950 Saint-Martin-le-Vinoux', tel:($('#telLnk b')||{}).textContent };
+ const d = { name:'Boucherie Acem', addr:/\d{5}/.test(a) ? a : a+', 38950 Saint-Martin-le-Vinoux',
+             tel:(($('#telLnk b')||{}).textContent || '09 81 54 19 36') };
  const nl = t => esc(t).replace(/\n/g, '<br>');
- const rows = LEGAL.map(([k,l]) => { const t = String(L[k] || d[k] || '').trim(); return t ? '<div><dt>'+l+'</dt><dd>'+nl(t)+'</dd></div>' : '' }).join('');
+ const ph = k => '<span class="mlph">['+esc(LEGAL_PH[k])+']</span>';
+ const val = k => String(L[k] || d[k] || '').trim();
+ const lab = k => LEGAL.find(x => x[0] === k)[1];
+ const row = k => { const t = val(k); if(!t && !LEGAL_PH[k]) return '';
+  return '<div><dt>'+lab(k)+'</dt><dd>'+(t ? nl(t) : ph(k))+'</dd></div>' };
+ const grp = (title, keys) => '<div class="mlb"><h3>'+title+'</h3><dl class="mlg">'+keys.map(row).join('')+'</dl></div>';
+
+ const mail = val('mail'), tel = val('tel');
+ const contact = mail ? nl(mail) : ph('mail');
+ const pv = String(L.privacy || '').trim();
+ const pvOk = /^(https?:\/\/|\/|#)/i.test(pv);
+ const privacy = pvOk
+  ? '<a href="'+esc(pv)+'"'+(/^https?:/i.test(pv) ? ' target="_blank" rel="noopener"' : '')+'>Consulter la politique de confidentialité</a>'
+  : '<span class="mlph">[POLITIQUE DE CONFIDENTIALITÉ À COMPLÉTER]</span>';
+
+ const art = (t, body) => '<article class="mla"><h3>'+t+'</h3>'+body+'</article>';
+ const arts =
+  art('Propriété intellectuelle',
+   '<p>L’ensemble des contenus de ce site (textes, photographies, vidéos, logo, éléments graphiques, structure) est protégé par le droit de la propriété intellectuelle. Sauf mention contraire, il appartient à l’éditeur du site ou est utilisé avec l’autorisation de ses titulaires.</p>'+
+   '<p>Toute reproduction, représentation, modification ou exploitation, totale ou partielle, sans autorisation écrite préalable est interdite et peut constituer une contrefaçon (articles L.335-2 et suivants du Code de la propriété intellectuelle). Les marques et logos de tiers cités sur le site restent la propriété de leurs titulaires.</p>')+
+  art('Responsabilité',
+   '<p>L’éditeur s’efforce de publier des informations exactes et à jour (produits, tarifs, horaires). Elles sont données à titre indicatif : les produits dépendent des arrivages et le montant exact d’une commande est confirmé en boutique avant sa préparation.</p>'+
+   '<p>Dans les limites permises par la loi, l’éditeur ne peut être tenu responsable d’une erreur, d’une omission ou d’une indisponibilité temporaire du site. Les liens vers des sites tiers (Instagram, Facebook, Google Maps…) sont proposés pour votre confort : leur contenu ne relève pas de l’éditeur.</p>')+
+  art('Protection des données personnelles',
+   '<p>Lorsque vous passez une commande de retrait, le site recueille les informations que vous saisissez : prénom, nom, numéro de téléphone, date et créneau de retrait, ainsi que vos précisions facultatives pour le boucher. Elles servent à préparer, confirmer et remettre votre commande. Le contenu de votre panier est conservé dans votre navigateur afin de ne pas être perdu entre deux visites.</p>'+
+   '<p>Le responsable du traitement est l’éditeur du site, identifié ci-dessus. Durée de conservation des données : '+(String(L.retention || '').trim() ? nl(String(L.retention).trim()) : '<span class="mlph">[DURÉE DE CONSERVATION À COMPLÉTER]</span>')+'</p>'+
+   '<p>Vous pouvez demander l’accès, la rectification, l’effacement de vos données, ou vous opposer à leur traitement, dans les conditions prévues par la réglementation, en écrivant à '+contact+(tel ? ' ou en appelant le '+nl(tel) : '')+'. Vous pouvez aussi saisir la CNIL (cnil.fr).</p>'+
+   '<p>Politique de confidentialité : '+privacy+'</p>');
+
  const extra = String(L.extra || '').split(/\n\s*\n/).map(p => p.trim()).filter(Boolean).map(p => '<p>'+nl(p)+'</p>').join('');
- box.innerHTML = '<dl class="mlg">'+rows+'</dl>'+extra;
+ box.innerHTML =
+  '<p class="mli">Conformément à l’article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l’économie numérique, voici les informations relatives à l’éditeur et à l’hébergeur de ce site.</p>'+
+  grp('Éditeur du site', ['name','legal','form','siret','tva','rcs','addr','tel','mail','pub'])+
+  grp('Hébergeur du site', ['host'])+
+  '<div class="mlx">'+arts+'</div>'+
+  (extra ? '<div class="mlb"><h3>Informations complémentaires</h3>'+extra+'</div>' : '');
 }
 function mlForm(L){
  const f = ([k,l,ph]) => '<label>'+l+'<input data-ml="'+k+'" value="'+esc(L[k]||'')+'" placeholder="'+esc(ph)+'"></label>';
  let h = '';
  for(let i = 0; i < LEGAL.length; i += 2) h += '<div class="r2">'+LEGAL.slice(i, i+2).map(f).join('')+'</div>';
- return h+'<label>Autres mentions (facultatif)<textarea data-ml="extra" rows="6" placeholder="Propriété intellectuelle, données personnelles, cookies, certification halal… Séparez les paragraphes par une ligne vide.">'+esc(L.extra||'')+'</textarea></label>';
+ return h+'<label>Autres mentions (facultatif)<textarea data-ml="extra" rows="6" placeholder="Informations complémentaires affichées en bas des mentions légales (cookies, certification halal…). Séparez les paragraphes par une ligne vide.">'+esc(L.extra||'')+'</textarea></label>';
 }
 const mlGet = () => { const o = {}; $$('[data-ml]').forEach(i => { const t = i.value.trim(); if(t) o[i.dataset.ml] = t }); return o };
 
@@ -2069,6 +2303,50 @@ async function route(){
 }
 addEventListener('hashchange', route);
 
+/* mentions légales : affichées dès le départ (repères « à compléter » inclus), puis mises à jour avec les réglages */
+try{ legal() }catch(e){}
+/* vidéos Instagram : repères du slider (visibles sur mobile uniquement, masqués sur ordinateur par le CSS) */
+try{
+ const igb = $('#igg'), igd = $('#igd');
+ if(igb && igd){
+  const cards = () => [...igb.children].filter(c => c.classList.contains('igc'));
+  const cur = () => {
+   const c = cards(); if(c.length < 2) return 0;
+   const step = c[1].offsetLeft - c[0].offsetLeft;
+   if(igb.scrollLeft >= igb.scrollWidth - igb.clientWidth - 4) return c.length - 1;
+   return step > 0 ? Math.max(0, Math.min(c.length - 1, Math.round(igb.scrollLeft / step))) : 0;
+  };
+  const mark = () => { const i = cur(); [...igd.children].forEach((d,k) => { d.classList.toggle('on', k === i); d.setAttribute('aria-current', k === i ? 'true' : 'false') }) };
+  const build = () => {
+   const c = cards();
+   igd.innerHTML = c.length < 2 ? '' : c.map((_,i) => '<button type="button" data-i="'+i+'" aria-label="Vidéo '+(i+1)+' sur '+c.length+'"></button>').join('');
+   mark();
+  };
+  igd.addEventListener('click', e => {
+   const b = e.target.closest('button'), c = b && cards()[+b.dataset.i]; if(!c) return;
+   igb.scrollTo({ left: c.offsetLeft - (parseFloat(getComputedStyle(igb).paddingLeft) || 0), behavior: reduced() ? 'auto' : 'smooth' });
+  });
+  let raf = 0;
+  igb.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(mark) }, { passive:true });
+  addEventListener('resize', mark);
+  new MutationObserver(build).observe(igb, { childList:true });
+  build();
+ }
+}catch(e){}
+/* mentions légales : bandeau déroulant (fermé par défaut ; s’ouvre au clic, via le lien du pied de page ou #mentions) */
+try{
+ const mlb = $('#mltb'), mlp = $('#mlp');
+ const mlSet = on => { mlp.classList.toggle('on', on); mlb.setAttribute('aria-expanded', on) };
+ mlb.addEventListener('click', () => {
+  const on = !mlp.classList.contains('on'); mlSet(on);
+  if(!on){ const r = mlb.getBoundingClientRect(); if(r.top < 0 || r.bottom > innerHeight) mlb.scrollIntoView({ block:'center', behavior: reduced() ? 'auto' : 'smooth' }) }
+ });
+ /* une fois déroulé par un lien, on remonte le bandeau en haut de l’écran pour lire tout de suite */
+ const mlGo = () => setTimeout(() => { if(mlb.getBoundingClientRect().top > 120) $('#mentions').scrollIntoView({ block:'start', behavior: reduced() ? 'auto' : 'smooth' }) }, 650);
+ document.addEventListener('click', e => { if(e.target.closest && e.target.closest('a[href="#mentions"]')){ mlSet(true); mlGo() } });
+ addEventListener('hashchange', () => { if(location.hash === '#mentions'){ mlSet(true); mlGo() } });
+ if(location.hash === '#mentions'){ mlSet(true); mlGo() }
+}catch(e){}
 init();
 reveal();
 route();
@@ -2124,8 +2402,8 @@ setInterval(openBadge, 60000);
  /* --- index de sections --- */
  let dots = null, dotA = [];
  if(fine){
-  const SECT = [['top','Accueil'],['catalogue','Catalogue'],['specialites','Spécialités'],
-                ['videos','Vidéos'],['colis','Colis'],['commander','Commander'],['faq','FAQ'],['infos','Infos']];
+  const SECT = [['top','Accueil'],['esprit','L’esprit Acem'],['catalogue','Catalogue'],['savoir-faire','Savoir-faire'],
+                ['videos','Vidéos'],['colis','Colis'],['commander','Commander'],['partenaires','Partenaires'],['faq','FAQ'],['infos','Infos']];
   dots = document.createElement('nav');
   dots.id = 'dots'; dots.setAttribute('aria-label', 'Navigation par section');
   dots.innerHTML = SECT.map(([id,l]) => '<a href="#'+id+'" data-l="'+l+'" aria-label="'+l+'"></a>').join('');
@@ -2133,10 +2411,10 @@ setInterval(openBadge, 60000);
   dotA = [...dots.children];
   const ioD = new IntersectionObserver(es => es.forEach(e => {
    if(!e.isIntersecting) return;
-   const a = dots.querySelector('a[href="#'+e.target.id+'"]');
+   const a = dots.querySelector('a[href="#'+(e.target.id||'top')+'"]');
    if(a){ dotA.forEach(x => x.classList.toggle('on', x === a)) }
   }), { rootMargin:'-45% 0px -50% 0px' });
-  SECT.forEach(([id]) => { const el = document.getElementById(id); if(el) ioD.observe(el) });
+  SECT.forEach(([id]) => { const el = id === 'top' ? $('.hero') : document.getElementById(id); if(el) ioD.observe(el) });
  }
 
  if(!PC){ lightLoop(); return }
@@ -2229,6 +2507,68 @@ setInterval(openBadge, 60000);
  }
 })();
 
+/* ---------- L'ESPRIT ACEM : photos du catalogue + progression au défilement ---------- */
+function espritPhotos(){
+ const s = document.getElementById('esprit'); if(!s || s.dataset.ph) return; s.dataset.ph = '1';
+ const all = [...new Set((S.prods || []).map(p => p.image_url).filter(Boolean))];
+ const st = Math.max(1, Math.floor(all.length / 8)), imgs = [];
+ for(let i = 0; i < all.length && imgs.length < 8; i += st) imgs.push(all[i]);
+ const n = imgs.length; if(!n) return;
+ [...s.querySelectorAll('.esp-rail')].forEach((rail,k) => {
+  for(let j = 0; j < 9; j++){
+   const f = document.createElement('figure'); f.className = 'esp-c'; f.style.setProperty('--j', j);
+   const im = new Image(); im.alt = ''; im.decoding = 'async';
+   im.onload = () => f.classList.add('ok');
+   im.src = imgs[(j + k*Math.ceil(n/2)) % n];
+   f.append(im); rail.append(f);
+  }
+ });
+}
+(function(){
+ const s = document.getElementById('esprit'); if(!s) return;
+ /* vraie photo ou vidéo plein écran, si le fichier est présent à côté de index.html */
+ const md = s.querySelector('.esp-media'), has = () => s.classList.add('has-media');
+ const im = new Image(); im.alt = ''; im.decoding = 'async';
+ im.onload = () => { md.append(im); has() };
+ im.onerror = () => {
+  const v = document.createElement('video');
+  v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true; v.preload = 'auto';
+  v.onloadeddata = () => { md.append(v); v.play().catch(() => {}); has() };
+  v.src = 'esprit.mp4';
+ };
+ im.src = 'esprit.jpg';
+ if(reduced()){ s.classList.add('in'); s.style.setProperty('--e', 1); s.style.setProperty('--p', .3); return }
+ let tk = 0;
+ const upd = () => {
+  tk = 0;
+  const r = s.getBoundingClientRect(), vh = innerHeight;
+  if(r.bottom < -80 || r.top > vh + 80) return;
+  const e = Math.max(0, Math.min(1, (vh - r.top) / vh));
+  const p = Math.max(0, Math.min(1, -r.top / Math.max(1, r.height - vh)));
+  s.style.setProperty('--e', e.toFixed(3)); s.style.setProperty('--p', p.toFixed(3));
+  if(e > .3) s.classList.add('in');
+ };
+ const on = () => { if(!tk) tk = requestAnimationFrame(upd) };
+ addEventListener('scroll', on, { passive:true }); addEventListener('resize', on); upd();
+})();
+
+/* ---------- FORMULES : photo du catalogue qui correspond à chaque formule ---------- */
+function formulesPhotos(){
+ const box = document.getElementById('colis'); if(!box || box.dataset.ph) return; box.dataset.ph = '1';
+ const na = t => String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+ const list = (S.prods || []).filter(p => p.image_url), used = new Set();
+ box.querySelectorAll('.pk').forEach(c => {
+  const re = new RegExp(c.dataset.kw || '$^', 'i');
+  const p = list.find(x => re.test(na(x.name)) && !used.has(x.image_url)) || list.find(x => !used.has(x.image_url));
+  if(!p) return; used.add(p.image_url);
+  const im = new Image(); im.className = 'pki'; im.alt = ''; im.decoding = 'async';
+  im.onload = () => { c.querySelector('.pkf').prepend(im); requestAnimationFrame(() => im.classList.add('ok')) };
+  im.src = p.image_url;
+ });
+ /* mobile : la formule « la plus demandée » est centrée, les voisines dépassent pour inviter à glisser */
+ const r = box.querySelector('.pks'), m = r && r.children[1];
+ if(m && matchMedia('(max-width:860px)').matches) r.scrollLeft = m.offsetLeft - (r.clientWidth - m.offsetWidth) / 2;
+}
 /* ==================================================================
    14. ESPACE ADMIN  (#admin)
    ================================================================== */
@@ -2856,7 +3196,7 @@ async function tabS(){
   '<label>Lien Google Maps (facultatif)<input id="smp" value="'+esc(s.maps_url||'')+'"></label>'+
  '</div></div>'+
  '<div class="pnl"><h3>Mentions légales</h3>'+
-  '<p class="mu" style="margin-bottom:14px">Affichées en bas du site, dans la section « Mentions légales ». Un champ vide n’est pas affiché (le nom, l’adresse et le téléphone reprennent les coordonnées du site par défaut).</p>'+
+  '<p class="mu" style="margin-bottom:14px">Affichées en bas du site, dans la section « Mentions légales ». Une rubrique obligatoire laissée vide s’affiche sur le site sous la forme « [… À COMPLÉTER] » : les mentions ne sont complètes que lorsque plus aucun repère de ce type n’apparaît. Les champs marqués « facultatif » ne s’affichent que s’ils sont remplis. Le nom, l’adresse et le téléphone reprennent par défaut les coordonnées du site.</p>'+
   (('legal_mentions' in s) ? '' : '<p class="er" style="margin-bottom:14px">⚠ La colonne <code>legal_mentions</code> n’existe pas dans Supabase : les mentions ne peuvent pas être enregistrées. Dans Supabase → SQL Editor, exécutez : <code>alter table public.store_settings add column if not exists legal_mentions jsonb;</code></p>')+
   '<div class="fm" style="margin:0">'+mlForm(s.legal_mentions || {})+'</div>'+
  '</div>'+
